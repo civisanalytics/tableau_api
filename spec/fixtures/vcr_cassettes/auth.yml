@@ -1,0 +1,515 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:2000/api/2.0/auth/signin
+    body:
+      encoding: UTF-8
+      string: <tsRequest><credentials name="foo" password="bar"><site contentUrl=""/></credentials></tsRequest>
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Tue, 10 May 2016 16:41:58 GMT
+      Server:
+      - Tableau
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Vary:
+      - "*"
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      X-Runtime:
+      - '0.027000'
+      Content-Type:
+      - application/xml;charset=utf-8
+      Content-Length:
+      - '384'
+      P3p:
+      - CP="NON"
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+          <error code="401001">
+            <summary>Signin Error</summary>
+            <detail>Error signing in to Tableau Server</detail>
+          </error>
+        </tsResponse>
+    http_version: 
+  recorded_at: Tue, 10 May 2016 16:41:16 GMT
+- request:
+    method: post
+    uri: http://localhost:2000/api/2.0/auth/signin
+    body:
+      encoding: UTF-8
+      string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
+        contentUrl=""/></credentials></tsRequest>
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 10 May 2016 16:41:58 GMT
+      Server:
+      - Tableau
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Vary:
+      - "*,Accept-Encoding"
+      Etag:
+      - '"23e0f1b2e1e39179d9144bcf339b0b04-gzip"'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      X-Runtime:
+      - '0.058000'
+      Content-Type:
+      - application/xml;charset=utf-8
+      P3p:
+      - CP="NON"
+      Content-Length:
+      - '306'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+          <credentials token="8223d3c992d264dcc1428cd59447b848">
+            <site id="ff66e08b-e7b4-4759-b21f-1fdc0e0885f9" contentUrl=""/>
+            <user id="b841bf1c-a10e-406b-ae86-ed900b066f48"/>
+          </credentials>
+        </tsResponse>
+    http_version: 
+  recorded_at: Tue, 10 May 2016 16:41:17 GMT
+- request:
+    method: post
+    uri: http://localhost:2000/trusted
+    body:
+      encoding: UTF-8
+      string: username=test&target_site=
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 10 May 2016 16:41:58 GMT
+      Server:
+      - Tableau
+      Pragma:
+      - ''
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      Content-Type:
+      - "*; charset=UTF-8"
+      Content-Length:
+      - '24'
+      P3p:
+      - CP="NON"
+      X-Ua-Compatible:
+      - IE=Edge
+    body:
+      encoding: UTF-8
+      string: TrWvJRComjCJc3Uih-b8rOOv
+    http_version: 
+  recorded_at: Tue, 10 May 2016 16:41:17 GMT
+- request:
+    method: post
+    uri: http://localhost:2000/trusted
+    body:
+      encoding: UTF-8
+      string: username=test_test&target_site=test
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 10 May 2016 16:41:58 GMT
+      Server:
+      - Tableau
+      Pragma:
+      - ''
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      Content-Type:
+      - "*; charset=UTF-8"
+      Content-Length:
+      - '24'
+      P3p:
+      - CP="NON"
+      X-Ua-Compatible:
+      - IE=Edge
+    body:
+      encoding: UTF-8
+      string: PBOiBBqfFYjhr-yykIZIeo4m
+    http_version: 
+  recorded_at: Tue, 10 May 2016 16:41:17 GMT
+- request:
+    method: post
+    uri: http://localhost:2000/trusted
+    body:
+      encoding: UTF-8
+      string: username=test&target_site=test
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 10 May 2016 16:41:58 GMT
+      Server:
+      - Tableau
+      Pragma:
+      - ''
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      Content-Type:
+      - "*; charset=UTF-8"
+      Content-Length:
+      - '2'
+      P3p:
+      - CP="NON"
+      X-Ua-Compatible:
+      - IE=Edge
+    body:
+      encoding: UTF-8
+      string: "-1"
+    http_version: 
+  recorded_at: Tue, 10 May 2016 16:41:17 GMT
+- request:
+    method: post
+    uri: http://localhost:2000/trusted
+    body:
+      encoding: UTF-8
+      string: username=invalid_user&target_site=
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 10 May 2016 16:41:58 GMT
+      Server:
+      - Tableau
+      Pragma:
+      - ''
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      Content-Type:
+      - "*; charset=UTF-8"
+      Content-Length:
+      - '2'
+      P3p:
+      - CP="NON"
+      X-Ua-Compatible:
+      - IE=Edge
+    body:
+      encoding: UTF-8
+      string: "-1"
+    http_version: 
+  recorded_at: Tue, 10 May 2016 16:41:17 GMT
+- request:
+    method: post
+    uri: http://localhost:2000/trusted
+    body:
+      encoding: UTF-8
+      string: username=test&target_site=invalid_site
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Date:
+      - Tue, 10 May 2016 16:41:58 GMT
+      Server:
+      - Tableau
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Location:
+      - http://localhost:2000/en/embeddedAuth.html?path=%2Ftrusted%3F&siteUrlName=
+      Content-Length:
+      - '0'
+      P3p:
+      - CP="NON"
+      X-Ua-Compatible:
+      - IE=Edge
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 10 May 2016 16:41:18 GMT
+- request:
+    method: post
+    uri: http://localhost:2000/api/2.0/auth/signout
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 8223d3c992d264dcc1428cd59447b848
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Tue, 10 May 2016 16:42:46 GMT
+      Server:
+      - Tableau
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Vary:
+      - "*"
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      X-Runtime:
+      - '0.030000'
+      P3p:
+      - CP="NON"
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 10 May 2016 16:42:04 GMT
+- request:
+    method: post
+    uri: http://localhost:2000/api/2.0/auth/signin
+    body:
+      encoding: UTF-8
+      string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
+        contentUrl="test"/></credentials></tsRequest>
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 16 May 2016 18:58:19 GMT
+      Server:
+      - Tableau
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Vary:
+      - "*,Accept-Encoding"
+      Etag:
+      - '"84b9cef6e4ce5748f535b11b6cb39f34-gzip"'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      X-Runtime:
+      - '0.066000'
+      Content-Type:
+      - application/xml;charset=utf-8
+      P3p:
+      - CP="NON"
+      Content-Length:
+      - '308'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+          <credentials token="ae20e292a931a3f1b79d8d425eee316a">
+            <site id="2599b65d-15a4-476e-8106-92a840a13764" contentUrl="test"/>
+            <user id="204a70f3-4390-4be6-be17-5dfa0c0363f4"/>
+          </credentials>
+        </tsResponse>
+    http_version: 
+  recorded_at: Mon, 16 May 2016 18:57:30 GMT
+- request:
+    method: post
+    uri: http://localhost:2000/api/2.0/auth/signout
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - foo
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 18 May 2016 23:36:23 GMT
+      Server:
+      - Tableau
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Vary:
+      - "*"
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      X-Runtime:
+      - '0.047000'
+      Content-Type:
+      - application/xml;charset=utf-8
+      Content-Length:
+      - '406'
+      P3p:
+      - CP="NON"
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+          <error code="401002">
+            <summary>Unauthorized Access</summary>
+            <detail>Invalid authentication credentials were provided.</detail>
+          </error>
+        </tsResponse>
+    http_version: 
+  recorded_at: Wed, 18 May 2016 23:36:26 GMT
+- request:
+    method: post
+    uri: https://localhost:2001/api/2.0/auth/signin
+    body:
+      encoding: UTF-8
+      string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
+        contentUrl=""/></credentials></tsRequest>
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.9
+      Date:
+      - Thu, 02 Jun 2016 23:41:36 GMT
+      Content-Type:
+      - application/xml;charset=utf-8
+      Content-Length:
+      - '306'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Vary:
+      - "*,Accept-Encoding"
+      Etag:
+      - '"b55a176d6d7574ab3d6165fc0a8c8b08-gzip"'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      X-Runtime:
+      - '0.078000'
+      P3p:
+      - CP="NON"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+          <credentials token="638e7d74580051b3bf263b8cf9e9a5cd">
+            <site id="ff66e08b-e7b4-4759-b21f-1fdc0e0885f9" contentUrl=""/>
+            <user id="420d9656-3564-4a94-a978-d60584339988"/>
+          </credentials>
+        </tsResponse>
+    http_version: 
+  recorded_at: Thu, 02 Jun 2016 23:41:36 GMT
+recorded_with: VCR 3.0.1

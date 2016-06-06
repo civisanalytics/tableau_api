@@ -1,0 +1,78 @@
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+require 'tableau_api'
+
+require 'pry'
+
+require 'vcr'
+
+if ENV['TABLEAU_ADMIN_USERNAME'].nil? || ENV['TABLEAU_ADMIN_PASSWORD'].nil?
+  puts 'TABLEAU_ADMIN_USERNAME and TABLEAU_ADMIN_PASSWORD must be set to record new VCR cassettes'
+
+  ENV['TABLEAU_ADMIN_USERNAME'] = 'FakeTableauAdminUsername'
+  ENV['TABLEAU_ADMIN_PASSWORD'] = 'FakeTableauAdminPassword'
+end
+
+ENV['TABLEAU_HOST'] = 'http://localhost:2000' if ENV['TABLEAU_HOST'].nil?
+ENV['TABLEAU_HTTPS_HOST'] = 'https://localhost:2001' if ENV['TABLEAU_HTTPS_HOST'].nil?
+
+VCR.configure do |config|
+  config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  config.hook_into :webmock
+
+  config.default_cassette_options = { record: :new_episodes, match_requests_on: [:path, :method, :body, :query] }
+
+  config.filter_sensitive_data('<TABLEAU_ADMIN_USERNAME>') { ENV['TABLEAU_ADMIN_USERNAME'] }
+  config.filter_sensitive_data('<TABLEAU_ADMIN_PASSWORD>') { ENV['TABLEAU_ADMIN_PASSWORD'] }
+
+  config.allow_http_connections_when_no_cassette = false
+
+  # only record a whitelist of test site and user elements
+  config.before_record do |interaction|
+    response = interaction.response
+    elements = response.body.scan(/<(?:site|user)\s.+name.+>\n/)
+    sensitive_elements = elements.select { |e| !e.match(/Default|TestSite|guest|test|<TABLEAU_ADMIN_USERNAME>/) }
+    unless sensitive_elements.empty?
+      sensitive_elements.each { |e| response.body.gsub! e, '' }
+      response.body.gsub!(/totalAvailable="\d+"/, "totalAvailable=\"#{elements.length - sensitive_elements.length}\"")
+    end
+  end
+end
+
+RSpec.configure do |config|
+  # Turn deprecation warnings into errors.
+  config.raise_errors_for_deprecations!
+
+  # Persist example state. Enables --only-failures:
+  # http://rspec.info/blog/2015/06/rspec-3-3-has-been-released/#core-new---only-failures-option
+  config.example_status_persistence_file_path = 'tmp/examples.txt'
+  config.run_all_when_everything_filtered = true
+end
+
+RSpec::Matchers.define :be_a_tableau_id do
+  match do |actual|
+    actual.match(/\A\w{8}-\w{4}-\w{4}-\w{4}-\w{12}\z/)
+  end
+end
+
+RSpec::Matchers.define :be_a_token do
+  match do |actual|
+    actual.match(/\A\w{32}\z/)
+  end
+end
+
+RSpec::Matchers.define :be_a_trusted_ticket do
+  match do |actual|
+    actual.match(/\A[\w-]{24}\z/)
+  end
+end
+
+RSpec.shared_context 'tableau client' do
+  let(:client) do
+    TableauApi.new(
+      host: ENV['TABLEAU_HOST'],
+      site_name: 'TestSite',
+      username: ENV['TABLEAU_ADMIN_USERNAME'],
+      password: ENV['TABLEAU_ADMIN_PASSWORD']
+    )
+  end
+end
