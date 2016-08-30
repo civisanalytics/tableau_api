@@ -53,13 +53,20 @@ module TableauApi
         Filter Read ShareView ViewComments ViewUnderlyingData WebAuthoring Write
       ).freeze
 
+      CAPABILITY_MODES = %w(ALLOW DENY)
+
       # capabilities is a hash of symbol keys to booleans { Read: true, ChangePermissions: false }
-      def permissions(workbook_id:, user_id:, capabilities:)
+      def permissions(workbook_id:, user_id:, group_id:, capabilities:)
+        raise 'cannot specify user_id and group_id' if user_id && group_id
         request = Builder::XmlMarkup.new.tsRequest do |ts|
           ts.permissions do |p|
             p.workbook(id: workbook_id)
             p.granteeCapabilities do |gc|
-              gc.user(id: user_id)
+              if user_id
+                gc.user(id: user_id)
+              else
+                gc.group(id: group_id)
+              end
               gc.capabilities do |c|
                 capabilities.each do |k, v|
                   k = k.to_s
@@ -74,6 +81,17 @@ module TableauApi
         res = @client.connection.api_put("sites/#{@client.auth.site_id}/workbooks/#{workbook_id}/permissions", body: request)
 
         res.code == 200
+      end
+
+      def delete_permissions(workbook_id:, user_id:, group_id:, capability:, capability_mode:)
+        raise 'cannot specify user_id and group_id' if user_id && group_id
+        raise 'invalid capability' unless CAPABILITIES.include? capability
+        raise 'invalid mode' unless CAPABILITY_MODES.include? capability_mode
+        url = user_id ? "users/#{user_id}" : "groups/#{group_id}"
+        url += "/#{capability}/#{capability_mode}"
+        res = @client.connection.api_delete("sites/#{@client.auth.site_id}/workbooks/#{workbook_id}/permissions/#{url}")
+
+        res.code == 204
       end
 
       def update(workbook_id:, owner_user_id:)
