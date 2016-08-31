@@ -125,7 +125,7 @@ module TableauApi
         end
       end
 
-      def validate_user_group_exclusive(user_id, group_id) do
+      def validate_user_group_exclusivity(user_id, group_id)
         raise 'cannot specify user_id and group_id simultaneously' if user_id && group_id
         raise 'must specify user_id or group_id' unless user_id || group_id
       end

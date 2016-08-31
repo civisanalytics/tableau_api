@@ -54,7 +54,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ### Docker
 
 ```
-docker run -it -d -v $(pwd):/src ruby /bin/bash
+docker run -it -d -v $(pwd):/src ruby:2.3.1 /bin/bash
 docker exec -it CONTAINER_ID /bin/bash -c "cd /src && bundle && rake"
 ```
 
@@ -68,7 +68,7 @@ docker run -it -d \
   -v $(pwd):/src \
   --add-host=docker:$(ifconfig en0 | grep 'inet\b' | cut -d ' ' -f 2) \
   -e TABLEAU_HOST='http://docker:2000' -e TABLEAU_ADMIN_USERNAME -e TABLEAU_ADMIN_PASSWORD \
-  ruby /bin/bash
+  ruby:2.3.1 /bin/bash
 docker exec -it CONTAINER_ID /bin/bash -c "cd /src && bundle && rake"
 ```
 

@@ -10,6 +10,7 @@ require 'tableau_api/resources/auth'
 require 'tableau_api/resources/projects'
 require 'tableau_api/resources/sites'
 require 'tableau_api/resources/users'
+require 'tableau_api/resources/groups'
 require 'tableau_api/resources/workbooks'
 require 'tableau_api/version'
 

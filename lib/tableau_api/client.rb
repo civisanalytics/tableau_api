@@ -39,5 +39,9 @@ module TableauApi
         super
       end
     end
+
+    def respond_to_missing?(method_name, include_private = false)
+      self.class.resources.keys.include?(name) || super
+    end
   end
 end
