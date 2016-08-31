@@ -2,7 +2,7 @@ module TableauApi
   module Resources
     class Groups < Base
       def create(name:, default_site_role: 'Viewer')
-        raise 'invalid default_site_role' unless User::SITE_ROLES.include? default_site_role
+        raise 'invalid default_site_role' unless Users::SITE_ROLES.include? default_site_role
 
         request = Builder::XmlMarkup.new.tsRequest do |ts|
           ts.group(name: name, defaultSiteRole: default_site_role)
