@@ -71,15 +71,107 @@ describe TableauApi::Resources::Workbooks do
     end
   end
 
-  # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Add_Workbook_Permissions%3FTocPath%3DAPI%2520Reference%7C_____9
-  it 'can add permissions to a workbook' do
-    VCR.use_cassette('workbooks') do
-      workbook = find_or_publish_workbook('testpublish')
-      expect(client.workbooks.permissions(
-               workbook_id: workbook['id'],
-               user_id: 'e408f778-3708-4685-b7f9-100b584a02aa',
-               capabilities: { Read: true, ChangePermissions: false }
-      )).to be true
+  describe '#permissions' do
+    # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Add_Workbook_Permissions%3FTocPath%3DAPI%2520Reference%7C_____9
+    it 'can add user permissions to a workbook' do
+      VCR.use_cassette('workbooks') do
+        workbook = find_or_publish_workbook('testpublish')
+        expect(client.workbooks.permissions(
+                 workbook_id: workbook['id'],
+                 user_id: 'e408f778-3708-4685-b7f9-100b584a02aa',
+                 capabilities: { Read: true, ChangePermissions: false }
+        )).to be true
+      end
+    end
+
+    # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Add_Workbook_Permissions%3FTocPath%3DAPI%2520Reference%7C_____9
+    it 'can add group permissions to a workbook' do
+      VCR.use_cassette('workbooks') do
+        workbook = find_or_publish_workbook('testpublish')
+        expect(client.workbooks.permissions(
+                 workbook_id: workbook['id'],
+                 group_id: 'e408f778-3708-4685-b7f9-100b584a02aa',
+                 capabilities: { Read: true, ChangePermissions: false }
+        )).to be true
+      end
+    end
+
+    it 'requires a user or a group id' do
+      expect do
+        client.workbooks.permissions(
+          workbook_id: '1',
+          capabilities: { Read: true }
+        )
+      end.to raise_error(/must specify user_id or group_id/)
+    end
+
+    it 'does not accept both a user and a group id' do
+      expect do
+        client.workbooks.permissions(
+          workbook_id: '1',
+          user_id: '1',
+          group_id: '2',
+          capabilities: { Read: true }
+        )
+      end.to raise_error(/cannot specify user_id and group_id simultaneously/)
+    end
+  end
+
+  describe '#delete_permissions' do
+    it 'can delete a user permission' do
+      VCR.use_cassette('workbooks') do
+        workbook = find_or_publish_workbook('testpublish')
+        expect(client.workbooks.permissions(
+                 workbook_id: workbook['id'],
+                 user_id: 'e408f778-3708-4685-b7f9-100b584a02aa',
+                 capabilities: { Read: true }
+        )).to be true
+        expect(client.workbooks.delete_permissions(
+                 workbook_id: workbook['id'],
+                 user_id: 'e408f778-3708-4685-b7f9-100b584a02aa',
+                 capability: 'Read',
+                 capability_mode: 'ALLOW'
+        )).to be true
+      end
+    end
+
+    it 'can delete a group permission' do
+      VCR.use_cassette('workbooks') do
+        workbook = find_or_publish_workbook('testpublish')
+        expect(client.workbooks.permissions(
+                 workbook_id: workbook['id'],
+                 user_id: 'e408f778-3708-4685-b7f9-100b584a02aa',
+                 capabilities: { Read: true }
+        )).to be true
+        expect(client.workbooks.delete_permissions(
+                 workbook_id: workbook['id'],
+                 user_id: 'e408f778-3708-4685-b7f9-100b584a02aa',
+                 capability: 'Read',
+                 capability_mode: 'ALLOW'
+        )).to be true
+      end
+    end
+
+    it 'requires a user or a group id' do
+      expect do
+        client.workbooks.delete_permissions(
+          workbook_id: '1',
+          capability: 'READ',
+          capability_mode: 'ALLOW'
+        )
+      end.to raise_error(/must specify user_id or group_id/)
+    end
+
+    it 'does not accept both a user and a group id' do
+      expect do
+        client.workbooks.delete_permissions(
+          workbook_id: '1',
+          user_id: '1',
+          group_id: '2',
+          capability: 'READ',
+          capability_mode: 'ALLOW'
+        )
+      end.to raise_error(/cannot specify user_id and group_id simultaneously/)
     end
   end
 

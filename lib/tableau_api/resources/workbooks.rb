@@ -53,40 +53,23 @@ module TableauApi
         Filter Read ShareView ViewComments ViewUnderlyingData WebAuthoring Write
       ).freeze
 
-      CAPABILITY_MODES = %w(ALLOW DENY)
+      CAPABILITY_MODES = %w(ALLOW DENY).freeze
 
       # capabilities is a hash of symbol keys to booleans { Read: true, ChangePermissions: false }
-      def permissions(workbook_id:, user_id:, group_id:, capabilities:)
-        raise 'cannot specify user_id and group_id' if user_id && group_id
-        request = Builder::XmlMarkup.new.tsRequest do |ts|
-          ts.permissions do |p|
-            p.workbook(id: workbook_id)
-            p.granteeCapabilities do |gc|
-              if user_id
-                gc.user(id: user_id)
-              else
-                gc.group(id: group_id)
-              end
-              gc.capabilities do |c|
-                capabilities.each do |k, v|
-                  k = k.to_s
-                  raise "invalid capability #{k}" unless CAPABILITIES.include? k
-                  c.capability(name: k, mode: v ? 'Allow' : 'Deny')
-                end
-              end
-            end
-          end
-        end
+      def permissions(workbook_id:, user_id: nil, group_id: nil, capabilities:)
+        validate_user_group_exclusivity(user_id, group_id)
 
+        request = permissions_request(workbook_id, user_id, group_id, capabilities)
         res = @client.connection.api_put("sites/#{@client.auth.site_id}/workbooks/#{workbook_id}/permissions", body: request)
 
         res.code == 200
       end
 
-      def delete_permissions(workbook_id:, user_id:, group_id:, capability:, capability_mode:)
-        raise 'cannot specify user_id and group_id' if user_id && group_id
+      def delete_permissions(workbook_id:, user_id: nil, group_id: nil, capability:, capability_mode:)
+        validate_user_group_exclusivity(user_id, group_id)
         raise 'invalid capability' unless CAPABILITIES.include? capability
         raise 'invalid mode' unless CAPABILITY_MODES.include? capability_mode
+
         url = user_id ? "users/#{user_id}" : "groups/#{group_id}"
         url += "/#{capability}/#{capability_mode}"
         res = @client.connection.api_delete("sites/#{@client.auth.site_id}/workbooks/#{workbook_id}/permissions/#{url}")
@@ -119,6 +102,32 @@ module TableauApi
       def list
         url = "sites/#{@client.auth.site_id}/users/#{@client.auth.user_id}/workbooks"
         @client.connection.api_get_collection(url, 'workbooks.workbook')
+      end
+
+      private
+
+      def permissions_request(workbook_id, user_id, group_id, capabilities)
+        Builder::XmlMarkup.new.tsRequest do |ts|
+          ts.permissions do |p|
+            p.workbook(id: workbook_id)
+            p.granteeCapabilities do |gc|
+              gc.user(id: user_id) if user_id
+              gc.group(id: group_id) if group_id
+              gc.capabilities do |c|
+                capabilities.each do |k, v|
+                  k = k.to_s
+                  raise "invalid capability #{k}" unless CAPABILITIES.include? k
+                  c.capability(name: k, mode: v ? 'Allow' : 'Deny')
+                end
+              end
+            end
+          end
+        end
+      end
+
+      def validate_user_group_exclusive(user_id, group_id) do
+        raise 'cannot specify user_id and group_id simultaneously' if user_id && group_id
+        raise 'must specify user_id or group_id' unless user_id || group_id
       end
     end
   end
