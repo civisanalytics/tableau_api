@@ -32,4 +32,25 @@ describe TableauApi::Resources::Groups do
       end
     end
   end
+
+  describe '#add_user' do
+    it 'can add a user to a group' do
+      VCR.use_cassette('groups') do
+        group = client.groups.create(name: 'testgroup')
+        expect(group['id']).to be_a_tableau_id
+        expect(client.groups.add_user(group_id: group['id'], user_id: '1')).to be_true
+      end
+    end
+  end
+
+  describe '#remove_user' do
+    it 'can remove a user from a group' do
+      VCR.use_cassette('groups') do
+        group = client.groups.create(name: 'testgroup')
+        expect(group['id']).to be_a_tableau_id
+        client.groups.add_user(group_id: groups['id'], user_id: '1')
+        expect(client.groups.remove_user(group_id: group['id'], user_id: '1')).to be_true
+      end
+    end
+  end
 end

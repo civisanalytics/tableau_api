@@ -17,6 +17,22 @@ module TableauApi
         url = "sites/#{@client.auth.site_id}/groups"
         @client.connection.api_get_collection(url, 'groups.group')
       end
+
+      def add_user(group_id:, user_id:)
+        request = Builder::XmlMarkup.new.tsRequest do |ts|
+          ts.user(id: user_id)
+        end
+
+        res = @client.connection.api_post("sites/#{@client.auth.site_id}/groups/#{group_id}", body: request)
+
+        res.code == 200
+      end
+
+      def remove_user(group_id:, user_id:)
+        res = @client.connection.api_post("sites/#{@client.auth.site_id}/groups/#{group_id}/users/#{user_id}")
+
+        res.code == 204
+      end
     end
   end
 end
