@@ -90,7 +90,7 @@ describe TableauApi::Resources::Workbooks do
         workbook = find_or_publish_workbook('testpublish')
         expect(client.workbooks.permissions(
                  workbook_id: workbook['id'],
-                 group_id: 'f3bb9eb0-581c-428e-a744-5735ffd5bf50',
+                 group_id: 'ef08f778-e708-4685-b7f9-100b584a02aa',
                  capabilities: { Read: true, ChangePermissions: false }
         )).to be true
       end
