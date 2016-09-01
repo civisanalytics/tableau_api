@@ -88,9 +88,12 @@ describe TableauApi::Resources::Workbooks do
     it 'can add group permissions to a workbook' do
       VCR.use_cassette('workbooks') do
         workbook = find_or_publish_workbook('testpublish')
+        group = client.groups.list.find do |g|
+          g['name'] == 'testgroup'
+        end
         expect(client.workbooks.permissions(
                  workbook_id: workbook['id'],
-                 group_id: 'ef08f778-e708-4685-b7f9-100b584a02aa',
+                 group_id: group['id'],
                  capabilities: { Read: true, ChangePermissions: false }
         )).to be true
       end

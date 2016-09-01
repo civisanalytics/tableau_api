@@ -1329,58 +1329,6 @@ http_interactions:
     uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/aba9212d-e188-45f7-85f4-744294c7ee4b/permissions
     body:
       encoding: UTF-8
-      string: <tsRequest><permissions><workbook id="aba9212d-e188-45f7-85f4-744294c7ee4b"/><granteeCapabilities><group
-        id="e408f778-3708-4685-b7f9-100b584a02aa"/><capabilities><capability name="Read"
-        mode="Allow"/><capability name="ChangePermissions" mode="Deny"/></capabilities></granteeCapabilities></permissions></tsRequest>
-    headers:
-      X-Tableau-Auth:
-      - 6cdc536dd25ff866726a5154fd48fb17
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Cache-Control:
-      - no-cache
-      Content-Type:
-      - application/xml;charset=utf-8
-      Date:
-      - Thu, 01 Sep 2016 20:19:18 GMT
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*"
-      X-Runtime:
-      - '0.078000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '420'
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <error code="404012">
-            <summary>Resource Not Found</summary>
-            <detail>Group 'e408f778-3708-4685-b7f9-100b584a02aa' could not be found.</detail>
-          </error>
-        </tsResponse>
-    http_version: 
-  recorded_at: Thu, 01 Sep 2016 20:19:23 GMT
-- request:
-    method: put
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/aba9212d-e188-45f7-85f4-744294c7ee4b/permissions
-    body:
-      encoding: UTF-8
       string: <tsRequest><permissions><workbook id="aba9212d-e188-45f7-85f4-744294c7ee4b"/><granteeCapabilities><user
         id="e408f778-3708-4685-b7f9-100b584a02aa"/><capabilities><capability name="Read"
         mode="Allow"/></capabilities></granteeCapabilities></permissions></tsRequest>
@@ -1488,4 +1436,136 @@ http_interactions:
       string: ''
     http_version: 
   recorded_at: Thu, 01 Sep 2016 20:19:24 GMT
+- request:
+    method: get
+    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/groups?pageNumber=1&pageSize=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 6cdc536dd25ff866726a5154fd48fb17
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Thu, 01 Sep 2016 22:45:27 GMT
+      Etag:
+      - '"bbdff2a0d6bde2ad6a776e38f8ed0b8d"'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      P3p:
+      - CP="NON"
+      Pragma:
+      - no-cache
+      Server:
+      - Tableau
+      Vary:
+      - "*,Accept-Encoding"
+      X-Runtime:
+      - '0.063000'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Content-Length:
+      - '679'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+          <pagination pageNumber="1" pageSize="100" totalAvailable="3"/>
+          <groups>
+            <group id="68aa4ff3-61c1-484c-9f23-fb71a8b92444" name="All Users">
+              <domain name="local"/>
+            </group>
+            <group id="03c46e84-f051-49dc-8ed7-2b58b071bbd0" name="test">
+              <domain name="local"/>
+            </group>
+            <group id="f3bb9eb0-581c-428e-a744-5735ffd5bf50" name="testgroup">
+              <domain name="local"/>
+            </group>
+          </groups>
+        </tsResponse>
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 22:45:32 GMT
+- request:
+    method: put
+    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/aba9212d-e188-45f7-85f4-744294c7ee4b/permissions
+    body:
+      encoding: UTF-8
+      string: <tsRequest><permissions><workbook id="aba9212d-e188-45f7-85f4-744294c7ee4b"/><granteeCapabilities><group
+        id="f3bb9eb0-581c-428e-a744-5735ffd5bf50"/><capabilities><capability name="Read"
+        mode="Allow"/><capability name="ChangePermissions" mode="Deny"/></capabilities></granteeCapabilities></permissions></tsRequest>
+    headers:
+      X-Tableau-Auth:
+      - 6cdc536dd25ff866726a5154fd48fb17
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Thu, 01 Sep 2016 22:45:27 GMT
+      Etag:
+      - '"24c81ae0cf3bcd831561af3615f291ce"'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      P3p:
+      - CP="NON"
+      Pragma:
+      - no-cache
+      Server:
+      - Tableau
+      Vary:
+      - "*,Accept-Encoding"
+      X-Runtime:
+      - '0.141000'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Content-Length:
+      - '1113'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+          <permissions>
+            <workbook id="aba9212d-e188-45f7-85f4-744294c7ee4b" name="testpublish">
+              <owner id="e408f778-3708-4685-b7f9-100b584a02aa"/>
+            </workbook>
+            <granteeCapabilities>
+              <group id="68aa4ff3-61c1-484c-9f23-fb71a8b92444"/>
+              <capabilities>
+                <capability name="ExportImage" mode="Allow"/>
+                <capability name="AddComment" mode="Allow"/>
+                <capability name="ViewComments" mode="Allow"/>
+                <capability name="ExportData" mode="Allow"/>
+                <capability name="Read" mode="Allow"/>
+              </capabilities>
+            </granteeCapabilities>
+            <granteeCapabilities>
+              <group id="f3bb9eb0-581c-428e-a744-5735ffd5bf50"/>
+              <capabilities>
+                <capability name="Read" mode="Allow"/>
+                <capability name="ChangePermissions" mode="Deny"/>
+              </capabilities>
+            </granteeCapabilities>
+          </permissions>
+        </tsResponse>
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 22:45:33 GMT
 recorded_with: VCR 3.0.3
