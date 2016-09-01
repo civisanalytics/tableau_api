@@ -87,10 +87,13 @@ describe TableauApi::Resources::Workbooks do
     # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Add_Workbook_Permissions%3FTocPath%3DAPI%2520Reference%7C_____9
     it 'can add group permissions to a workbook' do
       VCR.use_cassette('workbooks') do
+        group = client.groups.list.find do |g|
+          g['name'] == 'testgroup'
+        end
         workbook = find_or_publish_workbook('testpublish')
         expect(client.workbooks.permissions(
                  workbook_id: workbook['id'],
-                 group_id: 'e408f778-3708-4685-b7f9-100b584a02aa',
+                 group_id: group['id'],
                  capabilities: { Read: true, ChangePermissions: false }
         )).to be true
       end

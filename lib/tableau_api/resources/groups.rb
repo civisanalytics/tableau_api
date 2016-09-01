@@ -23,13 +23,13 @@ module TableauApi
           ts.user(id: user_id)
         end
 
-        res = @client.connection.api_post("sites/#{@client.auth.site_id}/groups/#{group_id}", body: request)
+        res = @client.connection.api_post("sites/#{@client.auth.site_id}/groups/#{group_id}/users", body: request)
 
         res.code == 200
       end
 
       def remove_user(group_id:, user_id:)
-        res = @client.connection.api_post("sites/#{@client.auth.site_id}/groups/#{group_id}/users/#{user_id}")
+        res = @client.connection.api_delete("sites/#{@client.auth.site_id}/groups/#{group_id}/users/#{user_id}")
 
         res.code == 204
       end
