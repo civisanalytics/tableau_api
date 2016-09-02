@@ -18,6 +18,11 @@ module TableauApi
         @client.connection.api_get_collection(url, 'groups.group')
       end
 
+      def users(group_id:)
+        url = "sites/#{@client.auth.site_id}/groups/#{group_id}/users"
+        @client.connection.api_get_collection(url, 'users.user')
+      end
+
       def add_user(group_id:, user_id:)
         request = Builder::XmlMarkup.new.tsRequest do |ts|
           ts.user(id: user_id)

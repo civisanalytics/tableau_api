@@ -1,50 +1,50 @@
 require 'spec_helper'
 
-describe TableauApi::Resources::Groups do
+describe TableauApi::Resources::Groups, vcr: { cassette_name: 'groups' } do
   include_context 'tableau client'
+
+  test_user_id = 'e1b91057-9cd9-4009-b6c9-cd18f1dc3fb4'
 
   describe '#create' do
     # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Create_Group
     it 'fails with a bad site_role' do
-      VCR.use_cassette('groups') do
-        expect { client.groups.create(name: 'test', default_site_role: 'foo') }.to raise_error('invalid default_site_role')
-      end
+      expect { client.groups.create(name: 'test', default_site_role: 'foo') }.to raise_error('invalid default_site_role')
     end
 
     it 'can create a group in a site' do
-      VCR.use_cassette('groups') do
-        group = client.groups.create(name: 'testgroup')
-        expect(group['id']).to be_a_tableau_id
-        expect(group).to eq('id' => group['id'], 'name' => 'testgroup')
-      end
+      group = client.groups.create(name: 'testgroup')
+      expect(group['id']).to be_a_tableau_id
+      expect(group).to eq('id' => group['id'], 'name' => 'testgroup')
     end
   end
 
   describe '#list' do
     # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Query_Groups
     it 'can list groups in a site' do
-      VCR.use_cassette('groups') do
-        group = find_group_by_name('testgroup')
-        expect(group).to eq('id' => group['id'], 'name' => 'testgroup', 'domain' => { 'name' => 'local' })
-      end
+      group = find_group_by_name('testgroup')
+      expect(group).to eq('id' => group['id'], 'name' => 'testgroup', 'domain' => { 'name' => 'local' })
     end
   end
 
   describe '#add_user' do
     it 'can add a user to a group' do
-      VCR.use_cassette('groups') do
-        group = find_group_by_name('testgroup')
-        expect(client.groups.add_user(group_id: group['id'], user_id: 'e1b91057-9cd9-4009-b6c9-cd18f1dc3fb4')).to be true
-      end
+      group = find_group_by_name('testgroup')
+      expect(client.groups.add_user(group_id: group['id'], user_id: test_user_id)).to be true
+    end
+  end
+
+  describe '#users' do
+    it 'can get the users in a group' do
+      group = find_group_by_name('testgroup')
+      users = client.groups.users(group_id: group['id'])
+      expect(users.map { |u| u['id'] }.include?(test_user_id)).to be true
     end
   end
 
   describe '#remove_user' do
     it 'can remove a user from a group' do
-      VCR.use_cassette('groups') do
-        group = find_group_by_name('testgroup')
-        expect(client.groups.remove_user(group_id: group['id'], user_id: 'e1b91057-9cd9-4009-b6c9-cd18f1dc3fb4')).to be true
-      end
+      group = find_group_by_name('testgroup')
+      expect(client.groups.remove_user(group_id: group['id'], user_id: test_user_id)).to be true
     end
   end
 
