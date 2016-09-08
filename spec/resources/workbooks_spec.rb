@@ -82,7 +82,6 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     it 'can add group permissions to a workbook' do
       workbook = find_or_publish_workbook('testpublish')
       group = client.groups.list.find { |g| g['name'] == 'testgroup' }
-      puts group['id']
       expect(client.workbooks.permissions(
                workbook_id: workbook['id'],
                group_id: group['id'],
@@ -125,7 +124,6 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     it 'can delete a group permission' do
       workbook = find_or_publish_workbook('testpublish')
       group = client.groups.list.find { |g| g['name'] == 'testgroup' }
-      puts group['id']
       expect(client.workbooks.delete_permissions(
                workbook_id: workbook['id'],
                group_id: group['id'],
