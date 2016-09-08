@@ -23,6 +23,7 @@ describe TableauApi::Resources::Groups, vcr: { cassette_name: 'groups' } do
     it 'can list groups in a site' do
       group = find_group_by_name('testgroup')
       expect(group).to eq('id' => group['id'], 'name' => 'testgroup', 'domain' => { 'name' => 'local' })
+      expect(group['id']).to be_a_tableau_id
     end
   end
 
