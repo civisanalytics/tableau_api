@@ -3,19 +3,15 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-- `TableauApi::Resources::Groups` added to support API calls for adding/deleting/updating groups.
-- `TableauApi::Resources::Workbook#permissions` now supports group permissions.
-- `TableauApi::Resources::Workbook#remove_permissions` added, including support for user and group permissions.
-
-## [2.0.0] - 2016-09-08
 ### Added
-- `groups` added to support API calls for adding/deleting/updating groups
-- `workbook.add_permissions` supports group permissions
-- `workbook.remove_permissions` supports group permissions.
+- `TableauApi::Resources::Groups` added to support API calls for adding/deleting/updating groups.
+- `TableauApi::Resources::Workbook#remove_permissions` added, including support for user and group permissions.
+- `TableauApi::Resources::Workbook#permissions` rewritten to retrieve instead of set permissions.
+- `TableauApi::Resources::Workbook#add_permissions` supports group permissions.
+- `TableauApi::Resources::Workbook#add_permissions` added, replaces `#permissions` for adding permissions.
 
 ### Broken
-- `workbook.permissions` now retrieves current permissions. Use
-  `workbook#add_permissions` to add permissions.
+- `TableauApi::Resources::Workbook#permissions` is now `TableauApi::Resources::Workbook#add_permissions`
 
 ## [1.0.0] - 2016-06-06
 ### Added
