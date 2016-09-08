@@ -86,16 +86,18 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
       )).to be true
     end
 
-    it 'requires a user or a group id' do
-      expect do
-        client.workbooks.add_permissions(
-          workbook_id: '1',
-          capabilities: { Read: true }
-        )
-      end.to raise_error(/must specify user_id or group_id/)
+    # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Add_Workbook_Permissions%3FTocPath%3DAPI%2520Reference%7C_____9
+    it 'can add group permissions to a workbook' do
+      workbook = find_or_publish_workbook('testpublish')
+      group = client.groups.list.find { |g| g['name'] == 'testgroup' }
+      expect(client.workbooks.permissions(
+               workbook_id: workbook['id'],
+               group_id: group['id'],
+               capabilities: { Read: true, ChangePermissions: false }
+      )).to be true
     end
 
-    it 'does not accept both a user and a group id' do
+    it 'requires a user or a group id' do
       expect do
         client.workbooks.add_permissions(
           workbook_id: '1',
@@ -184,6 +186,15 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     end
   end
 
+  # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Update_Workbook%3FTocPath%3DAPI%2520Reference%7C_____59
+  it 'can update the workbook' do
+    workbook = find_or_publish_workbook('testpublish')
+    expect(client.workbooks.update(
+             workbook_id: workbook['id'],
+             owner_user_id: 'e408f778-3708-4685-b7f9-100b584a02aa'
+    )).to be true
+  end
+
   describe '.list' do
     it 'can list workbooks' do
       workbook = find_or_publish_workbook('testpublish')
@@ -235,8 +246,8 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
   describe '.views' do
     it 'can get the list of views for a workbook' do
       workbook = find_or_publish_workbook('testpublish')
-      views = client.workbooks.views(workbook['id']).to_a[0]
-      expect(views).to match_array(workbook['views']['view'])
+      views = client.workbooks.views(workbook['id']).to_a
+      expect(views).to eq([workbook['views']['view']])
     end
   end
 
