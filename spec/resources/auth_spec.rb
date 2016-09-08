@@ -26,7 +26,7 @@ describe TableauApi::Resources::Auth do
 
   # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_concepts_auth.htm%3FTocPath%3DConcepts%7C_____3
   # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Sign_In%3FTocPath%3DAPI%2520Reference%7C_____51
-  it 'returns an instance of TableauApi::Resources::Auth', vcr: vcr_options do
+  it 'returns an instance of TableauApi::Resources::Auth' do
     client = TableauApi.new(host: 'tableau.domain.tld', site_name: 'Default', username: 'ExampleUsername', password: 'ExamplePassword')
     expect(client.auth).to be_an_instance_of(TableauApi::Resources::Auth)
   end
