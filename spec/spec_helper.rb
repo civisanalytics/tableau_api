@@ -36,6 +36,7 @@ VCR.configure do |config|
       response.body.gsub!(/totalAvailable="\d+"/, "totalAvailable=\"#{elements.length - sensitive_elements.length}\"")
     end
   end
+  config.configure_rspec_metadata!
 end
 
 RSpec.configure do |config|

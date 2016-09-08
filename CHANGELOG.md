@@ -3,6 +3,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+- `TableauApi::Resources::Groups` added to support API calls for adding/deleting/updating groups.
+- `TableauApi::Resources::Workbook#permissions` now supports group permissions.
+- `TableauApi::Resources::Workbook#remove_permissions` added, including support for user and group permissions.
 
 ## [1.0.0] - 2016-06-06
 ### Added

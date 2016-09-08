@@ -52,6 +52,10 @@ module TableauApi
       api_method(:put, path, *args)
     end
 
+    def api_delete(path, *args)
+      api_method(:delete, path, *args)
+    end
+
     def api_post_multipart(path, parts, headers)
       headers = auth_headers(headers)
       headers['Content-Type'] = 'multipart/mixed'
