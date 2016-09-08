@@ -27,6 +27,7 @@ module TableauApi
         projects: TableauApi::Resources::Projects,
         sites: TableauApi::Resources::Sites,
         users: TableauApi::Resources::Users,
+        groups: TableauApi::Resources::Groups,
         workbooks: TableauApi::Resources::Workbooks
       }
     end
@@ -38,6 +39,10 @@ module TableauApi
       else
         super
       end
+    end
+
+    def respond_to_missing?(name, include_private = false)
+      self.class.resources.keys.include?(name) || super
     end
   end
 end
