@@ -90,7 +90,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     it 'can add group permissions to a workbook' do
       workbook = find_or_publish_workbook('testpublish')
       group = client.groups.list.find { |g| g['name'] == 'testgroup' }
-      expect(client.workbooks.permissions(
+      expect(client.workbooks.add_permissions(
                workbook_id: workbook['id'],
                group_id: group['id'],
                capabilities: { Read: true, ChangePermissions: false }
