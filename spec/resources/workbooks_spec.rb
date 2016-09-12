@@ -71,7 +71,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
       workbook = find_or_publish_workbook('testpublish')
       expect(client.workbooks.add_permissions(
                workbook_id: workbook['id'],
-               user_id: test_user_id,
+               user_id: admin_user['id'],
                capabilities: { Read: true, ChangePermissions: false }
       )).to be true
     end
@@ -87,6 +87,15 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     end
 
     it 'requires a user or a group id' do
+      expect do
+        client.workbooks.add_permissions(
+          workbook_id: '1',
+          capabilities: { Read: true }
+        )
+      end.to raise_error(/must specify user_id or group_id/)
+    end
+
+    it 'does not accept both a user and a group id' do
       expect do
         client.workbooks.add_permissions(
           workbook_id: '1',
@@ -120,7 +129,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         }
       }, {
         grantee_type: 'user',
-        grantee_id: test_user_id,
+        grantee_id: admin_user['id'],
         capabilities: {
           Read: true,
           ChangePermissions: false
@@ -136,7 +145,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
       workbook = find_or_publish_workbook('testpublish')
       expect(client.workbooks.delete_permissions(
                workbook_id: workbook['id'],
-               user_id: test_user_id,
+               user_id: admin_user['id'],
                capability: 'Read',
                capability_mode: 'ALLOW'
       )).to be true
@@ -218,7 +227,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
       workbook = find_or_publish_workbook('testpublish')
       expect(client.workbooks.update(
                workbook_id: workbook['id'],
-               owner_user_id: test_user_id
+               owner_user_id: admin_user['id']
       )).to be true
     end
   end
@@ -262,7 +271,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     @all_users_group ||= client.groups.list.find { |g| g['name'] == 'All Users' }
   end
 
-  def test_user_id
-    'e408f778-3708-4685-b7f9-100b584a02aa'
+  def admin_user
+    @admin_user ||= client.users.list.find { |g| g['name'] == ENV['TABLEAU_ADMIN_USERNAME'] }
   end
 end
