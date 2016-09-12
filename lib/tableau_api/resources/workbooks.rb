@@ -65,13 +65,13 @@ module TableauApi
 
           capabilities = {}
           p['capabilities']['capability'].each do |c|
-            capabilities[c['name']] = c['mode'] == 'Allow'
+            capabilities[c['name'].to_sym] = c['mode'] == 'Allow'
           end
 
           {
-            'granteeType' => grantee_type,
-            'granteeId' => p[grantee_type]['id'],
-            'capabilities' => capabilities
+            grantee_type: grantee_type,
+            grantee_id: p[grantee_type]['id'],
+            capabilities: capabilities
           }
         end
       end

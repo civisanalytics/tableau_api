@@ -86,17 +86,6 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
       )).to be true
     end
 
-    # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Add_Workbook_Permissions%3FTocPath%3DAPI%2520Reference%7C_____9
-    it 'can add group permissions to a workbook' do
-      workbook = find_or_publish_workbook('testpublish')
-      group = client.groups.list.find { |g| g['name'] == 'testgroup' }
-      expect(client.workbooks.add_permissions(
-               workbook_id: workbook['id'],
-               group_id: group['id'],
-               capabilities: { Read: true, ChangePermissions: false }
-      )).to be true
-    end
-
     it 'requires a user or a group id' do
       expect do
         client.workbooks.add_permissions(
@@ -113,28 +102,28 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     it 'can retrieve the permissions of a workbook' do
       workbook = find_or_publish_workbook('testpublish')
       expected = [{
-        'granteeType' => 'group',
-        'granteeId' => all_users_group['id'],
-        'capabilities' => {
-          'Read' => true,
-          'ExportData' => true,
-          'ViewComments' => true,
-          'AddComment' => true,
-          'ExportImage' => true
+        grantee_type: 'group',
+        grantee_id: all_users_group['id'],
+        capabilities: {
+          Read: true,
+          ExportData: true,
+          ViewComments: true,
+          AddComment: true,
+          ExportImage: true
         }
       }, {
-        'granteeType' => 'group',
-        'granteeId' => test_group['id'],
-        'capabilities' => {
-          'Read' => true,
-          'ChangePermissions' => false
+        grantee_type: 'group',
+        grantee_id: test_group['id'],
+        capabilities: {
+          Read: true,
+          ChangePermissions: false
         }
       }, {
-        'granteeType' => 'user',
-        'granteeId' => test_user_id,
-        'capabilities' => {
-          'Read' => true,
-          'ChangePermissions' => false
+        grantee_type: 'user',
+        grantee_id: test_user_id,
+        capabilities: {
+          Read: true,
+          ChangePermissions: false
         }
       }]
       actual = client.workbooks.permissions(workbook_id: workbook['id'])
@@ -184,15 +173,6 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         )
       end.to raise_error(/cannot specify user_id and group_id simultaneously/)
     end
-  end
-
-  # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Update_Workbook%3FTocPath%3DAPI%2520Reference%7C_____59
-  it 'can update the workbook' do
-    workbook = find_or_publish_workbook('testpublish')
-    expect(client.workbooks.update(
-             workbook_id: workbook['id'],
-             owner_user_id: 'e408f778-3708-4685-b7f9-100b584a02aa'
-    )).to be true
   end
 
   describe '.list' do
