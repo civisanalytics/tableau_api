@@ -1,6 +1,9 @@
 AllCops:
   TargetRubyVersion: 2.2
 
+ClassLength:
+  Max: 200
+
 Style/Documentation:
   Enabled: false
 
