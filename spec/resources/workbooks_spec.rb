@@ -24,7 +24,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
   # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Publish_Workbook%3FTocPath%3DAPI%2520Reference%7C_____31
   # Workbooks created in a later version of Tableau Desktop cannot be published to earlier versions of Tableau Server.
   #  - http://kb.tableau.com/articles/knowledgebase/desktop-and-server-compatibility
-  describe '.publish' do
+  describe '#publish' do
     it 'can publish a twbx workbook in project in a site' do
       workbook_name = 'testpublish'
       workbook = find_or_publish_workbook(workbook_name)
@@ -184,7 +184,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     end
   end
 
-  describe '.list' do
+  describe '#list' do
     it 'can list workbooks' do
       workbook = find_or_publish_workbook('testpublish')
 
@@ -222,7 +222,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
   end
 
   # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Update_Workbook%3FTocPath%3DAPI%2520Reference%7C_____59
-  describe '.update' do
+  describe '#update' do
     it 'can update the workbook' do
       workbook = find_or_publish_workbook('testpublish')
       expect(client.workbooks.update(
@@ -232,7 +232,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     end
   end
 
-  describe '.views' do
+  describe '#views' do
     it 'can get the list of views for a workbook' do
       workbook = find_or_publish_workbook('testpublish')
       views = client.workbooks.views(workbook['id']).to_a
@@ -240,7 +240,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     end
   end
 
-  describe '.find' do
+  describe '#find' do
     it 'can find a workbook by workbook_id' do
       workbook = find_or_publish_workbook('testpublish')
       found_workbook = client.workbooks.find(workbook['id'])
@@ -249,7 +249,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     end
   end
 
-  describe '.version' do
+  describe '#version' do
     it 'can get the version of a twbx file' do
       expect(client.workbooks.version('spec/fixtures/workbooks/test.twbx')).to eq '9.0'
     end
