@@ -55,8 +55,29 @@ module TableauApi
 
       CAPABILITY_MODES = %w(ALLOW DENY).freeze
 
+      def permissions(workbook_id:)
+        res = @client.connection.api_get("sites/#{@client.auth.site_id}/workbooks/#{workbook_id}/permissions")
+
+        raise TableauError, res if res.code != 200
+        permissions = HTTParty::Parser.new(res.body, :xml).parse['tsResponse']['permissions']['granteeCapabilities']
+        permissions.map do |p|
+          grantee_type = p['group'].nil? ? 'user' : 'group'
+
+          capabilities = {}
+          p['capabilities']['capability'].each do |c|
+            capabilities[c['name'].to_sym] = c['mode'] == 'Allow'
+          end
+
+          {
+            grantee_type: grantee_type,
+            grantee_id: p[grantee_type]['id'],
+            capabilities: capabilities
+          }
+        end
+      end
+
       # capabilities is a hash of symbol keys to booleans { Read: true, ChangePermissions: false }
-      def permissions(workbook_id:, user_id: nil, group_id: nil, capabilities:)
+      def add_permissions(workbook_id:, user_id: nil, group_id: nil, capabilities:)
         validate_user_group_exclusivity(user_id, group_id)
 
         request = permissions_request(workbook_id, user_id, group_id, capabilities)

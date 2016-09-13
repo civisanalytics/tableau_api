@@ -1,14 +1,12 @@
 require 'spec_helper'
 
+# NOTE: if it exists, delete test/testpublish workbook before recreating cassettes
 describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } do
   include_context 'tableau client'
 
   def find_or_publish_workbook(name)
-    project = { 'id' => '57058e8e-3363-4de9-a03b-5e7401933073' }
-
-    workbook = client.workbooks.list.find do |w|
-      w['name'] == name
-    end
+    project = client.projects.list.find { |p| p['name'] == 'test' }
+    workbook = client.workbooks.list.find { |w| w['name'] == name }
 
     if workbook
       workbook = client.workbooks.find(workbook['id'])
@@ -26,7 +24,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
   # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Publish_Workbook%3FTocPath%3DAPI%2520Reference%7C_____31
   # Workbooks created in a later version of Tableau Desktop cannot be published to earlier versions of Tableau Server.
   #  - http://kb.tableau.com/articles/knowledgebase/desktop-and-server-compatibility
-  describe '.publish' do
+  describe '#publish' do
     it 'can publish a twbx workbook in project in a site' do
       workbook_name = 'testpublish'
       workbook = find_or_publish_workbook(workbook_name)
@@ -67,13 +65,13 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     end
   end
 
-  describe '#permissions' do
+  describe '#add_permissions' do
     # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Add_Workbook_Permissions%3FTocPath%3DAPI%2520Reference%7C_____9
     it 'can add user permissions to a workbook' do
       workbook = find_or_publish_workbook('testpublish')
-      expect(client.workbooks.permissions(
+      expect(client.workbooks.add_permissions(
                workbook_id: workbook['id'],
-               user_id: 'e408f778-3708-4685-b7f9-100b584a02aa',
+               user_id: admin_user['id'],
                capabilities: { Read: true, ChangePermissions: false }
       )).to be true
     end
@@ -81,17 +79,16 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Add_Workbook_Permissions%3FTocPath%3DAPI%2520Reference%7C_____9
     it 'can add group permissions to a workbook' do
       workbook = find_or_publish_workbook('testpublish')
-      group = client.groups.list.find { |g| g['name'] == 'testgroup' }
-      expect(client.workbooks.permissions(
+      expect(client.workbooks.add_permissions(
                workbook_id: workbook['id'],
-               group_id: group['id'],
+               group_id: test_group['id'],
                capabilities: { Read: true, ChangePermissions: false }
       )).to be true
     end
 
     it 'requires a user or a group id' do
       expect do
-        client.workbooks.permissions(
+        client.workbooks.add_permissions(
           workbook_id: '1',
           capabilities: { Read: true }
         )
@@ -100,13 +97,46 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
 
     it 'does not accept both a user and a group id' do
       expect do
-        client.workbooks.permissions(
+        client.workbooks.add_permissions(
           workbook_id: '1',
           user_id: '1',
           group_id: '2',
           capabilities: { Read: true }
         )
       end.to raise_error(/cannot specify user_id and group_id simultaneously/)
+    end
+  end
+
+  describe '#permissions' do
+    it 'can retrieve the permissions of a workbook' do
+      workbook = find_or_publish_workbook('testpublish')
+      expected = [{
+        grantee_type: 'group',
+        grantee_id: all_users_group['id'],
+        capabilities: {
+          Read: true,
+          ExportData: true,
+          ViewComments: true,
+          AddComment: true,
+          ExportImage: true
+        }
+      }, {
+        grantee_type: 'group',
+        grantee_id: test_group['id'],
+        capabilities: {
+          Read: true,
+          ChangePermissions: false
+        }
+      }, {
+        grantee_type: 'user',
+        grantee_id: admin_user['id'],
+        capabilities: {
+          Read: true,
+          ChangePermissions: false
+        }
+      }]
+      actual = client.workbooks.permissions(workbook_id: workbook['id'])
+      expect(actual).to eq expected
     end
   end
 
@@ -115,7 +145,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
       workbook = find_or_publish_workbook('testpublish')
       expect(client.workbooks.delete_permissions(
                workbook_id: workbook['id'],
-               user_id: 'e408f778-3708-4685-b7f9-100b584a02aa',
+               user_id: admin_user['id'],
                capability: 'Read',
                capability_mode: 'ALLOW'
       )).to be true
@@ -123,10 +153,9 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
 
     it 'can delete a group permission' do
       workbook = find_or_publish_workbook('testpublish')
-      group = client.groups.list.find { |g| g['name'] == 'testgroup' }
       expect(client.workbooks.delete_permissions(
                workbook_id: workbook['id'],
-               group_id: group['id'],
+               group_id: test_group['id'],
                capability: 'Read',
                capability_mode: 'ALLOW'
       )).to be true
@@ -155,16 +184,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     end
   end
 
-  # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Update_Workbook%3FTocPath%3DAPI%2520Reference%7C_____59
-  it 'can update the workbook' do
-    workbook = find_or_publish_workbook('testpublish')
-    expect(client.workbooks.update(
-             workbook_id: workbook['id'],
-             owner_user_id: 'e408f778-3708-4685-b7f9-100b584a02aa'
-    )).to be true
-  end
-
-  describe '.list' do
+  describe '#list' do
     it 'can list workbooks' do
       workbook = find_or_publish_workbook('testpublish')
 
@@ -201,7 +221,18 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     end
   end
 
-  describe '.views' do
+  # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Update_Workbook%3FTocPath%3DAPI%2520Reference%7C_____59
+  describe '#update' do
+    it 'can update the workbook' do
+      workbook = find_or_publish_workbook('testpublish')
+      expect(client.workbooks.update(
+               workbook_id: workbook['id'],
+               owner_user_id: admin_user['id']
+      )).to be true
+    end
+  end
+
+  describe '#views' do
     it 'can get the list of views for a workbook' do
       workbook = find_or_publish_workbook('testpublish')
       views = client.workbooks.views(workbook['id']).to_a
@@ -209,7 +240,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     end
   end
 
-  describe '.find' do
+  describe '#find' do
     it 'can find a workbook by workbook_id' do
       workbook = find_or_publish_workbook('testpublish')
       found_workbook = client.workbooks.find(workbook['id'])
@@ -218,7 +249,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     end
   end
 
-  describe '.version' do
+  describe '#version' do
     it 'can get the version of a twbx file' do
       expect(client.workbooks.version('spec/fixtures/workbooks/test.twbx')).to eq '9.0'
     end
@@ -230,5 +261,17 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     it 'returns nil if file not twbx' do
       expect(client.workbooks.version('spec/fixtures/workbooks/foo.bar')).to be_nil
     end
+  end
+
+  def test_group
+    @test_group ||= client.groups.list.find { |g| g['name'] == 'testgroup' }
+  end
+
+  def all_users_group
+    @all_users_group ||= client.groups.list.find { |g| g['name'] == 'All Users' }
+  end
+
+  def admin_user
+    @admin_user ||= client.users.list.find { |g| g['name'] == ENV['TABLEAU_ADMIN_USERNAME'] }
   end
 end

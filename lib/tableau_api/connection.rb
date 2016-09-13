@@ -64,7 +64,7 @@ module TableauApi
 
       req = Net::HTTP::Post::Multipart.new(uri.to_s, parts, headers)
 
-      Net::HTTP.start(uri.host, uri.port) do |http|
+      Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
         http.request(req)
       end
     end
