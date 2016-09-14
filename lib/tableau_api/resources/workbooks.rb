@@ -60,6 +60,8 @@ module TableauApi
 
         raise TableauError, res if res.code != 200
         permissions = HTTParty::Parser.new(res.body, :xml).parse['tsResponse']['permissions']['granteeCapabilities']
+        permissions = [permissions] unless permissions.is_a? Array
+
         permissions.map do |p|
           grantee_type = p['group'].nil? ? 'user' : 'group'
 
