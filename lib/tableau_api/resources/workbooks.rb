@@ -67,7 +67,10 @@ module TableauApi
           grantee_type = p['group'].nil? ? 'user' : 'group'
 
           capabilities = {}
-          p['capabilities']['capability'].each do |c|
+          capabilities_list = p['capabilities']['capability']
+          capabilities_list = [capabilities_list] unless capabilities_list.is_a? Array
+
+          capabilities_list.each do |c|
             capabilities[c['name'].to_sym] = c['mode'] == 'Allow'
           end
 
