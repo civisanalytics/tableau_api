@@ -94,8 +94,8 @@ module TableauApi
 
       def delete_permissions(workbook_id:, user_id: nil, group_id: nil, capability:, capability_mode:)
         validate_user_group_exclusivity(user_id, group_id)
-        raise 'invalid capability' unless CAPABILITIES.include? capability
-        raise 'invalid mode' unless CAPABILITY_MODES.include? capability_mode
+        raise 'invalid capability' unless CAPABILITIES.include? capability.to_s
+        raise 'invalid mode' unless CAPABILITY_MODES.include? capability_mode.to_s
 
         subpath = user_id ? "users/#{user_id}" : "groups/#{group_id}"
         subpath += "/#{capability}/#{capability_mode}"
