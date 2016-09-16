@@ -107,39 +107,6 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     end
   end
 
-  describe '#permissions' do
-    it 'can retrieve the permissions of a workbook' do
-      workbook = find_or_publish_workbook('testpublish')
-      expected = [{
-        grantee_type: 'group',
-        grantee_id: all_users_group['id'],
-        capabilities: {
-          Read: true,
-          ExportData: true,
-          ViewComments: true,
-          AddComment: true,
-          ExportImage: true
-        }
-      }, {
-        grantee_type: 'group',
-        grantee_id: test_group['id'],
-        capabilities: {
-          Read: true,
-          ChangePermissions: false
-        }
-      }, {
-        grantee_type: 'user',
-        grantee_id: admin_user['id'],
-        capabilities: {
-          Read: true,
-          ChangePermissions: false
-        }
-      }]
-      actual = client.workbooks.permissions(workbook_id: workbook['id'])
-      expect(actual).to eq expected
-    end
-  end
-
   describe '#delete_permissions' do
     it 'can delete a user permission' do
       workbook = find_or_publish_workbook('testpublish')
@@ -158,6 +125,16 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
                group_id: test_group['id'],
                capability: 'Read',
                capability_mode: 'ALLOW'
+      )).to be true
+    end
+
+    it 'accepts a symbol as a permission' do
+      workbook = find_or_publish_workbook('testpublish')
+      expect(client.workbooks.delete_permissions(
+               workbook_id: workbook['id'],
+               group_id: all_users_group['id'],
+               capability: :ExportImage,
+               capability_mode: :ALLOW
       )).to be true
     end
 
@@ -181,6 +158,74 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
           capability_mode: 'ALLOW'
         )
       end.to raise_error(/cannot specify user_id and group_id simultaneously/)
+    end
+  end
+
+  describe '#permissions' do
+    it 'can retrieve multiple permissions for a workbook' do
+      workbook = find_or_publish_workbook('testpublish')
+      expected = [{
+        grantee_type: 'group',
+        grantee_id: all_users_group['id'],
+        capabilities: {
+          Read: true,
+          ExportData: true,
+          ViewComments: true,
+          AddComment: true
+        }
+      }, {
+        grantee_type: 'group',
+        grantee_id: test_group['id'],
+        capabilities: {
+          ChangePermissions: false
+        }
+      }, {
+        grantee_type: 'user',
+        grantee_id: admin_user['id'],
+        capabilities: {
+          ChangePermissions: false
+        }
+      }]
+      actual = client.workbooks.permissions(workbook_id: workbook['id'])
+      expect(actual).to eq expected
+    end
+
+    it 'returns an array for even a single permission' do
+      workbook = find_or_publish_workbook('testpublish')
+
+      # use up the VCR recording from the previous spec
+      client.workbooks.permissions(workbook_id: workbook['id'])
+
+      # remove most of the remaining permissions
+      %w(ExportData ViewComments AddComment).each do |p|
+        client.workbooks.delete_permissions(
+          workbook_id: workbook['id'],
+          group_id: all_users_group['id'],
+          capability: p,
+          capability_mode: 'ALLOW'
+        )
+      end
+      client.workbooks.delete_permissions(
+        workbook_id: workbook['id'],
+        group_id: test_group['id'],
+        capability: :ChangePermissions,
+        capability_mode: 'DENY'
+      )
+      client.workbooks.delete_permissions(
+        workbook_id: workbook['id'],
+        user_id: admin_user['id'],
+        capability: 'ChangePermissions',
+        capability_mode: 'DENY'
+      )
+
+      expected = [{
+        grantee_type: 'group',
+        grantee_id: all_users_group['id'],
+        capabilities: {
+          Read: true
+        }
+      }]
+      expect(client.workbooks.permissions(workbook_id: workbook['id'])).to eq expected
     end
   end
 
