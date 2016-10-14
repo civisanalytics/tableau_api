@@ -12,7 +12,6 @@ require 'tableau_api/resources/sites'
 require 'tableau_api/resources/users'
 require 'tableau_api/resources/groups'
 require 'tableau_api/resources/workbooks'
-require 'tableau_api/resources/datasources'
 require 'tableau_api/version'
 
 module TableauApi
