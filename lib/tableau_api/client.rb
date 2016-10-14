@@ -28,7 +28,8 @@ module TableauApi
         sites: TableauApi::Resources::Sites,
         users: TableauApi::Resources::Users,
         groups: TableauApi::Resources::Groups,
-        workbooks: TableauApi::Resources::Workbooks
+        workbooks: TableauApi::Resources::Workbooks,
+        datasources: TableauApi::Resources::Datasources
       }
     end
 
