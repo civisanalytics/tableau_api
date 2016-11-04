@@ -1,0 +1,170 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:2000/api/2.0/auth/signin
+    body:
+      encoding: UTF-8
+      string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
+        contentUrl="TestSite"/></credentials></tsRequest>
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 18 May 2016 18:22:02 GMT
+      Server:
+      - Tableau
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Vary:
+      - "*,Accept-Encoding"
+      Etag:
+      - '"1e98371f7953dffa7fb3053e2318d61b-gzip"'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      X-Runtime:
+      - '0.093000'
+      Content-Type:
+      - application/xml;charset=utf-8
+      P3p:
+      - CP="NON"
+      Content-Length:
+      - '312'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+          <credentials token="6085ca95edbb14b125f6d3b30e7b4343">
+            <site id="5a62de1a-5553-447d-a4bd-0977db6a7b3f" contentUrl="TestSite"/>
+            <user id="e408f778-3708-4685-b7f9-100b584a02aa"/>
+          </credentials>
+        </tsResponse>
+    http_version:
+  recorded_at: Wed, 18 May 2016 18:22:05 GMT
+- request:
+    method: post
+    uri: http://localhost:2000/2.0/sites/9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d/datasources
+    body:
+      encoding: UTF-8
+      string: <tsRequest><datasources name="test" description=""/></tsRequest>
+    headers:
+      X-Tableau-Auth:
+      - 6085ca95edbb14b125f6d3b30e7b4343
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Wed, 18 May 2016 18:22:02 GMT
+      Server:
+      - Tableau
+      Location:
+      - "/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/datasources/57058e8e-3363-4de9-a03b-5e7401933073"
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Vary:
+      - "*"
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      X-Runtime:
+      - '0.062000'
+      Content-Type:
+      - application/xml;charset=utf-8
+      Content-Length:
+      - '339'
+      P3p:
+      - CP="NON"
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+          <datasources id="57058e8e-3363-4de9-a03b-5e7401933073" name="test" description=""/>
+        </tsResponse>
+    http_version:
+  recorded_at: Wed, 18 May 2016 18:22:05 GMT
+- request:
+    method: get
+    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/datasources?pageNumber=1&pageSize=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 6085ca95edbb14b125f6d3b30e7b4343
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 18 May 2016 18:22:10 GMT
+      Server:
+      - Tableau
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Vary:
+      - "*,Accept-Encoding"
+      Etag:
+      - '"08ca8588b327955c3566f28be7f26b52"'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      X-Runtime:
+      - '0.062000'
+      Content-Type:
+      - application/xml;charset=utf-8
+      Content-Length:
+      - '674'
+      P3p:
+      - CP="NON"
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+                <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+                  <pagination pageNumber="1" pageSize="100" totalAvailable="3"/>
+                  <datasources>
+                      <datasource id="1a2a3b4b-5c6c-7d8d-9e0e-1f2f3a4a5b6b"
+                           name="Sample - Coffee Chain (Access)" contentUrl="coffee-chain"  type="msaccess"
+                           createdAt="2011-03-30T22:32:35Z" updatedAt="2016-01-13T01:00:02Z">
+                        <project id="1f2f3e4e-5d6d-7c8c-9b0b-1a2a3f4f5e6e" name="Default"/>
+                        <owner id="9f9e9d9c-8b8a-8f8e-7d7c-7b7a6f6d6e6d"/>
+                        <tags>
+                        </tags>
+                      </datasource>
+                      <datasource id="9f8e7d6c-5b4a-3f2e-1d0c-9b8a7f6e5d4c"
+                            name="Activity rates and healthy living" contentUrl="activity-rates-and-healthy-living" type="excel-direct"
+                            createdAt="2011-03-30T22:32:35Z" updatedAt="2016-01-13T01:00:02Z">
+                        <project id="12ab34cd-56ef-78ab-90cd-12ef34ab56cd" name="Default"/>
+                        <owner id="9f9e9d9c-8b8a-8f8e-7d7c-7b7a6f6d6e6d"/>
+                        <tags>
+                        </tags>
+                      </datasource>
+                    </datasources>
+                </tsResponse>
+    http_version:
+  recorded_at: Wed, 18 May 2016 18:22:13 GMT
+recorded_with: VCR 3.0.1
