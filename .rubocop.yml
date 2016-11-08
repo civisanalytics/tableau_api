@@ -18,3 +18,9 @@ Metrics/AbcSize:
 
 MethodLength:
   Max: 30
+
+EndOfLine:
+  Enabled: false
+
+TrailingBlankLines:
+  Enabled: false

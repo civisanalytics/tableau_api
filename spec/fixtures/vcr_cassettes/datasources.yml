@@ -60,7 +60,7 @@ http_interactions:
     uri: http://localhost:2000/2.0/sites/9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d/datasources
     body:
       encoding: UTF-8
-      string: <tsRequest><datasources name="test" description=""/></tsRequest>
+      string: <tsRequest><datasource name="test" description=""/></tsRequest>
     headers:
       X-Tableau-Auth:
       - 6085ca95edbb14b125f6d3b30e7b4343
@@ -98,7 +98,7 @@ http_interactions:
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
         <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <datasources id="57058e8e-3363-4de9-a03b-5e7401933073" name="test" description=""/>
+          <datasource id="57058e8e-3363-4de9-a03b-5e7401933073" name="test" description=""/>
         </tsResponse>
     http_version:
   recorded_at: Wed, 18 May 2016 18:22:05 GMT
@@ -155,14 +155,7 @@ http_interactions:
                         <tags>
                         </tags>
                       </datasource>
-                      <datasource id="9f8e7d6c-5b4a-3f2e-1d0c-9b8a7f6e5d4c"
-                            name="Activity rates and healthy living" contentUrl="activity-rates-and-healthy-living" type="excel-direct"
-                            createdAt="2011-03-30T22:32:35Z" updatedAt="2016-01-13T01:00:02Z">
-                        <project id="12ab34cd-56ef-78ab-90cd-12ef34ab56cd" name="Default"/>
-                        <owner id="9f9e9d9c-8b8a-8f8e-7d7c-7b7a6f6d6e6d"/>
-                        <tags>
-                        </tags>
-                      </datasource>
+                       <datasource id="57058e8e-3363-4de9-a03b-5e7401933073" name="test" description=""/>
                     </datasources>
                 </tsResponse>
     http_version:
