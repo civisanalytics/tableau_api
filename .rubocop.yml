@@ -19,6 +19,12 @@ Metrics/AbcSize:
 MethodLength:
   Max: 30
 
+CollectionMethods:
+  Enabled: false
+
+Semicolon:
+  Enabled: false
+
 EndOfLine:
   Enabled: false
 
