@@ -28,7 +28,7 @@ module TableauApi
         @client.connection.api_get_collection(url, 'users.user')
       end
 
-      def change_role(user_id:, new_site_role:)
+      def change_site_role(user_id:, new_site_role:)
         raise 'invalid site_role' unless SITE_ROLES.include? new_site_role
 
         res = @client.connection.api_get("sites/#{@client.auth.site_id}/users/#{user_id}")
