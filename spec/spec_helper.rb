@@ -23,6 +23,7 @@ VCR.configure do |config|
 
   config.filter_sensitive_data('<TABLEAU_ADMIN_USERNAME>') { ENV['TABLEAU_ADMIN_USERNAME'] }
   config.filter_sensitive_data('<TABLEAU_ADMIN_PASSWORD>') { ENV['TABLEAU_ADMIN_PASSWORD'] }
+  config.filter_sensitive_data('<TABLEAU_ADMIN_PASSWORD>') { ENV['TABLEAU_ADMIN_PASSWORD'].encode(xml: :text) }
 
   config.allow_http_connections_when_no_cassette = false
 
