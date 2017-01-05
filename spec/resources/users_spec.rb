@@ -27,14 +27,14 @@ describe TableauApi::Resources::Users, vcr: { cassette_name: 'users' } do
     end
   end
 
-  describe '#change_role' do
+  describe '#change_site_role' do
     # https://onlinehelp.tableau.com/current/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Update_User
-    it 'can change the role of a user in a site' do
+    it 'can change the site role of a user in a site' do
       user = client.users.list.find do |u|
         u['name'] == 'test'
       end
       expect(user['siteRole']).to eq('Viewer')
-      user_after_change = client.users.change_role(user_id: user['id'], new_site_role: 'Publisher')
+      user_after_change = client.users.change_site_role(user_id: user['id'], new_site_role: 'Publisher')
       expect(user_after_change['siteRole']).to eq('Publisher')
     end
   end
