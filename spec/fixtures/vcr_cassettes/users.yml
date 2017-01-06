@@ -358,4 +358,168 @@ http_interactions:
         </tsResponse>
     http_version: 
   recorded_at: Thu, 05 Jan 2017 23:36:33 GMT
+- request:
+    method: post
+    uri: http://localhost:2000/api/2.0/auth/signin
+    body:
+      encoding: UTF-8
+      string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
+        contentUrl="TestSite"/></credentials></tsRequest>
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Fri, 06 Jan 2017 02:37:02 GMT
+      Etag:
+      - '"87008315b077c1b82f8334380b3d34ac-gzip"'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      P3p:
+      - CP="NON"
+      Pragma:
+      - no-cache
+      Server:
+      - Tableau
+      Vary:
+      - "*,Accept-Encoding"
+      X-Runtime:
+      - '0.094000'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Content-Length:
+      - '311'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+          <credentials token="bc0a07dc6f95064c1e93b318036c3efa">
+            <site id="5a62de1a-5553-447d-a4bd-0977db6a7b3f" contentUrl="TestSite"/>
+            <user id="61e1c6ba-526e-492b-9601-c12e09803c2f"/>
+          </credentials>
+        </tsResponse>
+    http_version: 
+  recorded_at: Fri, 06 Jan 2017 02:37:06 GMT
+- request:
+    method: post
+    uri: http://localhost:2000/api/2.0/auth/signin
+    body:
+      encoding: UTF-8
+      string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
+        contentUrl="TestSite"/></credentials></tsRequest>
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Fri, 06 Jan 2017 02:37:35 GMT
+      Etag:
+      - '"7ad22b3481d0166db00e582bc9ac825a-gzip"'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      P3p:
+      - CP="NON"
+      Pragma:
+      - no-cache
+      Server:
+      - Tableau
+      Vary:
+      - "*,Accept-Encoding"
+      X-Runtime:
+      - '0.078000'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Content-Length:
+      - '311'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+          <credentials token="63477ddcb72f740d142f663183e4db1e">
+            <site id="5a62de1a-5553-447d-a4bd-0977db6a7b3f" contentUrl="TestSite"/>
+            <user id="61e1c6ba-526e-492b-9601-c12e09803c2f"/>
+          </credentials>
+        </tsResponse>
+    http_version: 
+  recorded_at: Fri, 06 Jan 2017 02:37:39 GMT
+- request:
+    method: get
+    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/users/foo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 63477ddcb72f740d142f663183e4db1e
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Fri, 06 Jan 2017 02:37:35 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      P3p:
+      - CP="NON"
+      Pragma:
+      - no-cache
+      Server:
+      - Tableau
+      Vary:
+      - "*"
+      X-Runtime:
+      - '0.062000'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Content-Length:
+      - '386'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+          <error code="404002">
+            <summary>Resource Not Found</summary>
+            <detail>User 'foo' could not be found.</detail>
+          </error>
+        </tsResponse>
+    http_version: 
+  recorded_at: Fri, 06 Jan 2017 02:37:40 GMT
 recorded_with: VCR 3.0.3
