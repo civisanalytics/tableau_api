@@ -27,15 +27,30 @@ describe TableauApi::Resources::Users, vcr: { cassette_name: 'users' } do
     end
   end
 
-  describe '#change_site_role' do
+  describe '#update_user' do
     # https://onlinehelp.tableau.com/current/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Update_User
     it 'can change the site role of a user in a site' do
       user = client.users.list.find do |u|
         u['name'] == 'test'
       end
       expect(user['siteRole']).to eq('Viewer')
-      user_after_change = client.users.change_site_role(user_id: user['id'], new_site_role: 'Publisher')
+      user_after_change = client.users.update_user(user_id: user['id'], site_role: 'Publisher')
       expect(user_after_change['siteRole']).to eq('Publisher')
+    end
+
+    it 'raises an error if the site role is not valid' do
+      user = client.users.list.find do |u|
+        u['name'] == 'test'
+      end
+      expect do
+        client.users.update_user(user_id: user['id'], site_role: 'foo')
+      end.to raise_error(RuntimeError, 'invalid site_role')
+    end
+
+    it 'raises an error if the user cannot be found' do
+      expect do
+        client.users.update_user(user_id: 'foo', site_role: 'Viewer')
+      end.to raise_error(RuntimeError, 'failed to find user')
     end
   end
 end
