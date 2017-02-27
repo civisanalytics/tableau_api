@@ -22,21 +22,14 @@ module TableauApi
 
         res = @client.connection.api_post('sites', body: request)
 
-        if res.code == 201
-          res['tsResponse']['site'] if res.code == 201
-        else
-          raise TableauError, res
-        end
-
+        return res['tsResponse']['site'] if res.code == 201
+        raise TableauError, res
       end
 
       def delete(site_id:)
         res = @client.connection.api_delete("sites/#{site_id}")
-        if res.code == 204
-          true
-        else
-          raise TableauError, res
-        end
+        return true if res.code == 204
+        raise TableauError, res
       end
     end
   end
