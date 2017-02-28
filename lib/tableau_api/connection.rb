@@ -28,7 +28,7 @@ module TableauApi
           raise TableauError, res if res.code.to_s != '200'
 
           # ensure the result is an array because it will not be an array if there is only one element
-          [collection.split('.').reduce(res['tsResponse']) { |a, e| a && a[e] }].flatten.compact.each do |obj|
+          [collection.split('.').reduce(res['tsResponse']) { |acc, elem| acc && acc[elem] }].flatten.compact.each do |obj|
             enum.yield obj
           end
 

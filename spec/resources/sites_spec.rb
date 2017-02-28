@@ -3,16 +3,16 @@ require 'spec_helper'
 describe TableauApi::Resources::Sites, vcr: { cassette_name: 'sites' } do
   include_context 'tableau client'
 
-  describe '#create' do
-    let(:default_client) do
-      TableauApi.new(
-        host: ENV['TABLEAU_HOST'],
-        site_name: 'Default',
-        username: ENV['TABLEAU_ADMIN_USERNAME'],
-        password: ENV['TABLEAU_ADMIN_PASSWORD']
-      )
-    end
+  let(:default_client) do
+    TableauApi.new(
+      host: ENV['TABLEAU_HOST'],
+      site_name: 'Default',
+      username: ENV['TABLEAU_ADMIN_USERNAME'],
+      password: ENV['TABLEAU_ADMIN_PASSWORD']
+    )
+  end
 
+  describe '#create' do
     it 'can create a site' do
       site = default_client.sites.create(name: 'Test Site 2', content_url: 'TestSite2', admin_mode: 'ContentAndUsers')
       expect(site).not_to be_nil
@@ -25,6 +25,12 @@ describe TableauApi::Resources::Sites, vcr: { cassette_name: 'sites' } do
         'state' => 'Active',
         'disableSubscriptions' => 'true'
       )
+    end
+
+    it 'raises an error if fails to create a site' do
+      expect do
+        default_client.sites.create(name: 'Test Site 3', content_url: 'TestSite2', admin_mode: 'ContentAndUsers')
+      end.to raise_error(TableauApi::TableauError)
     end
   end
 
@@ -63,6 +69,12 @@ describe TableauApi::Resources::Sites, vcr: { cassette_name: 'sites' } do
         s['name'] == 'Test Site 2'
       end
       expect(site_client.sites.delete(site_id: site['id'])).to be true
+    end
+
+    it 'raises an error if fails to delete a site' do
+      expect do
+        default_client.sites.create(name: 'Test Site That Does Not Exist', content_url: 'TestSiteDoesNotExist', admin_mode: 'ContentAndUsers')
+      end.to raise_error(TableauApi::TableauError)
     end
   end
 end
