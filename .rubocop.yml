@@ -18,12 +18,3 @@ Metrics/AbcSize:
 
 MethodLength:
   Max: 30
-
-Semicolon:
-  Enabled: false
-
-EndOfLine:
-  Enabled: false
-
-TrailingBlankLines:
-  Enabled: false
