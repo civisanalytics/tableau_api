@@ -38,7 +38,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - [#6](https://github.com/civisanalytics/tableau_api/pull/6)
   Added `Users#update_user`
 - [#7](https://github.com/civisanalytics/tableau_api/pull/7)
-  Added `Sites#create`
+  Added `Sites#create` and `Sites#delete`
 
 ### Changed
 
