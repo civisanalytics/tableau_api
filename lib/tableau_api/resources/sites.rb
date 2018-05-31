@@ -31,6 +31,14 @@ module TableauApi
         return true if res.code == 204
         raise TableauError, res
       end
+
+      def views(site_id, fields = [])
+        query = {}
+        query[:fields] = fields.join(',') if fields.present?
+        @client.connection.api_get_collection(
+          "sites/#{site_id}/views", 'views.view', query: query
+        )
+      end
     end
   end
 end
