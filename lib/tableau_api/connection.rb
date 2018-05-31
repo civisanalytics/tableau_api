@@ -1,6 +1,6 @@
 module TableauApi
   class Connection
-    API_VERSION = '2.0'.freeze
+    API_VERSION = '3.0'.freeze
 
     include HTTParty
 
