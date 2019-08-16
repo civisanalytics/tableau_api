@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'tempfile'
+require 'chunky_png'
 
 # NOTE: if it exists, delete test/testpublish workbook before recreating cassettes
 describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } do
@@ -291,6 +293,27 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
       found_workbook = client.workbooks.find(workbook['id'])
 
       expect(workbook).to eq found_workbook
+    end
+  end
+
+  describe '#preview_image' do
+    it 'can download a preview image' do
+      workbook = find_or_publish_workbook('testpublish')
+      res = client.workbooks.preview_image(workbook['id'])
+      f = Tempfile.new('png')
+      f.write(res)
+      f.close
+      # will raise an error if PNG parsing fails
+      ChinkyPNG::Image.from_file(f)
+    end
+  end
+
+  describe '#refresh' do
+    it 'can refresh a workbook' do
+      workbook = find_or_publish_workbook('testpublish')
+      expect(
+        client.workbooks.refresh(workbook['id'])
+      ).to be_true
     end
   end
 

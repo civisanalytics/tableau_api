@@ -116,6 +116,17 @@ module TableauApi
         res.code == 200
       end
 
+      def refresh(workbook_id:)
+        request = Builder::XmlMarkup.new.tsRequest
+        res = @client.connection.api_post("sites/#{@client.auth.site_id}/workbooks/#{workbook_id}/refresh", body: request)
+        res.code == 202
+      end
+
+      def preview_image(workbook_id:)
+        res = @client.connection.api_get("sites/#{@client.auth.site_id}/workbooks/#{workbook_id}/previewImage")
+        res.body if res.code == 200
+      end
+
       def find(workbook_id)
         res = @client.connection.api_get("sites/#{@client.auth.site_id}/workbooks/#{workbook_id}")
         res['tsResponse']['workbook'] if res.code == 200
