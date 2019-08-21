@@ -14,7 +14,7 @@ describe TableauApi::Resources::Users, vcr: { cassette_name: 'projects' } do
       'contentPermissions' => 'ManagedByOwner',
       'owner' => project['owner'],
       'updatedAt' => project['updatedAt'],
-      'createdAt' => project['createdAt'],
+      'createdAt' => project['createdAt']
     )
   end
 
@@ -30,7 +30,7 @@ describe TableauApi::Resources::Users, vcr: { cassette_name: 'projects' } do
       'contentPermissions' => 'ManagedByOwner',
       'owner' => project['owner'],
       'updatedAt' => project['updatedAt'],
-      'createdAt' => project['createdAt'],
+      'createdAt' => project['createdAt']
     )
   end
 end

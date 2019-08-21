@@ -22,7 +22,7 @@ describe TableauApi::Resources::Datasources, vcr: { cassette_name: 'datasources'
       },
       'type' => 'textscan',
       'tags' => nil,
-      'isCertified' => 'false',
+      'isCertified' => 'false'
     )
   end
 end

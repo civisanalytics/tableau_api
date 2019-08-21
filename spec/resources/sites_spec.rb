@@ -29,7 +29,7 @@ describe TableauApi::Resources::Sites, vcr: { cassette_name: 'sites' } do
         'guestAccessEnabled' => 'true',
         'revisionHistoryEnabled' => 'true',
         'revisionLimit' => '25',
-        'subscribeOthersEnabled' => 'false',
+        'subscribeOthersEnabled' => 'false'
       )
     end
 
@@ -62,7 +62,7 @@ describe TableauApi::Resources::Sites, vcr: { cassette_name: 'sites' } do
         'revisionHistoryEnabled' => 'true',
         'revisionLimit' => '5',
         'subscribeOthersEnabled' => 'false',
-        'disableSubscriptions' => 'true',
+        'disableSubscriptions' => 'true'
       )
     end
   end

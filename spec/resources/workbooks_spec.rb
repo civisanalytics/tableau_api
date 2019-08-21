@@ -141,9 +141,9 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     it 'accepts a symbol as a permission' do
       workbook = find_or_publish_workbook('testpublish')
       client.workbooks.add_permissions(
-           workbook_id: workbook['id'],
-           group_id: all_users_group['id'],
-           capabilities: { ExportImage: true }
+        workbook_id: workbook['id'],
+        group_id: all_users_group['id'],
+        capabilities: { ExportImage: true }
       )
       expect(client.workbooks.delete_permissions(
                workbook_id: workbook['id'],
@@ -187,14 +187,14 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
           ShareView: true,
           ViewUnderlyingData: true,
           Filter: true,
-          Write: true,
+          Write: true
         }
       }, {
         grantee_type: 'group',
         grantee_id: test_group['id'],
         capabilities: {
           ChangePermissions: false,
-          ExportImage: true,
+          ExportImage: true
         }
       }, {
         grantee_type: 'user',
@@ -214,7 +214,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
       client.workbooks.permissions(workbook_id: workbook['id'])
 
       # remove most of the remaining permissions
-      %w(ExportData ViewComments AddComment).each do |p|
+      %w[ExportData ViewComments AddComment].each do |p|
         client.workbooks.delete_permissions(
           workbook_id: workbook['id'],
           group_id: all_users_group['id'],
@@ -249,7 +249,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
           Filter: true,
           ShareView: true,
           ViewUnderlyingData: true,
-          Write: true,
+          Write: true
         }
       }]
       expect(client.workbooks.permissions(workbook_id: workbook['id'])).to eq expected

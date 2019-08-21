@@ -87,7 +87,7 @@ describe TableauApi::Resources::Auth do
         expect(client.auth.sign_in).to be true
       end
       client.auth.instance_variable_set('@token', 'foo')
-      VCR.use_cassette('auth', match_requests_on: [:headers, :path]) do
+      VCR.use_cassette('auth', match_requests_on: %i[headers path]) do
         expect(client.auth.sign_out).to be true
       end
       expect(client.auth.instance_variable_get('@token')).to be nil
