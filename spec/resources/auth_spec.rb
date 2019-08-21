@@ -50,7 +50,7 @@ describe TableauApi::Resources::Auth do
   it 'signs into a different site', vcr: vcr_options do
     client = TableauApi.new(
       host: ENV['TABLEAU_HOST'],
-      site_name: 'test',
+      site_name: 'TestSite',
       username: ENV['TABLEAU_ADMIN_USERNAME'],
       password: ENV['TABLEAU_ADMIN_PASSWORD']
     )

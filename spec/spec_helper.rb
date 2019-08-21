@@ -24,6 +24,8 @@ VCR.configure do |config|
   config.filter_sensitive_data('<TABLEAU_ADMIN_USERNAME>') { ENV['TABLEAU_ADMIN_USERNAME'] }
   config.filter_sensitive_data('<TABLEAU_ADMIN_PASSWORD>') { ENV['TABLEAU_ADMIN_PASSWORD'] }
   config.filter_sensitive_data('<TABLEAU_ADMIN_PASSWORD>') { ENV['TABLEAU_ADMIN_PASSWORD'].encode(xml: :text) }
+  config.filter_sensitive_data('<TABLEAU_HTTP_HOST>') { ENV['TABLEAU_HTTP_HOST'] }
+  config.filter_sensitive_data('<TABLEAU_HTTPS_HOST>') { ENV['TABLEAU_HTTPS_HOST'] }
 
   config.allow_http_connections_when_no_cassette = false
 
@@ -58,7 +60,7 @@ end
 
 RSpec::Matchers.define :be_a_token do
   match do |actual|
-    actual.match(/\A\w{32}\z/)
+    actual.match(/\A\w{32}\z/) or actual.match(/\A[\w-]{22}\|\w{32}\z/)
   end
 end
 

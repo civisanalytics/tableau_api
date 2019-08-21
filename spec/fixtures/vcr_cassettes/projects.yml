@@ -2,156 +2,599 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:2000/api/2.0/auth/signin
+    uri: "<TABLEAU_HTTPS_HOST>/api/2.8/auth/signin"
     body:
       encoding: UTF-8
       string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
         contentUrl="TestSite"/></credentials></tsRequest>
     headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
+      Content-Type:
+      - application/xml
   response:
     status:
       code: 200
       message: OK
     headers:
-      Date:
-      - Wed, 18 May 2016 18:22:02 GMT
-      Server:
-      - Tableau
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Pragma:
-      - no-cache
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      Vary:
-      - "*,Accept-Encoding"
-      Etag:
-      - '"1e98371f7953dffa7fb3053e2318d61b-gzip"'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      X-Runtime:
-      - '0.093000'
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
       Content-Type:
       - application/xml;charset=utf-8
+      Date:
+      - Wed, 21 Aug 2019 01:40:52 GMT
       P3p:
       - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
       Content-Length:
-      - '312'
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <credentials token="6085ca95edbb14b125f6d3b30e7b4343">
-            <site id="5a62de1a-5553-447d-a4bd-0977db6a7b3f" contentUrl="TestSite"/>
-            <user id="e408f778-3708-4685-b7f9-100b584a02aa"/>
-          </credentials>
-        </tsResponse>
-    http_version: 
-  recorded_at: Wed, 18 May 2016 18:22:05 GMT
-- request:
-    method: post
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/projects
+      - '441'
+      Connection:
+      - keep-alive
     body:
       encoding: UTF-8
-      string: <tsRequest><project name="test" description=""/></tsRequest>
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><credentials token="7Yb6TX4RQVCeNiOg7rPOUA|uXPOXQI2oyoY5xev72Fq41UrVPPzo1bH"><site
+        id="143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84" contentUrl="TestSite"/><user id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></credentials></tsResponse>
+    http_version: 
+  recorded_at: Wed, 21 Aug 2019 01:40:53 GMT
+- request:
+    method: post
+    uri: "<TABLEAU_HTTPS_HOST>/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/projects"
+    body:
+      encoding: UTF-8
+      string: <tsRequest><project name="test_project" description=""/></tsRequest>
     headers:
+      Content-Type:
+      - application/xml
       X-Tableau-Auth:
-      - 6085ca95edbb14b125f6d3b30e7b4343
+      - 7Yb6TX4RQVCeNiOg7rPOUA|uXPOXQI2oyoY5xev72Fq41UrVPPzo1bH
   response:
     status:
       code: 201
       message: Created
     headers:
-      Date:
-      - Wed, 18 May 2016 18:22:02 GMT
-      Server:
-      - Tableau
-      Location:
-      - "/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/projects/57058e8e-3363-4de9-a03b-5e7401933073"
-      Cache-Control:
-      - no-cache
-      Pragma:
-      - no-cache
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      Vary:
-      - "*"
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      X-Runtime:
-      - '0.062000'
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
       Content-Type:
       - application/xml;charset=utf-8
-      Content-Length:
-      - '339'
+      Date:
+      - Wed, 21 Aug 2019 01:40:53 GMT
+      Location:
+      - "/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/projects/8fc159dc-54af-40f9-9004-d9c2e5941392"
       P3p:
       - CP="NON"
+      Server:
+      - Tableau
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '478'
+      Connection:
+      - keep-alive
     body:
       encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test" description=""/>
-        </tsResponse>
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><project id="8fc159dc-54af-40f9-9004-d9c2e5941392"
+        name="test_project" description="" createdAt="2019-08-21T01:40:53Z" updatedAt="2019-08-21T01:40:53Z"
+        contentPermissions="ManagedByOwner"><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></project></tsResponse>
     http_version: 
-  recorded_at: Wed, 18 May 2016 18:22:05 GMT
+  recorded_at: Wed, 21 Aug 2019 01:40:54 GMT
 - request:
-    method: get
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/projects?pageNumber=1&pageSize=100
+    method: post
+    uri: "<TABLEAU_HTTPS_HOST>/api/2.8/auth/signin"
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
+        contentUrl="TestSite"/></credentials></tsRequest>
     headers:
-      X-Tableau-Auth:
-      - 6085ca95edbb14b125f6d3b30e7b4343
+      Content-Type:
+      - application/xml
   response:
     status:
       code: 200
       message: OK
     headers:
-      Date:
-      - Wed, 18 May 2016 18:22:10 GMT
-      Server:
-      - Tableau
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Pragma:
-      - no-cache
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      Vary:
-      - "*,Accept-Encoding"
-      Etag:
-      - '"08ca8588b327955c3566f28be7f26b52"'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      X-Runtime:
-      - '0.062000'
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
       Content-Type:
       - application/xml;charset=utf-8
-      Content-Length:
-      - '674'
+      Date:
+      - Wed, 21 Aug 2019 01:40:54 GMT
       P3p:
       - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '441'
+      Connection:
+      - keep-alive
     body:
       encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <pagination pageNumber="1" pageSize="100" totalAvailable="3"/>
-          <projects>
-            <project id="6f193d41-e7d7-4fec-bf81-96117e0da230" name="default" description="The default project that was automatically created by Tableau."/>
-            <project id="952020ad-85ce-4930-8094-c0bcad4f0937" name="Test Project" description=""/>
-            <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test" description=""/>
-          </projects>
-        </tsResponse>
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><credentials token="t3Q-OYgpSIiiNucxQ179lg|jeuJ8KyhANAUloVPkWddHatgMWUZszCi"><site
+        id="143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84" contentUrl="TestSite"/><user id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></credentials></tsResponse>
     http_version: 
-  recorded_at: Wed, 18 May 2016 18:22:13 GMT
-recorded_with: VCR 3.0.1
+  recorded_at: Wed, 21 Aug 2019 01:40:54 GMT
+- request:
+    method: get
+    uri: "<TABLEAU_HTTPS_HOST>/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/projects?pageNumber=1&pageSize=100"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - t3Q-OYgpSIiiNucxQ179lg|jeuJ8KyhANAUloVPkWddHatgMWUZszCi
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Wed, 21 Aug 2019 01:40:54 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1106'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><pagination pageNumber="1" pageSize="100"
+        totalAvailable="3"/><projects><project id="53913766-46e9-4c2f-8aac-7c66bbfae6fe"
+        name="Default" description="The default project that was automatically created
+        by Tableau." createdAt="2019-08-16T17:04:20Z" updatedAt="2019-08-16T17:04:20Z"
+        contentPermissions="ManagedByOwner"><owner id="f7fcafcf-ff21-4c64-9e69-6f79226cbf24"/></project><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test" description="" createdAt="2019-08-19T20:43:22Z"
+        updatedAt="2019-08-19T20:43:22Z" contentPermissions="ManagedByOwner"><owner
+        id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></project><project id="8fc159dc-54af-40f9-9004-d9c2e5941392"
+        name="test_project" description="" createdAt="2019-08-21T01:40:53Z" updatedAt="2019-08-21T01:40:53Z"
+        contentPermissions="ManagedByOwner"><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></project></projects></tsResponse>
+    http_version: 
+  recorded_at: Wed, 21 Aug 2019 01:40:55 GMT
+- request:
+    method: post
+    uri: "<TABLEAU_HTTPS_HOST>/api/2.8/auth/signin"
+    body:
+      encoding: UTF-8
+      string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
+        contentUrl="TestSite"/></credentials></tsRequest>
+    headers:
+      Content-Type:
+      - application/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Wed, 21 Aug 2019 01:51:44 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '441'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><credentials token="p6sOUfLCTSmtbuYRmJy1CA|C6laySzKZ7DY8hdvHx2H2sEceeAU4SQi"><site
+        id="143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84" contentUrl="TestSite"/><user id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></credentials></tsResponse>
+    http_version: 
+  recorded_at: Wed, 21 Aug 2019 01:51:44 GMT
+- request:
+    method: post
+    uri: "<TABLEAU_HTTPS_HOST>/api/2.8/auth/signin"
+    body:
+      encoding: UTF-8
+      string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
+        contentUrl="TestSite"/></credentials></tsRequest>
+    headers:
+      Content-Type:
+      - application/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Wed, 21 Aug 2019 01:51:46 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '441'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><credentials token="D7c3nkwRR0WCxF0UaacIew|mlNVhMZM4I1rs5WFKrYAWjG163xs39N9"><site
+        id="143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84" contentUrl="TestSite"/><user id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></credentials></tsResponse>
+    http_version: 
+  recorded_at: Wed, 21 Aug 2019 01:51:46 GMT
+- request:
+    method: post
+    uri: "<TABLEAU_HTTPS_HOST>/api/2.8/auth/signin"
+    body:
+      encoding: UTF-8
+      string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
+        contentUrl="TestSite"/></credentials></tsRequest>
+    headers:
+      Content-Type:
+      - application/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Wed, 21 Aug 2019 02:08:35 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '441'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><credentials token="XNli0e7tQUmNhjSrQRCYQg|B0Vk0huVt3SZOK7846VOTTg554Uxhjgl"><site
+        id="143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84" contentUrl="TestSite"/><user id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></credentials></tsResponse>
+    http_version: 
+  recorded_at: Wed, 21 Aug 2019 02:08:35 GMT
+- request:
+    method: post
+    uri: "<TABLEAU_HTTPS_HOST>/api/2.8/auth/signin"
+    body:
+      encoding: UTF-8
+      string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
+        contentUrl="TestSite"/></credentials></tsRequest>
+    headers:
+      Content-Type:
+      - application/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Wed, 21 Aug 2019 02:08:35 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '441'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><credentials token="LKye_moBTRen6J4UL-rAwg|uy9C0eEFMwFtLlMV9qid8kAwsZNN8hxy"><site
+        id="143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84" contentUrl="TestSite"/><user id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></credentials></tsResponse>
+    http_version: 
+  recorded_at: Wed, 21 Aug 2019 02:08:37 GMT
+- request:
+    method: post
+    uri: "<TABLEAU_HTTPS_HOST>/api/2.8/auth/signin"
+    body:
+      encoding: UTF-8
+      string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
+        contentUrl="TestSite"/></credentials></tsRequest>
+    headers:
+      Content-Type:
+      - application/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Wed, 21 Aug 2019 02:16:58 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '441'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><credentials token="uPxWrlAxT9W0TLP43YDlgw|iX1oF7V5VK7QMAZuJLuRAiGPxnMO3yoJ"><site
+        id="143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84" contentUrl="TestSite"/><user id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></credentials></tsResponse>
+    http_version: 
+  recorded_at: Wed, 21 Aug 2019 02:16:59 GMT
+- request:
+    method: post
+    uri: "<TABLEAU_HTTPS_HOST>/api/2.8/auth/signin"
+    body:
+      encoding: UTF-8
+      string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
+        contentUrl="TestSite"/></credentials></tsRequest>
+    headers:
+      Content-Type:
+      - application/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Wed, 21 Aug 2019 02:16:58 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '441'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><credentials token="zJ3CX26QR3C8nOHi9p_TPQ|TkgIxnx3ZqMTtE0VTOipdGoDIMEFwS6s"><site
+        id="143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84" contentUrl="TestSite"/><user id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></credentials></tsResponse>
+    http_version: 
+  recorded_at: Wed, 21 Aug 2019 02:16:59 GMT
+- request:
+    method: post
+    uri: "<TABLEAU_HTTPS_HOST>/api/2.8/auth/signin"
+    body:
+      encoding: UTF-8
+      string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
+        contentUrl="TestSite"/></credentials></tsRequest>
+    headers:
+      Content-Type:
+      - application/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Wed, 21 Aug 2019 02:43:24 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '441'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><credentials token="2a9VjlEJTuaQo190GqNb9Q|oByatSkhbqS2os0V0Q2jK6HA0LG8WdwV"><site
+        id="143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84" contentUrl="TestSite"/><user id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></credentials></tsResponse>
+    http_version: 
+  recorded_at: Wed, 21 Aug 2019 02:43:24 GMT
+- request:
+    method: post
+    uri: "<TABLEAU_HTTPS_HOST>/api/2.8/auth/signin"
+    body:
+      encoding: UTF-8
+      string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
+        contentUrl="TestSite"/></credentials></tsRequest>
+    headers:
+      Content-Type:
+      - application/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Wed, 21 Aug 2019 02:43:24 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><credentials token="DL3-mESpQIOwIM4EkpuP0w|R5DOfw3cvgB63YG8V6bfRu30RQazXAaw"><site
+        id="143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84" contentUrl="TestSite"/><user id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></credentials></tsResponse>
+    http_version: 
+  recorded_at: Wed, 21 Aug 2019 02:43:25 GMT
+recorded_with: VCR 3.0.3

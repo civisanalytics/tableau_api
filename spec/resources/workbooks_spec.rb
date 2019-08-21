@@ -41,8 +41,11 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         'showTabs' => 'false',
         'project' => workbook['project'],
         'owner' => workbook['owner'],
-        'tags' => "\n    ",
-        'views' => workbook['views']
+        'tags' => nil,
+        'views' => workbook['views'],
+        'size' => '1',
+        'createdAt' => workbook['createdAt'],
+        'updatedAt' => workbook['updatedAt']
       )
     end
 
@@ -112,6 +115,11 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
   describe '#delete_permissions' do
     it 'can delete a user permission' do
       workbook = find_or_publish_workbook('testpublish')
+      client.workbooks.add_permissions(
+        workbook_id: workbook['id'],
+        user_id: admin_user['id'],
+        capabilities: { Read: true }
+      )
       expect(client.workbooks.delete_permissions(
                workbook_id: workbook['id'],
                user_id: admin_user['id'],
@@ -132,6 +140,11 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
 
     it 'accepts a symbol as a permission' do
       workbook = find_or_publish_workbook('testpublish')
+      client.workbooks.add_permissions(
+           workbook_id: workbook['id'],
+           group_id: all_users_group['id'],
+           capabilities: { ExportImage: true }
+      )
       expect(client.workbooks.delete_permissions(
                workbook_id: workbook['id'],
                group_id: all_users_group['id'],
@@ -171,15 +184,17 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         grantee_id: all_users_group['id'],
         capabilities: {
           Read: true,
-          ExportData: true,
-          ViewComments: true,
-          AddComment: true
+          ShareView: true,
+          ViewUnderlyingData: true,
+          Filter: true,
+          Write: true,
         }
       }, {
         grantee_type: 'group',
         grantee_id: test_group['id'],
         capabilities: {
-          ChangePermissions: false
+          ChangePermissions: false,
+          ExportImage: true,
         }
       }, {
         grantee_type: 'user',
@@ -219,12 +234,22 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         capability: 'ChangePermissions',
         capability_mode: 'DENY'
       )
+      client.workbooks.delete_permissions(
+        workbook_id: workbook['id'],
+        group_id: test_group['id'],
+        capability: 'ExportImage',
+        capability_mode: 'ALLOW'
+      )
 
       expected = [{
         grantee_type: 'group',
         grantee_id: all_users_group['id'],
         capabilities: {
-          Read: true
+          Read: true,
+          Filter: true,
+          ShareView: true,
+          ViewUnderlyingData: true,
+          Write: true,
         }
       }]
       expect(client.workbooks.permissions(workbook_id: workbook['id'])).to eq expected
@@ -247,7 +272,10 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         'showTabs' => 'false',
         'project' => workbook['project'],
         'owner' => workbook['owner'],
-        'tags' => "\n      "
+        'tags' => nil,
+        'size' => '1',
+        'updatedAt' => workbook['updatedAt'],
+        'createdAt' => workbook['createdAt']
       )
 
       same_workbook = client.workbooks.list.find do |w|
@@ -299,12 +327,12 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
   describe '#preview_image' do
     it 'can download a preview image' do
       workbook = find_or_publish_workbook('testpublish')
-      res = client.workbooks.preview_image(workbook['id'])
+      res = client.workbooks.preview_image(workbook_id: workbook['id'])
       f = Tempfile.new('png')
       f.write(res)
       f.close
       # will raise an error if PNG parsing fails
-      ChinkyPNG::Image.from_file(f)
+      ChunkyPNG::Image.from_file(f)
     end
   end
 
@@ -312,14 +340,14 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     it 'can refresh a workbook' do
       workbook = find_or_publish_workbook('testpublish')
       expect(
-        client.workbooks.refresh(workbook['id'])
-      ).to be_true
+        client.workbooks.refresh(workbook_id: workbook['id'])
+      ).to be true
     end
   end
 
   describe '#version' do
     it 'can get the version of a twbx file' do
-      expect(client.workbooks.version('spec/fixtures/workbooks/test.twbx')).to eq '9.0'
+      expect(client.workbooks.version('spec/fixtures/workbooks/test.twbx')).to eq '10.5'
     end
 
     it 'returns nil if file not found' do

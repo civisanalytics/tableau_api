@@ -8,7 +8,13 @@ describe TableauApi::Resources::Users, vcr: { cassette_name: 'users' } do
     it 'can create a user in a site' do
       user = client.users.create(username: 'test')
       expect(user['id']).to be_a_tableau_id
-      expect(user).to eq('id' => user['id'], 'name' => 'test', 'siteRole' => 'Viewer')
+      expect(user).to eq(
+        'id' => user['id'],
+        'name' => 'test',
+        'siteRole' => 'Unlicensed',
+        'externalAuthUserId' => '',
+        'authSetting' => 'ServerDefault'
+      )
     end
 
     it 'fails with a bad site_role' do
@@ -23,7 +29,7 @@ describe TableauApi::Resources::Users, vcr: { cassette_name: 'users' } do
         u['name'] == 'test'
       end
       expect(user['id']).to be_a_tableau_id
-      expect(user).to eq('id' => user['id'], 'name' => 'test', 'siteRole' => 'Viewer', 'externalAuthUserId' => '')
+      expect(user).to eq('id' => user['id'], 'name' => 'test', 'siteRole' => 'Unlicensed', 'externalAuthUserId' => '')
     end
   end
 
@@ -33,7 +39,7 @@ describe TableauApi::Resources::Users, vcr: { cassette_name: 'users' } do
       user = client.users.list.find do |u|
         u['name'] == 'test'
       end
-      expect(user['siteRole']).to eq('Viewer')
+      expect(user['siteRole']).to eq('Unlicensed')
       user_after_change = client.users.update_user(user_id: user['id'], site_role: 'Publisher')
       expect(user_after_change['siteRole']).to eq('Publisher')
     end

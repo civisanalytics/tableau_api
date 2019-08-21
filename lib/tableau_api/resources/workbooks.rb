@@ -98,7 +98,7 @@ module TableauApi
         raise 'invalid mode' unless CAPABILITY_MODES.include? capability_mode.to_s
 
         subpath = user_id ? "users/#{user_id}" : "groups/#{group_id}"
-        subpath += "/#{capability}/#{capability_mode}"
+        subpath += "/#{capability}/#{capability_mode.capitalize}"
         res = @client.connection.api_delete("sites/#{@client.auth.site_id}/workbooks/#{workbook_id}/permissions/#{subpath}")
 
         res.code == 204

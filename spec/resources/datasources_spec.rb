@@ -9,6 +9,20 @@ describe TableauApi::Resources::Datasources, vcr: { cassette_name: 'datasources'
       d['name'] == 'test'
     end
     expect(datasource['id']).to be_a_tableau_id
-    expect(datasource).to eq('id' => datasource['id'], 'name' => 'test', 'description' => '')
+    expect(datasource).to eq(
+      'id' => datasource['id'],
+      'name' => 'test',
+      'contentUrl' => 'test',
+      'createdAt' => datasource['createdAt'],
+      'updatedAt' => datasource['updatedAt'],
+      'owner' => { 'id' => datasource['owner']['id'] },
+      'project' => {
+        'id' => datasource['project']['id'],
+        'name' => datasource['project']['name']
+      },
+      'type' => 'textscan',
+      'tags' => nil,
+      'isCertified' => 'false',
+    )
   end
 end

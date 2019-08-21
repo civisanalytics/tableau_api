@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TableauApi::Resources::Groups, vcr: { cassette_name: 'groups' } do
   include_context 'tableau client'
 
-  test_user_id = 'e1b91057-9cd9-4009-b6c9-cd18f1dc3fb4'
+  test_user_id = '5f8300e7-4f2a-4deb-9d32-6e0845d18890'
 
   describe '#create' do
     # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Create_Group

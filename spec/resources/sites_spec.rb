@@ -23,7 +23,13 @@ describe TableauApi::Resources::Sites, vcr: { cassette_name: 'sites' } do
         'contentUrl' => 'TestSite2',
         'adminMode' => 'ContentAndUsers',
         'state' => 'Active',
-        'disableSubscriptions' => 'true'
+        'disableSubscriptions' => 'true',
+        'cacheWarmupEnabled' => 'true',
+        'commentingEnabled' => 'true',
+        'guestAccessEnabled' => 'true',
+        'revisionHistoryEnabled' => 'true',
+        'revisionLimit' => '25',
+        'subscribeOthersEnabled' => 'false',
       )
     end
 
@@ -46,10 +52,17 @@ describe TableauApi::Resources::Sites, vcr: { cassette_name: 'sites' } do
       expect(site['id']).to be_a_tableau_id
       expect(site).to eq(
         'id' => site['id'],
-        'name' => 'Test Site',
+        'name' => 'TestSite',
         'contentUrl' => 'TestSite',
         'adminMode' => 'ContentAndUsers',
-        'state' => 'Active'
+        'state' => 'Active',
+        'cacheWarmupEnabled' => 'true',
+        'commentingEnabled' => 'true',
+        'guestAccessEnabled' => 'false',
+        'revisionHistoryEnabled' => 'true',
+        'revisionLimit' => '5',
+        'subscribeOthersEnabled' => 'false',
+        'disableSubscriptions' => 'true',
       )
     end
   end
