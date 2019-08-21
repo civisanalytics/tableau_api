@@ -66,7 +66,7 @@ end
 
 RSpec::Matchers.define :be_a_trusted_ticket do
   match do |actual|
-    actual.match(/\A[\w-]{24}\z/)
+    actual.match(/\A[\w-]{24}\z/) || actual.match(/\A[\w-]{24}:[\w-]{24}\z/)
   end
 end
 
