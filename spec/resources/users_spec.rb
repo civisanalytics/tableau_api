@@ -6,7 +6,7 @@ describe TableauApi::Resources::Users, vcr: { cassette_name: 'users' } do
   describe '#create' do
     # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Add_User_to_Site%3FTocPath%3DAPI%2520Reference%7C_____7
     it 'can create a user in a site' do
-      user = client.users.create(username: 'test')
+      user = client.users.create(username: 'test', site_role: 'Unlicensed')
       expect(user['id']).to be_a_tableau_id
       expect(user).to eq(
         'id' => user['id'],
@@ -25,6 +25,7 @@ describe TableauApi::Resources::Users, vcr: { cassette_name: 'users' } do
   describe '#list' do
     # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Get_Users_on_Site
     it 'can list users in a site' do
+      sleep(15) if VCR.current_cassette.recording?
       user = client.users.list.find do |u|
         u['name'] == 'test'
       end

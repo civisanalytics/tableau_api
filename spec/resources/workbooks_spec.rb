@@ -49,7 +49,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
       )
     end
 
-    it 'raises an exception' do
+    it 'raises an exception', vcr: { cassette_name: 'workbooks', match_requests_on: [:path, :query] } do
       ex = expect do
         client.workbooks.publish(
           name: 'tableau_api test',
@@ -183,9 +183,12 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         grantee_type: 'group',
         grantee_id: all_users_group['id'],
         capabilities: {
+          AddComment: true,
+          ExportData: true,
           Read: true,
           ShareView: true,
           ViewUnderlyingData: true,
+          ViewComments: true,
           Filter: true,
           Write: true
         }
@@ -193,8 +196,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         grantee_type: 'group',
         grantee_id: test_group['id'],
         capabilities: {
-          ChangePermissions: false,
-          ExportImage: true
+          ChangePermissions: false
         }
       }, {
         grantee_type: 'user',

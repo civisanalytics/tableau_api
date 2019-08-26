@@ -3,7 +3,12 @@ require 'spec_helper'
 describe TableauApi::Resources::Groups, vcr: { cassette_name: 'groups' } do
   include_context 'tableau client'
 
-  test_user_id = '5f8300e7-4f2a-4deb-9d32-6e0845d18890'
+  let(:test_user_id) do
+    user = client.users.list.find do |u|
+      u['name'] == 'test'
+    end
+    user['id']
+  end
 
   describe '#create' do
     # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Create_Group
@@ -21,6 +26,7 @@ describe TableauApi::Resources::Groups, vcr: { cassette_name: 'groups' } do
   describe '#list' do
     # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Query_Groups
     it 'can list groups in a site' do
+      sleep(15) if VCR.current_cassette.recording?
       group = find_group_by_name('testgroup')
       expect(group).to eq('id' => group['id'], 'name' => 'testgroup', 'domain' => { 'name' => 'local' })
       expect(group['id']).to be_a_tableau_id

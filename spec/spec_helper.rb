@@ -22,10 +22,9 @@ VCR.configure do |config|
   config.default_cassette_options = { record: :new_episodes, match_requests_on: %i[path method body query] }
 
   config.filter_sensitive_data('<TABLEAU_ADMIN_USERNAME>') { ENV['TABLEAU_ADMIN_USERNAME'] }
-  config.filter_sensitive_data('<TABLEAU_ADMIN_PASSWORD>') { ENV['TABLEAU_ADMIN_PASSWORD'] }
   config.filter_sensitive_data('<TABLEAU_ADMIN_PASSWORD>') { ENV['TABLEAU_ADMIN_PASSWORD'].encode(xml: :text) }
-  config.filter_sensitive_data('<TABLEAU_HTTP_HOST>') { ENV['TABLEAU_HTTP_HOST'] }
-  config.filter_sensitive_data('<TABLEAU_HTTPS_HOST>') { ENV['TABLEAU_HTTPS_HOST'] }
+  config.filter_sensitive_data('http://TABLEAU_HOST') { ENV['TABLEAU_HOST'] }
+  config.filter_sensitive_data('https://TABLEAU_HTTPS_HOST') { ENV['TABLEAU_HTTPS_HOST'] }
 
   config.allow_http_connections_when_no_cassette = false
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe TableauApi::Resources::Users, vcr: { cassette_name: 'projects' } do
+describe TableauApi::Resources::Projects, vcr: { cassette_name: 'projects' } do
   include_context 'tableau client'
 
   # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Create_Project%3FTocPath%3DAPI%2520Reference%7C_____13
@@ -19,6 +19,7 @@ describe TableauApi::Resources::Users, vcr: { cassette_name: 'projects' } do
   end
 
   it 'can list projects' do
+    sleep(15) if VCR.current_cassette.recording?
     project = client.projects.list.find do |p|
       p['name'] == 'test_project'
     end
