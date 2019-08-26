@@ -49,7 +49,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
       )
     end
 
-    it 'raises an exception', vcr: { cassette_name: 'workbooks', match_requests_on: [:path, :query] } do
+    it 'raises an exception', vcr: { cassette_name: 'workbooks', match_requests_on: %i[path query] } do
       ex = expect do
         client.workbooks.publish(
           name: 'tableau_api test',

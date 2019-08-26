@@ -24,3 +24,4 @@ MethodLength:
 Metrics/BlockLength:
   Exclude:
     - ./tableau_api.gemspec
+    - ./spec/resources/workbooks_spec.rb
