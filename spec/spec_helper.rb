@@ -13,7 +13,6 @@ if ENV['TABLEAU_ADMIN_USERNAME'].nil? || ENV['TABLEAU_ADMIN_PASSWORD'].nil?
 end
 
 ENV['TABLEAU_HOST'] = 'http://localhost:2000' if ENV['TABLEAU_HOST'].nil?
-ENV['TABLEAU_HTTPS_HOST'] = 'https://localhost:2001' if ENV['TABLEAU_HTTPS_HOST'].nil?
 
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
@@ -24,7 +23,6 @@ VCR.configure do |config|
   config.filter_sensitive_data('<TABLEAU_ADMIN_USERNAME>') { ENV['TABLEAU_ADMIN_USERNAME'] }
   config.filter_sensitive_data('<TABLEAU_ADMIN_PASSWORD>') { ENV['TABLEAU_ADMIN_PASSWORD'].encode(xml: :text) }
   config.filter_sensitive_data('http://TABLEAU_HOST') { ENV['TABLEAU_HOST'] }
-  config.filter_sensitive_data('https://TABLEAU_HTTPS_HOST') { ENV['TABLEAU_HTTPS_HOST'] }
 
   config.allow_http_connections_when_no_cassette = false
 

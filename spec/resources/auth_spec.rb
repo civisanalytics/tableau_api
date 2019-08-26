@@ -11,19 +11,6 @@ describe TableauApi::Resources::Auth do
     )
   end
 
-  it 'can use https', vcr: vcr_options.merge(match_requests_on: [:uri]) do
-    client = TableauApi.new(
-      host: ENV['TABLEAU_HTTPS_HOST'],
-      site_name: 'Default',
-      username: ENV['TABLEAU_ADMIN_USERNAME'],
-      password: ENV['TABLEAU_ADMIN_PASSWORD']
-    )
-
-    client.connection.class.default_options.update(verify: false)
-    expect(client.auth.sign_in).to be true
-    client.connection.class.default_options.update(verify: true)
-  end
-
   # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_concepts_auth.htm%3FTocPath%3DConcepts%7C_____3
   # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Sign_In%3FTocPath%3DAPI%2520Reference%7C_____51
   it 'returns an instance of TableauApi::Resources::Auth' do
