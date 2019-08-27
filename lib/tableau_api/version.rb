@@ -1,3 +1,3 @@
 module TableauApi
-  VERSION = '1.1.2'.freeze
+  VERSION = '2.0.0'.freeze
 end

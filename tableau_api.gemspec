@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
                         'Jonathan Cobian']
   spec.email         = ['opensource@civisanalytics.com']
 
-  spec.summary       = 'Ruby interface to the Tableau 9.0 API.'
+  spec.summary       = 'Ruby interface to the Tableau API.'
   spec.homepage      = 'https://github.com/civisanalytics/tableau_api'
   spec.license       = 'BSD-3-Clause'
 
