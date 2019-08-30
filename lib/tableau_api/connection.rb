@@ -1,6 +1,6 @@
 module TableauApi
   class Connection
-    API_VERSION = '2.0'.freeze
+    API_VERSION = '2.8'.freeze
 
     include HTTParty
 
@@ -45,10 +45,14 @@ module TableauApi
     end
 
     def api_post(path, *args)
+      args[0][:headers] = {} unless args[0][:headers]
+      args[0][:headers]['Content-Type'] = 'application/xml'
       api_method(:post, path, *args)
     end
 
     def api_put(path, *args)
+      args[0][:headers] = {} unless args[0][:headers]
+      args[0][:headers]['Content-Type'] = 'application/xml'
       api_method(:put, path, *args)
     end
 
@@ -75,7 +79,8 @@ module TableauApi
       # do not attach auth headers or attempt to signin if we're signing in
       unless path == 'auth/signin'
         args[0] = {} unless args[0]
-        args[0][:headers] = auth_headers
+        args[0][:headers] = {} unless args[0][:headers]
+        args[0][:headers].merge!(auth_headers)
       end
       self.class.send(method, url_for(path), *args)
     end

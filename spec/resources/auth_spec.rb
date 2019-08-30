@@ -11,19 +11,6 @@ describe TableauApi::Resources::Auth do
     )
   end
 
-  it 'can use https', vcr: vcr_options.merge(match_requests_on: [:uri]) do
-    client = TableauApi.new(
-      host: ENV['TABLEAU_HTTPS_HOST'],
-      site_name: 'Default',
-      username: ENV['TABLEAU_ADMIN_USERNAME'],
-      password: ENV['TABLEAU_ADMIN_PASSWORD']
-    )
-
-    client.connection.class.default_options.update(verify: false)
-    expect(client.auth.sign_in).to be true
-    client.connection.class.default_options.update(verify: true)
-  end
-
   # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_concepts_auth.htm%3FTocPath%3DConcepts%7C_____3
   # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Sign_In%3FTocPath%3DAPI%2520Reference%7C_____51
   it 'returns an instance of TableauApi::Resources::Auth' do
@@ -50,7 +37,7 @@ describe TableauApi::Resources::Auth do
   it 'signs into a different site', vcr: vcr_options do
     client = TableauApi.new(
       host: ENV['TABLEAU_HOST'],
-      site_name: 'test',
+      site_name: 'TestSite',
       username: ENV['TABLEAU_ADMIN_USERNAME'],
       password: ENV['TABLEAU_ADMIN_PASSWORD']
     )
@@ -87,7 +74,7 @@ describe TableauApi::Resources::Auth do
         expect(client.auth.sign_in).to be true
       end
       client.auth.instance_variable_set('@token', 'foo')
-      VCR.use_cassette('auth', match_requests_on: [:headers, :path]) do
+      VCR.use_cassette('auth', match_requests_on: %i[headers path]) do
         expect(client.auth.sign_out).to be true
       end
       expect(client.auth.instance_variable_get('@token')).to be nil

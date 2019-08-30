@@ -2,412 +2,233 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:2000/api/2.0/auth/signin
+    uri: http://TABLEAU_HOST/api/2.8/auth/signin
     body:
       encoding: UTF-8
       string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
         contentUrl="TestSite"/></credentials></tsRequest>
     headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
+      Content-Type:
+      - application/xml
   response:
     status:
       code: 200
       message: OK
     headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 15 Sep 2016 16:26:18 GMT
-      Etag:
-      - '"c22e3cdc21f310df9b03c31916330ef2-gzip"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
+      - Mon, 26 Aug 2019 17:11:02 GMT
       P3p:
       - CP="NON"
-      Pragma:
-      - no-cache
       Server:
       - Tableau
       Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.063000'
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
       X-Ua-Compatible:
-      - IE=Edge,chrome=1
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
       Content-Length:
-      - '311'
+      - '441'
       Connection:
       - keep-alive
     body:
-      encoding: ASCII-8BIT
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <credentials token="788804e9a3c833aff6f159ca7094499e">
-            <site id="5a62de1a-5553-447d-a4bd-0977db6a7b3f" contentUrl="TestSite"/>
-            <user id="61e1c6ba-526e-492b-9601-c12e09803c2f"/>
-          </credentials>
-        </tsResponse>
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><credentials token="9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR"><site
+        id="143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84" contentUrl="TestSite"/><user id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></credentials></tsResponse>
     http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:22 GMT
+  recorded_at: Mon, 26 Aug 2019 17:11:02 GMT
 - request:
     method: get
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/projects?pageNumber=1&pageSize=100
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/projects?pageNumber=1&pageSize=100
     body:
       encoding: US-ASCII
       string: ''
     headers:
       X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
   response:
     status:
       code: 200
       message: OK
     headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 15 Sep 2016 16:26:18 GMT
-      Etag:
-      - '"8070b7d4cb4e10f0baa2dd7e9b82d34b"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
+      - Mon, 26 Aug 2019 17:11:02 GMT
       P3p:
       - CP="NON"
-      Pragma:
-      - no-cache
       Server:
       - Tableau
       Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.047000'
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
       X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '582'
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <pagination pageNumber="1" pageSize="100" totalAvailable="2"/>
-          <projects>
-            <project id="6f193d41-e7d7-4fec-bf81-96117e0da230" name="default" description="The default project that was automatically created by Tableau."/>
-            <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test" description=""/>
-          </projects>
-        </tsResponse>
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><pagination pageNumber="1" pageSize="100"
+        totalAvailable="3"/><projects><project id="53913766-46e9-4c2f-8aac-7c66bbfae6fe"
+        name="Default" description="The default project that was automatically created
+        by Tableau." createdAt="2019-08-16T17:04:20Z" updatedAt="2019-08-16T17:04:20Z"
+        contentPermissions="ManagedByOwner"><owner id="f7fcafcf-ff21-4c64-9e69-6f79226cbf24"/></project><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test" description="" createdAt="2019-08-19T20:43:22Z"
+        updatedAt="2019-08-19T20:43:22Z" contentPermissions="ManagedByOwner"><owner
+        id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></project><project id="8fc159dc-54af-40f9-9004-d9c2e5941392"
+        name="test_project" description="" createdAt="2019-08-21T01:40:53Z" updatedAt="2019-08-21T01:40:53Z"
+        contentPermissions="ManagedByOwner"><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></project></projects></tsResponse>
     http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:23 GMT
+  recorded_at: Mon, 26 Aug 2019 17:11:02 GMT
 - request:
     method: get
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/users/61e1c6ba-526e-492b-9601-c12e09803c2f/workbooks?pageNumber=1&pageSize=100
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/users/5f8300e7-4f2a-4deb-9d32-6e0845d18890/workbooks?pageNumber=1&pageSize=100
     body:
       encoding: US-ASCII
       string: ''
     headers:
       X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
   response:
     status:
       code: 200
       message: OK
     headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 15 Sep 2016 16:26:18 GMT
-      Etag:
-      - '"7684737d8847eecfc627d81d9dbc88e7"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
+      - Mon, 26 Aug 2019 17:11:02 GMT
       P3p:
       - CP="NON"
-      Pragma:
-      - no-cache
       Server:
       - Tableau
       Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.094000'
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
       X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '1242'
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <pagination pageNumber="1" pageSize="100" totalAvailable="3"/>
-          <workbooks>
-            <workbook id="625d94e0-8f2d-4092-8962-a4dec6a96fe5" name="test pagination1" contentUrl="testpagination1" showTabs="true">
-              <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-              <owner id="e408f778-3708-4685-b7f9-100b584a02aa"/>
-              <tags>
-              </tags>
-            </workbook>
-            <workbook id="0065d5ee-1b55-4f44-9478-02400c7183de" name="test pagination2" contentUrl="testpagination2" showTabs="true">
-              <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-              <owner id="e1b91057-9cd9-4009-b6c9-cd18f1dc3fb4"/>
-              <tags>
-              </tags>
-            </workbook>
-            <workbook id="3e67fa0f-32f2-4071-b119-b2bfc0aa3eff" name="test pagination3" contentUrl="testpagination3" showTabs="true">
-              <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-              <owner id="e408f778-3708-4685-b7f9-100b584a02aa"/>
-              <tags>
-              </tags>
-            </workbook>
-          </workbooks>
-        </tsResponse>
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><pagination pageNumber="1" pageSize="100"
+        totalAvailable="4"/><workbooks><workbook id="ad9ba774-008e-4849-94fb-2e597c13c5a7"
+        name="test pagination1" contentUrl="testpagination1" showTabs="false" size="1"
+        createdAt="2019-08-19T20:54:37Z" updatedAt="2019-08-19T21:02:41Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook><workbook
+        id="d523f7fa-64c8-40c8-b8fd-d5e9488c4bc4" name="test pagination2" contentUrl="testpagination2"
+        showTabs="false" size="1" createdAt="2019-08-19T20:54:37Z" updatedAt="2019-08-19T21:02:42Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook><workbook
+        id="689c0c06-6d66-4b0d-ae6b-d9eacbff6e45" name="test pagination3" contentUrl="testpagination3"
+        showTabs="false" size="1" createdAt="2019-08-19T20:54:38Z" updatedAt="2019-08-19T21:02:42Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook><workbook
+        id="db548c7d-1ffd-40c4-8398-0292594b2d4f" name="testpublish" contentUrl="testpublish"
+        showTabs="false" size="1" createdAt="2019-08-26T17:08:07Z" updatedAt="2019-08-26T17:08:07Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook></workbooks></tsResponse>
     http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:23 GMT
+  recorded_at: Mon, 26 Aug 2019 17:11:03 GMT
 - request:
-    method: post
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks?overwrite=true
+    method: get
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        LS0tLS0tLS0tLS0tLVJ1YnlNdWx0aXBhcnRQb3N0DQpDb250ZW50LURpc3Bv
-        c2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9InJlcXVlc3RfcGF5bG9hZCINCkNv
-        bnRlbnQtVHlwZTogdGV4dC94bWwNCg0KPHRzUmVxdWVzdD48d29ya2Jvb2sg
-        bmFtZT0idGVzdHB1Ymxpc2giIHNob3dUYWJzPSJmYWxzZSI+PHByb2plY3Qg
-        aWQ9IjU3MDU4ZThlLTMzNjMtNGRlOS1hMDNiLTVlNzQwMTkzMzA3MyIvPjwv
-        d29ya2Jvb2s+PC90c1JlcXVlc3Q+DQotLS0tLS0tLS0tLS0tUnVieU11bHRp
-        cGFydFBvc3QNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFt
-        ZT0idGFibGVhdV93b3JrYm9vayI7IGZpbGVuYW1lPSJ0ZXN0LnR3YngiDQpD
-        b250ZW50LUxlbmd0aDogMjkzMA0KQ29udGVudC1UeXBlOiBhcHBsaWNhdGlv
-        bi9vY3RldC1zdHJlYW0NCkNvbnRlbnQtVHJhbnNmZXItRW5jb2Rpbmc6IGJp
-        bmFyeQ0KDQpQSwMEFAAGAAgAMYlZSJ9/2wV2CgAAjiAAAAkAAABCb29rOS50
-        d2LtWmmP4kgS/T7S/AevVlrvigHb3PSaGpmjOJqjuKlqjVaJnRiDL+y0OX79
-        RtoYG6qrqqe3RyvtDh+6yCNeRka8zIwIWvz1aOiMjx1Xs8wqK2R4lsGmbCma
-        qVZZj6zTZZb59eHnn37+STxYzm5lWTvGtTxHxmlbR2RtOUaVNZDMxiAVCgKw
-        pvvJc7FTZTeE2J847nA4ZAha6Rh5rrUmB+TgjGwZHEzl6EQWlmEY8S/pNLPy
-        NF1hKjzPZ4Rihs/y5YyQLfDMB590OoSwHbzGDuwDu0EHoMZdjIkMDHvTMtFG
-        M+4G6+vMBmvqhsBGkO7BhGyeZbj3xL8uVYykRC5eM1RDVBBBofGuesVdjIxs
-        EniBYBfU0ExdM0EP4niYvShN8JG4MjIz+Ww+W8iUhHxZKJWECljqzgEXxWHn
-        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
-        wotkX8x5Uf3svxSG4x1Wx8/8aGzh5+xwu39pq91lrzsGUL4mbcGo/VGneWxo
-        zaVezJUaHmqrj4sIr7d13103Wu8jXSO8pM4fy/bKK26rV5Sn2qbS2R76tl47
-        TJv1mnT1R/7YdfFMGE4v+2qoWgcp++xULkuV+q5ktZa7lOp50877trzXb1me
-        Sc/e6U17c/UX/jA49/fwA9/ZPvkDZb32Wu3z0Z9jidtf7TfIpXIFs1JWuJRj
-        8jxZPh6tTVnBOZ+rLyd2c8l1a8d6abBtcIVzf1yfCUtS/pxb1cwUHjrCaL7g
-        S4pfb0T6redumyeDWqFwqCmLtXHiB73K2FxxsrMhh7KMn54qQqGE5vP5oMzl
-        8rvxk12c1CS1YZ05Tm8vhfl8WOqVIjxPXnuLRwdhP4X9qb+ckyW/OfbPJ2Wn
-        jvL1Im+7qSddmBP8VPNOqUq255zVtbffGzvD35rz0+HQGo56swhvp5T6J2QY
-        e2QNjGwxr7QF65Qvjsk+u8+VuZT+suvL6sTq5IlZKHr71bPiZ881PjsaOidv
-        d17PPGno9PYRnueniv2ilJM7TUnBi7UPMmgrlWv7w04ik/HxeXmGvQqQbbut
-        SX4EwP3VeKcgxTOGy6eTwJm9tq6WIzyH3/K9UXt/7u51Q3ia+kK2OPTXDaWI
-        V7aRba8qKb63bc67kj6a51G2NDgu5stlOX/iDE7nyHqd69pgwwhPrRBf2HDF
-        7aEmvHhbPE4V7b236vPjdXtbhonrReppPW3hE0Z74qRS/X5u/Iwb9cdKq6T0
-        XAvj9ZP5uRjh7dE+u5yS58IRIXtVyYFH8ufyipcHUkXCznOu1z4KldSL0bPz
-        69zW5V8AYNE787UFlnSZSCPHOsu5YYTH+Y+mM89X5GGuWMGk3O+2U90ZnPvm
-        wHrvPrk/mxHet9xF97Jfk4nw7u8xKpsaK6OXUj+L+anRpHe/VOuOZ4Wms+uq
-        qlqthrIQHEXvzuVRurbpOxRGR/S/FUDj31BLAwQUAAYACADpiFlIebO7uw4A
-        AAAMAAAAFwAAAERhdGEvRG9jdW1lbnRzL3Rlc3QuY3N2S9RJ0knmMtQx0jHm
-        AgBQSwECAAAUAAYACAAxiVlIn3/bBXYKAACOIAAACQAAAAAAAAABAAAAAAAA
-        AAAAQm9vazkudHdiUEsBAgAAFAAGAAgA6YhZSHmzu7sOAAAADAAAABcAAAAA
-        AAAAAQAAAAAAnQoAAERhdGEvRG9jdW1lbnRzL3Rlc3QuY3N2UEsFBgAAAAAC
-        AAIAfAAAAOAKAAAAAA0KLS0tLS0tLS0tLS0tLVJ1YnlNdWx0aXBhcnRQb3N0
-        LS0NCg0K
+      encoding: US-ASCII
+      string: ''
     headers:
       X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-      Content-Type:
-      - multipart/mixed; boundary=-----------RubyMultipartPost
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-      Content-Length:
-      - '3426'
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
   response:
     status:
-      code: 201
-      message: Created
+      code: 200
+      message: OK
     headers:
-      Cache-Control:
-      - no-cache
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 15 Sep 2016 16:26:19 GMT
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
+      - Mon, 26 Aug 2019 17:11:02 GMT
       P3p:
       - CP="NON"
-      Pragma:
-      - no-cache
       Server:
       - Tableau
       Vary:
-      - "*"
-      X-Runtime:
-      - '0.842000'
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
       X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '669'
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <workbook id="fcfe9754-d49e-401b-a485-bcc47fcdc198" name="testpublish" contentUrl="testpublish" showTabs="false">
-            <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-            <owner id="61e1c6ba-526e-492b-9601-c12e09803c2f"/>
-            <tags>
-            </tags>
-            <views>
-              <view id="496a0ea3-6622-4243-b16e-04a33809c9fb" name="Sheet 1" contentUrl="testpublish/sheets/Sheet1"/>
-            </views>
-          </workbook>
-        </tsResponse>
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><workbook id="db548c7d-1ffd-40c4-8398-0292594b2d4f"
+        name="testpublish" contentUrl="testpublish" showTabs="false" size="1" createdAt="2019-08-26T17:08:07Z"
+        updatedAt="2019-08-26T17:08:07Z"><project id="2ec210d7-099f-47f5-ad57-646461b47e59"
+        name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/><views><view
+        id="d1efd35f-7cd6-44f2-9f32-23df1a3771e0" name="Sheet 1" contentUrl="testpublish/sheets/Sheet1"
+        createdAt="2019-08-26T17:08:07Z" updatedAt="2019-08-26T17:08:15Z"><tags/></view></views></workbook></tsResponse>
     http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:24 GMT
+  recorded_at: Mon, 26 Aug 2019 17:11:03 GMT
 - request:
     method: post
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks?overwrite=true
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks?overwrite=true
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        LS0tLS0tLS0tLS0tLVJ1YnlNdWx0aXBhcnRQb3N0DQpDb250ZW50LURpc3Bv
-        c2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9InJlcXVlc3RfcGF5bG9hZCINCkNv
-        bnRlbnQtVHlwZTogdGV4dC94bWwNCg0KPHRzUmVxdWVzdD48d29ya2Jvb2sg
-        bmFtZT0idGFibGVhdV9hcGkgdGVzdCIgc2hvd1RhYnM9ImZhbHNlIj48cHJv
-        amVjdCBpZD0iZm9vIi8+PC93b3JrYm9vaz48L3RzUmVxdWVzdD4NCi0tLS0t
-        LS0tLS0tLS1SdWJ5TXVsdGlwYXJ0UG9zdA0KQ29udGVudC1EaXNwb3NpdGlv
-        bjogZm9ybS1kYXRhOyBuYW1lPSJ0YWJsZWF1X3dvcmtib29rIjsgZmlsZW5h
-        bWU9InRlc3QudHdieCINCkNvbnRlbnQtTGVuZ3RoOiAyOTMwDQpDb250ZW50
-        LVR5cGU6IGFwcGxpY2F0aW9uL29jdGV0LXN0cmVhbQ0KQ29udGVudC1UcmFu
-        c2Zlci1FbmNvZGluZzogYmluYXJ5DQoNClBLAwQUAAYACAAxiVlIn3/bBXYK
-        AACOIAAACQAAAEJvb2s5LnR3Yu1aaY/iSBL9PtL8B69WWu+KAdvc9JoamaM4
-        mqO4qWqNVomdGIMv7LQ5fv1G2hgbqquqp7dHK+0OH7rII15GRrzMjAha/PVo
-        6IyPHVezzCorZHiWwaZsKZqpVlmPrNNllvn14eeffv5JPFjObmVZO8a1PEfG
-        aVtHZG05RpU1kMzGIBUKArCm+8lzsVNlN4TYnzjucDhkCFrpGHmutSYH5OCM
-        bBkcTOXoRBaWYRjxL+k0s/I0XWEqPM9nhGKGz/LljJAt8MwHn3Q6hLAdvMYO
-        7AO7QQegxl2MiQwMe9My0UYz7gbr68wGa+qGwEaQ7sGEbJ5luPfEvy5VjKRE
-        Ll4zVENUEEGh8a56xV2MjGwSeIFgF9TQTF0zQQ/ieJi9KE3wkbgyMjP5bD5b
-        yJSEfFkolYQKWOrOARfFYeeyZZpYpsiMrCPXBcQLCssomgNDlnOqsg3QjWtY
-        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
-        UnVieU11bHRpcGFydFBvc3QtLQ0KDQo=
+        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
     headers:
       X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
       Content-Type:
-      - multipart/mixed; boundary=-----------RubyMultipartPost
+      - multipart/mixed; boundary=--3e0b1168-dd24-4943-bb0b-90499339c89e
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -415,1622 +236,1713 @@ http_interactions:
       User-Agent:
       - Ruby
       Content-Length:
-      - '3398'
+      - '5035'
   response:
     status:
       code: 404
       message: Not Found
     headers:
-      Cache-Control:
-      - no-cache
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 15 Sep 2016 16:26:19 GMT
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
+      - Mon, 26 Aug 2019 17:11:02 GMT
       P3p:
       - CP="NON"
-      Pragma:
-      - no-cache
       Server:
       - Tableau
-      Vary:
-      - "*"
-      X-Runtime:
-      - '0.062000'
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
       X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '389'
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <error code="404005">
-            <summary>Resource Not Found</summary>
-            <detail>Project 'foo' could not be found.</detail>
-          </error>
-        </tsResponse>
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><error code="404005"><summary>Resource
+        Not Found</summary><detail>Project 'foo' could not be found.</detail></error></tsResponse>
     http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:24 GMT
+  recorded_at: Mon, 26 Aug 2019 17:11:03 GMT
 - request:
     method: get
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/users?pageNumber=1&pageSize=100
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/users?pageNumber=1&pageSize=100
     body:
       encoding: US-ASCII
       string: ''
     headers:
       X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
   response:
     status:
       code: 200
       message: OK
     headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 15 Sep 2016 16:26:19 GMT
-      Etag:
-      - '"a6e916256b03f9b8191c6794971f08a1"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
+      - Mon, 26 Aug 2019 17:11:02 GMT
       P3p:
       - CP="NON"
-      Pragma:
-      - no-cache
       Server:
       - Tableau
       Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.078000'
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
       X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '2375'
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <pagination pageNumber="1" pageSize="100" totalAvailable="3"/>
-          <users>
-                <user id="61e1c6ba-526e-492b-9601-c12e09803c2f" name="<TABLEAU_ADMIN_USERNAME>" siteRole="ServerAdministrator" externalAuthUserId="" lastLogin="2016-09-15T16:26:18Z"/>
-            <user id="06e593e5-0675-4374-9488-d07e3cab2c72" name="guest" siteRole="Guest" externalAuthUserId=""/>
-            <user id="e1b91057-9cd9-4009-b6c9-cd18f1dc3fb4" name="test" siteRole="Viewer" externalAuthUserId="" lastLogin="2016-06-30T17:47:07Z"/>
-                                          </users>
-        </tsResponse>
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><pagination pageNumber="1" pageSize="100"
+        totalAvailable="2"/><users><user id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"
+        name="<TABLEAU_ADMIN_USERNAME>" siteRole="ServerAdministrator" lastLogin="2019-08-26T17:09:59Z"
+        externalAuthUserId=""/><user id="28ea0228-b9f6-45d7-8727-ad192feb3677" name="test"
+        siteRole="Publisher" externalAuthUserId=""/></users></tsResponse>
     http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:25 GMT
+  recorded_at: Mon, 26 Aug 2019 17:11:03 GMT
 - request:
     method: put
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/fcfe9754-d49e-401b-a485-bcc47fcdc198/permissions
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f/permissions
     body:
       encoding: UTF-8
-      string: <tsRequest><permissions><workbook id="fcfe9754-d49e-401b-a485-bcc47fcdc198"/><granteeCapabilities><user
-        id="61e1c6ba-526e-492b-9601-c12e09803c2f"/><capabilities><capability name="Read"
+      string: <tsRequest><permissions><workbook id="db548c7d-1ffd-40c4-8398-0292594b2d4f"/><granteeCapabilities><user
+        id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><capabilities><capability name="Read"
         mode="Allow"/><capability name="ChangePermissions" mode="Deny"/></capabilities></granteeCapabilities></permissions></tsRequest>
     headers:
+      Content-Type:
+      - application/xml
       X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
   response:
     status:
       code: 200
       message: OK
     headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 15 Sep 2016 16:26:19 GMT
-      Etag:
-      - '"ba546e1086b317ecc57102dc64bff05d"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
+      - Mon, 26 Aug 2019 17:11:03 GMT
       P3p:
       - CP="NON"
-      Pragma:
-      - no-cache
       Server:
       - Tableau
       Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.125000'
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
       X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '1112'
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <permissions>
-            <workbook id="fcfe9754-d49e-401b-a485-bcc47fcdc198" name="testpublish">
-              <owner id="61e1c6ba-526e-492b-9601-c12e09803c2f"/>
-            </workbook>
-            <granteeCapabilities>
-              <group id="68aa4ff3-61c1-484c-9f23-fb71a8b92444"/>
-              <capabilities>
-                <capability name="Read" mode="Allow"/>
-                <capability name="ExportData" mode="Allow"/>
-                <capability name="ViewComments" mode="Allow"/>
-                <capability name="AddComment" mode="Allow"/>
-                <capability name="ExportImage" mode="Allow"/>
-              </capabilities>
-            </granteeCapabilities>
-            <granteeCapabilities>
-              <user id="61e1c6ba-526e-492b-9601-c12e09803c2f"/>
-              <capabilities>
-                <capability name="ChangePermissions" mode="Deny"/>
-                <capability name="Read" mode="Allow"/>
-              </capabilities>
-            </granteeCapabilities>
-          </permissions>
-        </tsResponse>
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><permissions><workbook id="db548c7d-1ffd-40c4-8398-0292594b2d4f"
+        name="testpublish"><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></workbook><granteeCapabilities><group
+        id="6133215d-51ee-4ab8-bfd5-4690a0d67aa4"/><capabilities><capability name="ExportImage"
+        mode="Allow"/><capability name="ShareView" mode="Allow"/><capability name="Read"
+        mode="Allow"/><capability name="Write" mode="Allow"/><capability name="ViewUnderlyingData"
+        mode="Allow"/><capability name="Filter" mode="Allow"/><capability name="ViewComments"
+        mode="Allow"/><capability name="ExportData" mode="Allow"/><capability name="AddComment"
+        mode="Allow"/></capabilities></granteeCapabilities><granteeCapabilities><user
+        id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><capabilities><capability name="Read"
+        mode="Allow"/><capability name="ChangePermissions" mode="Deny"/></capabilities></granteeCapabilities></permissions></tsResponse>
     http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:25 GMT
+  recorded_at: Mon, 26 Aug 2019 17:11:03 GMT
 - request:
     method: get
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/groups?pageNumber=1&pageSize=100
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/groups?pageNumber=1&pageSize=100
     body:
       encoding: US-ASCII
       string: ''
     headers:
       X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
   response:
     status:
       code: 200
       message: OK
     headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 15 Sep 2016 16:26:21 GMT
-      Etag:
-      - '"678f901d2b3f0b239cebf0767ad3ccef"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
+      - Mon, 26 Aug 2019 17:11:03 GMT
       P3p:
       - CP="NON"
-      Pragma:
-      - no-cache
       Server:
       - Tableau
       Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.062000'
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
       X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '679'
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <pagination pageNumber="1" pageSize="100" totalAvailable="3"/>
-          <groups>
-            <group id="68aa4ff3-61c1-484c-9f23-fb71a8b92444" name="All Users">
-              <domain name="local"/>
-            </group>
-            <group id="03c46e84-f051-49dc-8ed7-2b58b071bbd0" name="test">
-              <domain name="local"/>
-            </group>
-            <group id="ba55f0dc-3378-4365-8289-08f3e82bc38a" name="testgroup">
-              <domain name="local"/>
-            </group>
-          </groups>
-        </tsResponse>
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><pagination pageNumber="1" pageSize="100"
+        totalAvailable="2"/><groups><group id="6133215d-51ee-4ab8-bfd5-4690a0d67aa4"
+        name="All Users"><domain name="local"/></group><group id="7302a13c-e8ec-4cfe-8972-d76ace3bf445"
+        name="testgroup"><domain name="local"/></group></groups></tsResponse>
     http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:25 GMT
+  recorded_at: Mon, 26 Aug 2019 17:11:04 GMT
 - request:
     method: put
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/fcfe9754-d49e-401b-a485-bcc47fcdc198/permissions
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f/permissions
     body:
       encoding: UTF-8
-      string: <tsRequest><permissions><workbook id="fcfe9754-d49e-401b-a485-bcc47fcdc198"/><granteeCapabilities><group
-        id="ba55f0dc-3378-4365-8289-08f3e82bc38a"/><capabilities><capability name="Read"
+      string: <tsRequest><permissions><workbook id="db548c7d-1ffd-40c4-8398-0292594b2d4f"/><granteeCapabilities><group
+        id="7302a13c-e8ec-4cfe-8972-d76ace3bf445"/><capabilities><capability name="Read"
         mode="Allow"/><capability name="ChangePermissions" mode="Deny"/></capabilities></granteeCapabilities></permissions></tsRequest>
     headers:
+      Content-Type:
+      - application/xml
       X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
   response:
     status:
       code: 200
       message: OK
     headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 15 Sep 2016 16:26:21 GMT
-      Etag:
-      - '"a157ddcd49d97a7feaeb4ff5850d564a"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
+      - Mon, 26 Aug 2019 17:11:03 GMT
       P3p:
       - CP="NON"
-      Pragma:
-      - no-cache
       Server:
       - Tableau
       Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.156000'
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
       X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '1371'
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <permissions>
-            <workbook id="fcfe9754-d49e-401b-a485-bcc47fcdc198" name="testpublish">
-              <owner id="61e1c6ba-526e-492b-9601-c12e09803c2f"/>
-            </workbook>
-            <granteeCapabilities>
-              <group id="68aa4ff3-61c1-484c-9f23-fb71a8b92444"/>
-              <capabilities>
-                <capability name="Read" mode="Allow"/>
-                <capability name="ExportData" mode="Allow"/>
-                <capability name="ViewComments" mode="Allow"/>
-                <capability name="AddComment" mode="Allow"/>
-                <capability name="ExportImage" mode="Allow"/>
-              </capabilities>
-            </granteeCapabilities>
-            <granteeCapabilities>
-              <group id="ba55f0dc-3378-4365-8289-08f3e82bc38a"/>
-              <capabilities>
-                <capability name="ChangePermissions" mode="Deny"/>
-                <capability name="Read" mode="Allow"/>
-              </capabilities>
-            </granteeCapabilities>
-            <granteeCapabilities>
-              <user id="61e1c6ba-526e-492b-9601-c12e09803c2f"/>
-              <capabilities>
-                <capability name="ChangePermissions" mode="Deny"/>
-                <capability name="Read" mode="Allow"/>
-              </capabilities>
-            </granteeCapabilities>
-          </permissions>
-        </tsResponse>
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><permissions><workbook id="db548c7d-1ffd-40c4-8398-0292594b2d4f"
+        name="testpublish"><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></workbook><granteeCapabilities><group
+        id="6133215d-51ee-4ab8-bfd5-4690a0d67aa4"/><capabilities><capability name="ExportImage"
+        mode="Allow"/><capability name="ShareView" mode="Allow"/><capability name="Read"
+        mode="Allow"/><capability name="Write" mode="Allow"/><capability name="ViewUnderlyingData"
+        mode="Allow"/><capability name="Filter" mode="Allow"/><capability name="ViewComments"
+        mode="Allow"/><capability name="ExportData" mode="Allow"/><capability name="AddComment"
+        mode="Allow"/></capabilities></granteeCapabilities><granteeCapabilities><group
+        id="7302a13c-e8ec-4cfe-8972-d76ace3bf445"/><capabilities><capability name="Read"
+        mode="Allow"/><capability name="ChangePermissions" mode="Deny"/></capabilities></granteeCapabilities><granteeCapabilities><user
+        id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><capabilities><capability name="Read"
+        mode="Allow"/><capability name="ChangePermissions" mode="Deny"/></capabilities></granteeCapabilities></permissions></tsResponse>
     http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:25 GMT
-- request:
-    method: delete
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/fcfe9754-d49e-401b-a485-bcc47fcdc198/permissions/users/61e1c6ba-526e-492b-9601-c12e09803c2f/Read/ALLOW
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 204
-      message: No Content
-    headers:
-      Cache-Control:
-      - no-cache
-      Content-Length:
-      - '0'
-      Date:
-      - Thu, 15 Sep 2016 16:26:21 GMT
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*"
-      X-Runtime:
-      - '0.063000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: ''
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:26 GMT
-- request:
-    method: delete
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/fcfe9754-d49e-401b-a485-bcc47fcdc198/permissions/groups/ba55f0dc-3378-4365-8289-08f3e82bc38a/Read/ALLOW
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 204
-      message: No Content
-    headers:
-      Cache-Control:
-      - no-cache
-      Content-Length:
-      - '0'
-      Date:
-      - Thu, 15 Sep 2016 16:26:21 GMT
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*"
-      X-Runtime:
-      - '0.078000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: ''
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:26 GMT
-- request:
-    method: delete
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/fcfe9754-d49e-401b-a485-bcc47fcdc198/permissions/groups/68aa4ff3-61c1-484c-9f23-fb71a8b92444/ExportImage/ALLOW
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 204
-      message: No Content
-    headers:
-      Cache-Control:
-      - no-cache
-      Content-Length:
-      - '0'
-      Date:
-      - Thu, 15 Sep 2016 16:26:22 GMT
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*"
-      X-Runtime:
-      - '0.078000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: ''
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:26 GMT
-- request:
-    method: get
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/groups?pageNumber=1&pageSize=100
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Content-Type:
-      - application/xml;charset=utf-8
-      Date:
-      - Thu, 15 Sep 2016 16:26:22 GMT
-      Etag:
-      - '"678f901d2b3f0b239cebf0767ad3ccef"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.062000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '679'
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <pagination pageNumber="1" pageSize="100" totalAvailable="3"/>
-          <groups>
-            <group id="68aa4ff3-61c1-484c-9f23-fb71a8b92444" name="All Users">
-              <domain name="local"/>
-            </group>
-            <group id="03c46e84-f051-49dc-8ed7-2b58b071bbd0" name="test">
-              <domain name="local"/>
-            </group>
-            <group id="ba55f0dc-3378-4365-8289-08f3e82bc38a" name="testgroup">
-              <domain name="local"/>
-            </group>
-          </groups>
-        </tsResponse>
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:27 GMT
-- request:
-    method: get
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/fcfe9754-d49e-401b-a485-bcc47fcdc198/permissions
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Content-Type:
-      - application/xml;charset=utf-8
-      Date:
-      - Thu, 15 Sep 2016 16:26:22 GMT
-      Etag:
-      - '"94784f8f8dfac2df9c62db9bc5379d92"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.078000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '1223'
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <permissions>
-            <workbook id="fcfe9754-d49e-401b-a485-bcc47fcdc198" name="testpublish">
-              <owner id="61e1c6ba-526e-492b-9601-c12e09803c2f"/>
-            </workbook>
-            <granteeCapabilities>
-              <group id="68aa4ff3-61c1-484c-9f23-fb71a8b92444"/>
-              <capabilities>
-                <capability name="Read" mode="Allow"/>
-                <capability name="ExportData" mode="Allow"/>
-                <capability name="ViewComments" mode="Allow"/>
-                <capability name="AddComment" mode="Allow"/>
-              </capabilities>
-            </granteeCapabilities>
-            <granteeCapabilities>
-              <group id="ba55f0dc-3378-4365-8289-08f3e82bc38a"/>
-              <capabilities>
-                <capability name="ChangePermissions" mode="Deny"/>
-              </capabilities>
-            </granteeCapabilities>
-            <granteeCapabilities>
-              <user id="61e1c6ba-526e-492b-9601-c12e09803c2f"/>
-              <capabilities>
-                <capability name="ChangePermissions" mode="Deny"/>
-              </capabilities>
-            </granteeCapabilities>
-          </permissions>
-        </tsResponse>
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:27 GMT
-- request:
-    method: delete
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/fcfe9754-d49e-401b-a485-bcc47fcdc198/permissions/groups/68aa4ff3-61c1-484c-9f23-fb71a8b92444/ExportData/ALLOW
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 204
-      message: No Content
-    headers:
-      Cache-Control:
-      - no-cache
-      Content-Length:
-      - '0'
-      Date:
-      - Thu, 15 Sep 2016 16:26:22 GMT
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*"
-      X-Runtime:
-      - '0.063000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: ''
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:27 GMT
-- request:
-    method: delete
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/fcfe9754-d49e-401b-a485-bcc47fcdc198/permissions/groups/68aa4ff3-61c1-484c-9f23-fb71a8b92444/ViewComments/ALLOW
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 204
-      message: No Content
-    headers:
-      Cache-Control:
-      - no-cache
-      Content-Length:
-      - '0'
-      Date:
-      - Thu, 15 Sep 2016 16:26:23 GMT
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*"
-      X-Runtime:
-      - '0.046000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: ''
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:27 GMT
-- request:
-    method: delete
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/fcfe9754-d49e-401b-a485-bcc47fcdc198/permissions/groups/68aa4ff3-61c1-484c-9f23-fb71a8b92444/AddComment/ALLOW
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 204
-      message: No Content
-    headers:
-      Cache-Control:
-      - no-cache
-      Content-Length:
-      - '0'
-      Date:
-      - Thu, 15 Sep 2016 16:26:23 GMT
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*"
-      X-Runtime:
-      - '0.047000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: ''
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:28 GMT
-- request:
-    method: delete
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/fcfe9754-d49e-401b-a485-bcc47fcdc198/permissions/groups/ba55f0dc-3378-4365-8289-08f3e82bc38a/ChangePermissions/DENY
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 204
-      message: No Content
-    headers:
-      Cache-Control:
-      - no-cache
-      Content-Length:
-      - '0'
-      Date:
-      - Thu, 15 Sep 2016 16:26:23 GMT
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*"
-      X-Runtime:
-      - '0.063000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: ''
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:28 GMT
-- request:
-    method: delete
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/fcfe9754-d49e-401b-a485-bcc47fcdc198/permissions/users/61e1c6ba-526e-492b-9601-c12e09803c2f/ChangePermissions/DENY
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 204
-      message: No Content
-    headers:
-      Cache-Control:
-      - no-cache
-      Content-Length:
-      - '0'
-      Date:
-      - Thu, 15 Sep 2016 16:26:23 GMT
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*"
-      X-Runtime:
-      - '0.078000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: ''
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:28 GMT
-- request:
-    method: get
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/fcfe9754-d49e-401b-a485-bcc47fcdc198/permissions
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Content-Type:
-      - application/xml;charset=utf-8
-      Date:
-      - Thu, 15 Sep 2016 16:26:23 GMT
-      Etag:
-      - '"e347271996a27e5820a7106db8882bb3"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.062000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '639'
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <permissions>
-            <workbook id="fcfe9754-d49e-401b-a485-bcc47fcdc198" name="testpublish">
-              <owner id="61e1c6ba-526e-492b-9601-c12e09803c2f"/>
-            </workbook>
-            <granteeCapabilities>
-              <group id="68aa4ff3-61c1-484c-9f23-fb71a8b92444"/>
-              <capabilities>
-                <capability name="Read" mode="Allow"/>
-              </capabilities>
-            </granteeCapabilities>
-          </permissions>
-        </tsResponse>
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:28 GMT
-- request:
-    method: get
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/users/61e1c6ba-526e-492b-9601-c12e09803c2f/workbooks?pageNumber=1&pageSize=100
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Content-Type:
-      - application/xml;charset=utf-8
-      Date:
-      - Thu, 15 Sep 2016 16:26:24 GMT
-      Etag:
-      - '"f50e793012e850edada52b5a7e2cd9b3"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.125000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '1531'
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <pagination pageNumber="1" pageSize="100" totalAvailable="4"/>
-          <workbooks>
-            <workbook id="3e67fa0f-32f2-4071-b119-b2bfc0aa3eff" name="test pagination3" contentUrl="testpagination3" showTabs="true">
-              <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-              <owner id="e408f778-3708-4685-b7f9-100b584a02aa"/>
-              <tags>
-              </tags>
-            </workbook>
-            <workbook id="0065d5ee-1b55-4f44-9478-02400c7183de" name="test pagination2" contentUrl="testpagination2" showTabs="true">
-              <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-              <owner id="e1b91057-9cd9-4009-b6c9-cd18f1dc3fb4"/>
-              <tags>
-              </tags>
-            </workbook>
-            <workbook id="625d94e0-8f2d-4092-8962-a4dec6a96fe5" name="test pagination1" contentUrl="testpagination1" showTabs="true">
-              <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-              <owner id="e408f778-3708-4685-b7f9-100b584a02aa"/>
-              <tags>
-              </tags>
-            </workbook>
-            <workbook id="fcfe9754-d49e-401b-a485-bcc47fcdc198" name="testpublish" contentUrl="testpublish" showTabs="false">
-              <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-              <owner id="61e1c6ba-526e-492b-9601-c12e09803c2f"/>
-              <tags>
-              </tags>
-            </workbook>
-          </workbooks>
-        </tsResponse>
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:29 GMT
-- request:
-    method: get
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/users/61e1c6ba-526e-492b-9601-c12e09803c2f/workbooks?pageNumber=1&pageSize=100
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Content-Type:
-      - application/xml;charset=utf-8
-      Date:
-      - Thu, 15 Sep 2016 16:26:24 GMT
-      Etag:
-      - '"f50e793012e850edada52b5a7e2cd9b3"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.125000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '1531'
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <pagination pageNumber="1" pageSize="100" totalAvailable="4"/>
-          <workbooks>
-            <workbook id="3e67fa0f-32f2-4071-b119-b2bfc0aa3eff" name="test pagination3" contentUrl="testpagination3" showTabs="true">
-              <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-              <owner id="e408f778-3708-4685-b7f9-100b584a02aa"/>
-              <tags>
-              </tags>
-            </workbook>
-            <workbook id="0065d5ee-1b55-4f44-9478-02400c7183de" name="test pagination2" contentUrl="testpagination2" showTabs="true">
-              <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-              <owner id="e1b91057-9cd9-4009-b6c9-cd18f1dc3fb4"/>
-              <tags>
-              </tags>
-            </workbook>
-            <workbook id="625d94e0-8f2d-4092-8962-a4dec6a96fe5" name="test pagination1" contentUrl="testpagination1" showTabs="true">
-              <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-              <owner id="e408f778-3708-4685-b7f9-100b584a02aa"/>
-              <tags>
-              </tags>
-            </workbook>
-            <workbook id="fcfe9754-d49e-401b-a485-bcc47fcdc198" name="testpublish" contentUrl="testpublish" showTabs="false">
-              <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-              <owner id="61e1c6ba-526e-492b-9601-c12e09803c2f"/>
-              <tags>
-              </tags>
-            </workbook>
-          </workbooks>
-        </tsResponse>
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:29 GMT
-- request:
-    method: get
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/625d94e0-8f2d-4092-8962-a4dec6a96fe5
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Content-Type:
-      - application/xml;charset=utf-8
-      Date:
-      - Thu, 15 Sep 2016 16:26:24 GMT
-      Etag:
-      - '"2708517e284ba5b3c6c94ccce11713b4"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.062000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '795'
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <workbook id="625d94e0-8f2d-4092-8962-a4dec6a96fe5" name="test pagination1" contentUrl="testpagination1" showTabs="true">
-            <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-            <owner id="e408f778-3708-4685-b7f9-100b584a02aa"/>
-            <tags>
-            </tags>
-            <views>
-              <view id="4dc34e29-5b4b-485b-80c8-325d4f1631a9" name="Sheet 1" contentUrl="testpagination1/sheets/Sheet1"/>
-              <view id="de99e611-e6be-482b-9496-ef18ef7d81cd" name="Sheet 2" contentUrl="testpagination1/sheets/Sheet2"/>
-            </views>
-          </workbook>
-        </tsResponse>
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:29 GMT
-- request:
-    method: get
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/projects?pageNumber=1&pageSize=100
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Content-Type:
-      - application/xml;charset=utf-8
-      Date:
-      - Thu, 15 Sep 2016 16:26:24 GMT
-      Etag:
-      - '"8070b7d4cb4e10f0baa2dd7e9b82d34b"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.047000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '582'
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <pagination pageNumber="1" pageSize="100" totalAvailable="2"/>
-          <projects>
-            <project id="6f193d41-e7d7-4fec-bf81-96117e0da230" name="default" description="The default project that was automatically created by Tableau."/>
-            <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test" description=""/>
-          </projects>
-        </tsResponse>
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:30 GMT
-- request:
-    method: get
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/0065d5ee-1b55-4f44-9478-02400c7183de
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Content-Type:
-      - application/xml;charset=utf-8
-      Date:
-      - Thu, 15 Sep 2016 16:26:26 GMT
-      Etag:
-      - '"3513264baf670a91f6902fe5eb3b4044"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.062000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '681'
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <workbook id="0065d5ee-1b55-4f44-9478-02400c7183de" name="test pagination2" contentUrl="testpagination2" showTabs="true">
-            <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-            <owner id="e1b91057-9cd9-4009-b6c9-cd18f1dc3fb4"/>
-            <tags>
-            </tags>
-            <views>
-              <view id="43e9639f-5184-4af3-835b-c3e9f5e1e541" name="Sheet 1" contentUrl="testpagination2/sheets/Sheet1"/>
-            </views>
-          </workbook>
-        </tsResponse>
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:30 GMT
-- request:
-    method: get
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/projects?pageNumber=1&pageSize=100
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Content-Type:
-      - application/xml;charset=utf-8
-      Date:
-      - Thu, 15 Sep 2016 16:26:26 GMT
-      Etag:
-      - '"8070b7d4cb4e10f0baa2dd7e9b82d34b"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.062000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '582'
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <pagination pageNumber="1" pageSize="100" totalAvailable="2"/>
-          <projects>
-            <project id="6f193d41-e7d7-4fec-bf81-96117e0da230" name="default" description="The default project that was automatically created by Tableau."/>
-            <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test" description=""/>
-          </projects>
-        </tsResponse>
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:30 GMT
-- request:
-    method: get
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/3e67fa0f-32f2-4071-b119-b2bfc0aa3eff
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Content-Type:
-      - application/xml;charset=utf-8
-      Date:
-      - Thu, 15 Sep 2016 16:26:26 GMT
-      Etag:
-      - '"31b3c6d6732d7a3ff12ea5771b396fa7"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.063000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '681'
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <workbook id="3e67fa0f-32f2-4071-b119-b2bfc0aa3eff" name="test pagination3" contentUrl="testpagination3" showTabs="true">
-            <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-            <owner id="e408f778-3708-4685-b7f9-100b584a02aa"/>
-            <tags>
-            </tags>
-            <views>
-              <view id="4aa1bd13-5d88-480d-b938-7dc9497caa80" name="Sheet 1" contentUrl="testpagination3/sheets/Sheet1"/>
-            </views>
-          </workbook>
-        </tsResponse>
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:30 GMT
-- request:
-    method: get
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/users/61e1c6ba-526e-492b-9601-c12e09803c2f/workbooks?pageNumber=1&pageSize=2
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Content-Type:
-      - application/xml;charset=utf-8
-      Date:
-      - Thu, 15 Sep 2016 16:26:26 GMT
-      Etag:
-      - '"17290faeda85e8a5cd8902f0717dae7f"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.109000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '943'
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <pagination pageNumber="1" pageSize="2" totalAvailable="4"/>
-          <workbooks>
-            <workbook id="625d94e0-8f2d-4092-8962-a4dec6a96fe5" name="test pagination1" contentUrl="testpagination1" showTabs="true">
-              <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-              <owner id="e408f778-3708-4685-b7f9-100b584a02aa"/>
-              <tags>
-              </tags>
-            </workbook>
-            <workbook id="0065d5ee-1b55-4f44-9478-02400c7183de" name="test pagination2" contentUrl="testpagination2" showTabs="true">
-              <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-              <owner id="e1b91057-9cd9-4009-b6c9-cd18f1dc3fb4"/>
-              <tags>
-              </tags>
-            </workbook>
-          </workbooks>
-        </tsResponse>
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:30 GMT
-- request:
-    method: get
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/users/61e1c6ba-526e-492b-9601-c12e09803c2f/workbooks?pageNumber=2&pageSize=2
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Content-Type:
-      - application/xml;charset=utf-8
-      Date:
-      - Thu, 15 Sep 2016 16:26:26 GMT
-      Etag:
-      - '"6d228dfe78fc5d54a43a5750fec0d068"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.093000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '935'
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <pagination pageNumber="2" pageSize="2" totalAvailable="4"/>
-          <workbooks>
-            <workbook id="fcfe9754-d49e-401b-a485-bcc47fcdc198" name="testpublish" contentUrl="testpublish" showTabs="false">
-              <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-              <owner id="61e1c6ba-526e-492b-9601-c12e09803c2f"/>
-              <tags>
-              </tags>
-            </workbook>
-            <workbook id="3e67fa0f-32f2-4071-b119-b2bfc0aa3eff" name="test pagination3" contentUrl="testpagination3" showTabs="true">
-              <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-              <owner id="e408f778-3708-4685-b7f9-100b584a02aa"/>
-              <tags>
-              </tags>
-            </workbook>
-          </workbooks>
-        </tsResponse>
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:31 GMT
-- request:
-    method: get
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/users/61e1c6ba-526e-492b-9601-c12e09803c2f/workbooks?pageNumber=1&pageSize=100
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Content-Type:
-      - application/xml;charset=utf-8
-      Date:
-      - Thu, 15 Sep 2016 16:26:27 GMT
-      Etag:
-      - '"f50e793012e850edada52b5a7e2cd9b3"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      P3p:
-      - CP="NON"
-      Pragma:
-      - no-cache
-      Server:
-      - Tableau
-      Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.109000'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '1531'
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <pagination pageNumber="1" pageSize="100" totalAvailable="4"/>
-          <workbooks>
-            <workbook id="3e67fa0f-32f2-4071-b119-b2bfc0aa3eff" name="test pagination3" contentUrl="testpagination3" showTabs="true">
-              <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-              <owner id="e408f778-3708-4685-b7f9-100b584a02aa"/>
-              <tags>
-              </tags>
-            </workbook>
-            <workbook id="0065d5ee-1b55-4f44-9478-02400c7183de" name="test pagination2" contentUrl="testpagination2" showTabs="true">
-              <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-              <owner id="e1b91057-9cd9-4009-b6c9-cd18f1dc3fb4"/>
-              <tags>
-              </tags>
-            </workbook>
-            <workbook id="625d94e0-8f2d-4092-8962-a4dec6a96fe5" name="test pagination1" contentUrl="testpagination1" showTabs="true">
-              <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-              <owner id="e408f778-3708-4685-b7f9-100b584a02aa"/>
-              <tags>
-              </tags>
-            </workbook>
-            <workbook id="fcfe9754-d49e-401b-a485-bcc47fcdc198" name="testpublish" contentUrl="testpublish" showTabs="false">
-              <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-              <owner id="61e1c6ba-526e-492b-9601-c12e09803c2f"/>
-              <tags>
-              </tags>
-            </workbook>
-          </workbooks>
-        </tsResponse>
-    http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:31 GMT
+  recorded_at: Mon, 26 Aug 2019 17:11:04 GMT
 - request:
     method: put
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/fcfe9754-d49e-401b-a485-bcc47fcdc198
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f/permissions
     body:
       encoding: UTF-8
-      string: <tsRequest><workbook id="fcfe9754-d49e-401b-a485-bcc47fcdc198"><owner
-        id="61e1c6ba-526e-492b-9601-c12e09803c2f"/></workbook></tsRequest>
+      string: <tsRequest><permissions><workbook id="db548c7d-1ffd-40c4-8398-0292594b2d4f"/><granteeCapabilities><user
+        id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><capabilities><capability name="Read"
+        mode="Allow"/></capabilities></granteeCapabilities></permissions></tsRequest>
     headers:
+      Content-Type:
+      - application/xml
       X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
   response:
     status:
       code: 200
       message: OK
     headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 15 Sep 2016 16:26:27 GMT
-      Etag:
-      - '"28bf9624da984b95d9f479a0d007422d"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
+      - Mon, 26 Aug 2019 17:11:03 GMT
       P3p:
       - CP="NON"
-      Pragma:
-      - no-cache
       Server:
       - Tableau
       Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.078000'
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
       X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '499'
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <workbook id="fcfe9754-d49e-401b-a485-bcc47fcdc198" name="testpublish" contentUrl="testpublish" showTabs="false">
-            <project id="57058e8e-3363-4de9-a03b-5e7401933073"/>
-            <owner id="61e1c6ba-526e-492b-9601-c12e09803c2f"/>
-          </workbook>
-        </tsResponse>
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><permissions><workbook id="db548c7d-1ffd-40c4-8398-0292594b2d4f"
+        name="testpublish"><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></workbook><granteeCapabilities><group
+        id="6133215d-51ee-4ab8-bfd5-4690a0d67aa4"/><capabilities><capability name="ExportImage"
+        mode="Allow"/><capability name="ShareView" mode="Allow"/><capability name="Read"
+        mode="Allow"/><capability name="Write" mode="Allow"/><capability name="ViewUnderlyingData"
+        mode="Allow"/><capability name="Filter" mode="Allow"/><capability name="ViewComments"
+        mode="Allow"/><capability name="ExportData" mode="Allow"/><capability name="AddComment"
+        mode="Allow"/></capabilities></granteeCapabilities><granteeCapabilities><group
+        id="7302a13c-e8ec-4cfe-8972-d76ace3bf445"/><capabilities><capability name="Read"
+        mode="Allow"/><capability name="ChangePermissions" mode="Deny"/></capabilities></granteeCapabilities><granteeCapabilities><user
+        id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><capabilities><capability name="Read"
+        mode="Allow"/><capability name="ChangePermissions" mode="Deny"/></capabilities></granteeCapabilities></permissions></tsResponse>
     http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:31 GMT
+  recorded_at: Mon, 26 Aug 2019 17:11:04 GMT
 - request:
-    method: get
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/fcfe9754-d49e-401b-a485-bcc47fcdc198/views?pageNumber=1&pageSize=100
+    method: delete
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f/permissions/users/5f8300e7-4f2a-4deb-9d32-6e0845d18890/Read/Allow
     body:
       encoding: US-ASCII
       string: ''
     headers:
       X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
   response:
     status:
-      code: 200
-      message: OK
+      code: 204
+      message: No Content
     headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Content-Type:
-      - application/xml;charset=utf-8
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
       Date:
-      - Thu, 15 Sep 2016 16:26:27 GMT
-      Etag:
-      - '"897c95f3d2a5a4681eaf525ed0391a25"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
+      - Mon, 26 Aug 2019 17:11:03 GMT
       P3p:
       - CP="NON"
-      Pragma:
-      - no-cache
       Server:
       - Tableau
-      Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.047000'
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
       X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '386'
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <views>
-            <view id="496a0ea3-6622-4243-b16e-04a33809c9fb" name="Sheet 1" contentUrl="testpublish/sheets/Sheet1"/>
-          </views>
-        </tsResponse>
+      string: ''
     http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:32 GMT
+  recorded_at: Mon, 26 Aug 2019 17:11:04 GMT
 - request:
-    method: get
-    uri: http://localhost:2000/api/2.0/sites/5a62de1a-5553-447d-a4bd-0977db6a7b3f/workbooks/fcfe9754-d49e-401b-a485-bcc47fcdc198
+    method: delete
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f/permissions/groups/7302a13c-e8ec-4cfe-8972-d76ace3bf445/Read/Allow
     body:
       encoding: US-ASCII
       string: ''
     headers:
       X-Tableau-Auth:
-      - 788804e9a3c833aff6f159ca7094499e
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Date:
+      - Mon, 26 Aug 2019 17:11:04 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:04 GMT
+- request:
+    method: put
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f/permissions
+    body:
+      encoding: UTF-8
+      string: <tsRequest><permissions><workbook id="db548c7d-1ffd-40c4-8398-0292594b2d4f"/><granteeCapabilities><group
+        id="6133215d-51ee-4ab8-bfd5-4690a0d67aa4"/><capabilities><capability name="ExportImage"
+        mode="Allow"/></capabilities></granteeCapabilities></permissions></tsRequest>
+    headers:
+      Content-Type:
+      - application/xml
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
   response:
     status:
       code: 200
       message: OK
     headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 15 Sep 2016 16:26:28 GMT
-      Etag:
-      - '"cb718ce373608f835a626516155920fa"'
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
+      - Mon, 26 Aug 2019 17:11:04 GMT
       P3p:
       - CP="NON"
-      Pragma:
-      - no-cache
       Server:
       - Tableau
       Vary:
-      - "*,Accept-Encoding"
-      X-Runtime:
-      - '0.063000'
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
       X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '669'
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
-          <workbook id="fcfe9754-d49e-401b-a485-bcc47fcdc198" name="testpublish" contentUrl="testpublish" showTabs="false">
-            <project id="57058e8e-3363-4de9-a03b-5e7401933073" name="test"/>
-            <owner id="61e1c6ba-526e-492b-9601-c12e09803c2f"/>
-            <tags>
-            </tags>
-            <views>
-              <view id="496a0ea3-6622-4243-b16e-04a33809c9fb" name="Sheet 1" contentUrl="testpublish/sheets/Sheet1"/>
-            </views>
-          </workbook>
-        </tsResponse>
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><permissions><workbook id="db548c7d-1ffd-40c4-8398-0292594b2d4f"
+        name="testpublish"><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></workbook><granteeCapabilities><group
+        id="6133215d-51ee-4ab8-bfd5-4690a0d67aa4"/><capabilities><capability name="ExportImage"
+        mode="Allow"/><capability name="ShareView" mode="Allow"/><capability name="Read"
+        mode="Allow"/><capability name="Write" mode="Allow"/><capability name="ViewUnderlyingData"
+        mode="Allow"/><capability name="Filter" mode="Allow"/><capability name="ViewComments"
+        mode="Allow"/><capability name="ExportData" mode="Allow"/><capability name="AddComment"
+        mode="Allow"/></capabilities></granteeCapabilities><granteeCapabilities><group
+        id="7302a13c-e8ec-4cfe-8972-d76ace3bf445"/><capabilities><capability name="ChangePermissions"
+        mode="Deny"/></capabilities></granteeCapabilities><granteeCapabilities><user
+        id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><capabilities><capability name="ChangePermissions"
+        mode="Deny"/></capabilities></granteeCapabilities></permissions></tsResponse>
     http_version: 
-  recorded_at: Thu, 15 Sep 2016 16:26:32 GMT
+  recorded_at: Mon, 26 Aug 2019 17:11:05 GMT
+- request:
+    method: delete
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f/permissions/groups/6133215d-51ee-4ab8-bfd5-4690a0d67aa4/ExportImage/Allow
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Date:
+      - Mon, 26 Aug 2019 17:11:04 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:05 GMT
+- request:
+    method: get
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/groups?pageNumber=1&pageSize=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Mon, 26 Aug 2019 17:11:04 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '501'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><pagination pageNumber="1" pageSize="100"
+        totalAvailable="2"/><groups><group id="6133215d-51ee-4ab8-bfd5-4690a0d67aa4"
+        name="All Users"><domain name="local"/></group><group id="7302a13c-e8ec-4cfe-8972-d76ace3bf445"
+        name="testgroup"><domain name="local"/></group></groups></tsResponse>
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:05 GMT
+- request:
+    method: get
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f/permissions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Mon, 26 Aug 2019 17:11:04 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1200'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><permissions><workbook id="db548c7d-1ffd-40c4-8398-0292594b2d4f"
+        name="testpublish"><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></workbook><granteeCapabilities><group
+        id="6133215d-51ee-4ab8-bfd5-4690a0d67aa4"/><capabilities><capability name="ShareView"
+        mode="Allow"/><capability name="Read" mode="Allow"/><capability name="Write"
+        mode="Allow"/><capability name="ViewUnderlyingData" mode="Allow"/><capability
+        name="Filter" mode="Allow"/><capability name="ViewComments" mode="Allow"/><capability
+        name="ExportData" mode="Allow"/><capability name="AddComment" mode="Allow"/></capabilities></granteeCapabilities><granteeCapabilities><group
+        id="7302a13c-e8ec-4cfe-8972-d76ace3bf445"/><capabilities><capability name="ChangePermissions"
+        mode="Deny"/></capabilities></granteeCapabilities><granteeCapabilities><user
+        id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><capabilities><capability name="ChangePermissions"
+        mode="Deny"/></capabilities></granteeCapabilities></permissions></tsResponse>
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:05 GMT
+- request:
+    method: delete
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f/permissions/groups/6133215d-51ee-4ab8-bfd5-4690a0d67aa4/ExportData/Allow
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Date:
+      - Mon, 26 Aug 2019 17:11:05 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:05 GMT
+- request:
+    method: delete
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f/permissions/groups/6133215d-51ee-4ab8-bfd5-4690a0d67aa4/ViewComments/Allow
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Date:
+      - Mon, 26 Aug 2019 17:11:05 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:06 GMT
+- request:
+    method: delete
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f/permissions/groups/6133215d-51ee-4ab8-bfd5-4690a0d67aa4/AddComment/Allow
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Date:
+      - Mon, 26 Aug 2019 17:11:05 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:06 GMT
+- request:
+    method: delete
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f/permissions/groups/7302a13c-e8ec-4cfe-8972-d76ace3bf445/ChangePermissions/Deny
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Date:
+      - Mon, 26 Aug 2019 17:11:05 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:06 GMT
+- request:
+    method: delete
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f/permissions/users/5f8300e7-4f2a-4deb-9d32-6e0845d18890/ChangePermissions/Deny
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Date:
+      - Mon, 26 Aug 2019 17:11:05 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:06 GMT
+- request:
+    method: delete
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f/permissions/groups/7302a13c-e8ec-4cfe-8972-d76ace3bf445/ExportImage/Allow
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Mon, 26 Aug 2019 17:11:05 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '496'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><error code="404014"><summary>Resource
+        Not Found</summary><detail>Workbook 'db548c7d-1ffd-40c4-8398-0292594b2d4f'
+        does not have capability 'ExportImage' set for group '7302a13c-e8ec-4cfe-8972-d76ace3bf445'
+        with mode 'Allow'. No permission to delete.</detail></error></tsResponse>
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:06 GMT
+- request:
+    method: get
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f/permissions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Mon, 26 Aug 2019 17:11:05 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '723'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><permissions><workbook id="db548c7d-1ffd-40c4-8398-0292594b2d4f"
+        name="testpublish"><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></workbook><granteeCapabilities><group
+        id="6133215d-51ee-4ab8-bfd5-4690a0d67aa4"/><capabilities><capability name="ShareView"
+        mode="Allow"/><capability name="Read" mode="Allow"/><capability name="Write"
+        mode="Allow"/><capability name="ViewUnderlyingData" mode="Allow"/><capability
+        name="Filter" mode="Allow"/></capabilities></granteeCapabilities></permissions></tsResponse>
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:06 GMT
+- request:
+    method: get
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/users/5f8300e7-4f2a-4deb-9d32-6e0845d18890/workbooks?pageNumber=1&pageSize=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Mon, 26 Aug 2019 17:11:07 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1622'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><pagination pageNumber="1" pageSize="100"
+        totalAvailable="4"/><workbooks><workbook id="ad9ba774-008e-4849-94fb-2e597c13c5a7"
+        name="test pagination1" contentUrl="testpagination1" showTabs="false" size="1"
+        createdAt="2019-08-19T20:54:37Z" updatedAt="2019-08-19T21:02:41Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook><workbook
+        id="d523f7fa-64c8-40c8-b8fd-d5e9488c4bc4" name="test pagination2" contentUrl="testpagination2"
+        showTabs="false" size="1" createdAt="2019-08-19T20:54:37Z" updatedAt="2019-08-19T21:02:42Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook><workbook
+        id="689c0c06-6d66-4b0d-ae6b-d9eacbff6e45" name="test pagination3" contentUrl="testpagination3"
+        showTabs="false" size="1" createdAt="2019-08-19T20:54:38Z" updatedAt="2019-08-19T21:02:42Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook><workbook
+        id="db548c7d-1ffd-40c4-8398-0292594b2d4f" name="testpublish" contentUrl="testpublish"
+        showTabs="false" size="1" createdAt="2019-08-26T17:08:07Z" updatedAt="2019-08-26T17:08:07Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook></workbooks></tsResponse>
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:07 GMT
+- request:
+    method: get
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/users/5f8300e7-4f2a-4deb-9d32-6e0845d18890/workbooks?pageNumber=1&pageSize=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Mon, 26 Aug 2019 17:11:07 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1622'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><pagination pageNumber="1" pageSize="100"
+        totalAvailable="4"/><workbooks><workbook id="ad9ba774-008e-4849-94fb-2e597c13c5a7"
+        name="test pagination1" contentUrl="testpagination1" showTabs="false" size="1"
+        createdAt="2019-08-19T20:54:37Z" updatedAt="2019-08-19T21:02:41Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook><workbook
+        id="d523f7fa-64c8-40c8-b8fd-d5e9488c4bc4" name="test pagination2" contentUrl="testpagination2"
+        showTabs="false" size="1" createdAt="2019-08-19T20:54:37Z" updatedAt="2019-08-19T21:02:42Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook><workbook
+        id="689c0c06-6d66-4b0d-ae6b-d9eacbff6e45" name="test pagination3" contentUrl="testpagination3"
+        showTabs="false" size="1" createdAt="2019-08-19T20:54:38Z" updatedAt="2019-08-19T21:02:42Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook><workbook
+        id="db548c7d-1ffd-40c4-8398-0292594b2d4f" name="testpublish" contentUrl="testpublish"
+        showTabs="false" size="1" createdAt="2019-08-26T17:08:07Z" updatedAt="2019-08-26T17:08:07Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook></workbooks></tsResponse>
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:07 GMT
+- request:
+    method: get
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/ad9ba774-008e-4849-94fb-2e597c13c5a7
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Mon, 26 Aug 2019 17:11:07 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '760'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><workbook id="ad9ba774-008e-4849-94fb-2e597c13c5a7"
+        name="test pagination1" contentUrl="testpagination1" showTabs="false" size="1"
+        createdAt="2019-08-19T20:54:37Z" updatedAt="2019-08-19T21:02:41Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/><views><view
+        id="98602210-8023-42cd-a10f-9681c4a83cb3" name="Sheet 1" contentUrl="testpagination1/sheets/Sheet1"
+        createdAt="2019-08-19T20:54:37Z" updatedAt="2019-08-19T21:05:06Z"><tags/></view></views></workbook></tsResponse>
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:07 GMT
+- request:
+    method: get
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/projects?pageNumber=1&pageSize=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Mon, 26 Aug 2019 17:11:07 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1106'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><pagination pageNumber="1" pageSize="100"
+        totalAvailable="3"/><projects><project id="53913766-46e9-4c2f-8aac-7c66bbfae6fe"
+        name="Default" description="The default project that was automatically created
+        by Tableau." createdAt="2019-08-16T17:04:20Z" updatedAt="2019-08-16T17:04:20Z"
+        contentPermissions="ManagedByOwner"><owner id="f7fcafcf-ff21-4c64-9e69-6f79226cbf24"/></project><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test" description="" createdAt="2019-08-19T20:43:22Z"
+        updatedAt="2019-08-19T20:43:22Z" contentPermissions="ManagedByOwner"><owner
+        id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></project><project id="8fc159dc-54af-40f9-9004-d9c2e5941392"
+        name="test_project" description="" createdAt="2019-08-21T01:40:53Z" updatedAt="2019-08-21T01:40:53Z"
+        contentPermissions="ManagedByOwner"><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></project></projects></tsResponse>
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:07 GMT
+- request:
+    method: get
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/d523f7fa-64c8-40c8-b8fd-d5e9488c4bc4
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Mon, 26 Aug 2019 17:11:07 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '760'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><workbook id="d523f7fa-64c8-40c8-b8fd-d5e9488c4bc4"
+        name="test pagination2" contentUrl="testpagination2" showTabs="false" size="1"
+        createdAt="2019-08-19T20:54:37Z" updatedAt="2019-08-19T21:02:42Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/><views><view
+        id="b95f090b-76c5-4eb2-baf4-3b3803e60a06" name="Sheet 1" contentUrl="testpagination2/sheets/Sheet1"
+        createdAt="2019-08-19T20:54:37Z" updatedAt="2019-08-19T21:05:05Z"><tags/></view></views></workbook></tsResponse>
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:07 GMT
+- request:
+    method: get
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/projects?pageNumber=1&pageSize=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Mon, 26 Aug 2019 17:11:07 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1106'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><pagination pageNumber="1" pageSize="100"
+        totalAvailable="3"/><projects><project id="53913766-46e9-4c2f-8aac-7c66bbfae6fe"
+        name="Default" description="The default project that was automatically created
+        by Tableau." createdAt="2019-08-16T17:04:20Z" updatedAt="2019-08-16T17:04:20Z"
+        contentPermissions="ManagedByOwner"><owner id="f7fcafcf-ff21-4c64-9e69-6f79226cbf24"/></project><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test" description="" createdAt="2019-08-19T20:43:22Z"
+        updatedAt="2019-08-19T20:43:22Z" contentPermissions="ManagedByOwner"><owner
+        id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></project><project id="8fc159dc-54af-40f9-9004-d9c2e5941392"
+        name="test_project" description="" createdAt="2019-08-21T01:40:53Z" updatedAt="2019-08-21T01:40:53Z"
+        contentPermissions="ManagedByOwner"><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></project></projects></tsResponse>
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:08 GMT
+- request:
+    method: get
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/689c0c06-6d66-4b0d-ae6b-d9eacbff6e45
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Mon, 26 Aug 2019 17:11:08 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '760'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><workbook id="689c0c06-6d66-4b0d-ae6b-d9eacbff6e45"
+        name="test pagination3" contentUrl="testpagination3" showTabs="false" size="1"
+        createdAt="2019-08-19T20:54:38Z" updatedAt="2019-08-19T21:02:42Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/><views><view
+        id="dc61b8fd-8c10-4c1a-93bc-c0477f235447" name="Sheet 1" contentUrl="testpagination3/sheets/Sheet1"
+        createdAt="2019-08-19T20:54:38Z" updatedAt="2019-08-19T21:05:05Z"><tags/></view></views></workbook></tsResponse>
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:08 GMT
+- request:
+    method: get
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/users/5f8300e7-4f2a-4deb-9d32-6e0845d18890/workbooks?pageNumber=1&pageSize=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Mon, 26 Aug 2019 17:11:08 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '971'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><pagination pageNumber="1" pageSize="2"
+        totalAvailable="4"/><workbooks><workbook id="ad9ba774-008e-4849-94fb-2e597c13c5a7"
+        name="test pagination1" contentUrl="testpagination1" showTabs="false" size="1"
+        createdAt="2019-08-19T20:54:37Z" updatedAt="2019-08-19T21:02:41Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook><workbook
+        id="d523f7fa-64c8-40c8-b8fd-d5e9488c4bc4" name="test pagination2" contentUrl="testpagination2"
+        showTabs="false" size="1" createdAt="2019-08-19T20:54:37Z" updatedAt="2019-08-19T21:02:42Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook></workbooks></tsResponse>
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:08 GMT
+- request:
+    method: get
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/users/5f8300e7-4f2a-4deb-9d32-6e0845d18890/workbooks?pageNumber=2&pageSize=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Mon, 26 Aug 2019 17:11:08 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '962'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><pagination pageNumber="2" pageSize="2"
+        totalAvailable="4"/><workbooks><workbook id="689c0c06-6d66-4b0d-ae6b-d9eacbff6e45"
+        name="test pagination3" contentUrl="testpagination3" showTabs="false" size="1"
+        createdAt="2019-08-19T20:54:38Z" updatedAt="2019-08-19T21:02:42Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook><workbook
+        id="db548c7d-1ffd-40c4-8398-0292594b2d4f" name="testpublish" contentUrl="testpublish"
+        showTabs="false" size="1" createdAt="2019-08-26T17:08:07Z" updatedAt="2019-08-26T17:08:07Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook></workbooks></tsResponse>
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:08 GMT
+- request:
+    method: get
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/users/5f8300e7-4f2a-4deb-9d32-6e0845d18890/workbooks?pageNumber=1&pageSize=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Mon, 26 Aug 2019 17:11:08 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1622'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><pagination pageNumber="1" pageSize="100"
+        totalAvailable="4"/><workbooks><workbook id="ad9ba774-008e-4849-94fb-2e597c13c5a7"
+        name="test pagination1" contentUrl="testpagination1" showTabs="false" size="1"
+        createdAt="2019-08-19T20:54:37Z" updatedAt="2019-08-19T21:02:41Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook><workbook
+        id="d523f7fa-64c8-40c8-b8fd-d5e9488c4bc4" name="test pagination2" contentUrl="testpagination2"
+        showTabs="false" size="1" createdAt="2019-08-19T20:54:37Z" updatedAt="2019-08-19T21:02:42Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook><workbook
+        id="689c0c06-6d66-4b0d-ae6b-d9eacbff6e45" name="test pagination3" contentUrl="testpagination3"
+        showTabs="false" size="1" createdAt="2019-08-19T20:54:38Z" updatedAt="2019-08-19T21:02:42Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook><workbook
+        id="db548c7d-1ffd-40c4-8398-0292594b2d4f" name="testpublish" contentUrl="testpublish"
+        showTabs="false" size="1" createdAt="2019-08-26T17:08:07Z" updatedAt="2019-08-26T17:08:07Z"><project
+        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook></workbooks></tsResponse>
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:08 GMT
+- request:
+    method: put
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f
+    body:
+      encoding: UTF-8
+      string: <tsRequest><workbook id="db548c7d-1ffd-40c4-8398-0292594b2d4f"><owner
+        id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></workbook></tsRequest>
+    headers:
+      Content-Type:
+      - application/xml
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Mon, 26 Aug 2019 17:11:08 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '550'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><workbook id="db548c7d-1ffd-40c4-8398-0292594b2d4f"
+        name="testpublish" contentUrl="testpublish" showTabs="false" size="1" createdAt="2019-08-26T17:08:07Z"
+        updatedAt="2019-08-26T17:08:07Z"><project id="2ec210d7-099f-47f5-ad57-646461b47e59"
+        name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></workbook></tsResponse>
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:09 GMT
+- request:
+    method: get
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f/views?pageNumber=1&pageSize=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Mon, 26 Aug 2019 17:11:09 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '427'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><views><view id="d1efd35f-7cd6-44f2-9f32-23df1a3771e0"
+        name="Sheet 1" contentUrl="testpublish/sheets/Sheet1" createdAt="2019-08-26T17:08:07Z"
+        updatedAt="2019-08-26T17:08:15Z"><tags/></view></views></tsResponse>
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:09 GMT
+- request:
+    method: get
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Mon, 26 Aug 2019 17:11:09 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '747'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><workbook id="db548c7d-1ffd-40c4-8398-0292594b2d4f"
+        name="testpublish" contentUrl="testpublish" showTabs="false" size="1" createdAt="2019-08-26T17:08:07Z"
+        updatedAt="2019-08-26T17:08:07Z"><project id="2ec210d7-099f-47f5-ad57-646461b47e59"
+        name="test"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/><views><view
+        id="d1efd35f-7cd6-44f2-9f32-23df1a3771e0" name="Sheet 1" contentUrl="testpublish/sheets/Sheet1"
+        createdAt="2019-08-26T17:08:07Z" updatedAt="2019-08-26T17:08:15Z"><tags/></view></views></workbook></tsResponse>
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:09 GMT
+- request:
+    method: get
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f/previewImage
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - image/png
+      Date:
+      - Mon, 26 Aug 2019 17:11:09 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1320'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAYAAAB5fY51AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAE2klEQVR4nO3asWo0VQCG4bOZLQIpTRcrcwk21n9r60WJt2SRwi6lCCGFaJdtAiGBMJrsjpfgXywM7/A8V/AVh5c5nNn99sdfy7/LNOCcfvjum7UnsDHzPI/9L7/+OX4/zGtvYWP+/vnHtSewQRdrDwD4WoIFZOx/+v7b8eWf3do7AP7X7vn5ebm8vFx7Bxszz/NwrjineZ7H7vPzc5kmr4Sc1/F4HM4V53Q8HsfF4XAYDw8Pa29hQ56ensbhcFh7Bhsxz/O4v78fy7KMi5eXl3E6ndbexIZcX1+P9/f3tWewEfv9fkzTNKZpGvvb29vx+vq69iY2ZJqmcXNzs/YMNuLj42NcXV2N0+k0dsuyLGsPAvga/sPi7O7u7sbb29vaM9ggweKs5nke0zSNx8fHtaewQa6EQIYvLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgIz/AAxXX2E3xUB3AAAAAElFTkSuQmCC
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:09 GMT
+- request:
+    method: post
+    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/workbooks/db548c7d-1ffd-40c4-8398-0292594b2d4f/refresh
+    body:
+      encoding: UTF-8
+      string: "<tsRequest/>"
+    headers:
+      Content-Type:
+      - application/xml
+      X-Tableau-Auth:
+      - 9dg-g0JfQgej_Z6J6jCi9A|mHfv2J8ynQUkbk599bS8hHSaMpHX7XhR
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Mon, 26 Aug 2019 17:11:10 GMT
+      Location:
+      - "/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/jobs/4b2d9f57-3c05-4b51-89f2-2cf4297526c0"
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '469'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-2.8.xsd"><job id="4b2d9f57-3c05-4b51-89f2-2cf4297526c0"
+        mode="Asynchronous" type="RefreshExtract" createdAt="2019-08-26T17:11:10Z"><extractRefreshJob><workbook
+        id="db548c7d-1ffd-40c4-8398-0292594b2d4f" name="testpublish"/></extractRefreshJob></job></tsResponse>
+    http_version: 
+  recorded_at: Mon, 26 Aug 2019 17:11:10 GMT
 recorded_with: VCR 3.0.3

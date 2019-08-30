@@ -48,12 +48,12 @@ module TableauApi
       end
       # rubocop:enable Metrics/ParameterLists
 
-      CAPABILITIES = %w(
+      CAPABILITIES = %w[
         AddComment ChangeHierarchy ChangePermissions Delete ExportData ExportImage ExportXml
         Filter Read ShareView ViewComments ViewUnderlyingData WebAuthoring Write
-      ).freeze
+      ].freeze
 
-      CAPABILITY_MODES = %w(ALLOW DENY).freeze
+      CAPABILITY_MODES = %w[ALLOW DENY].freeze
 
       def permissions(workbook_id:)
         res = @client.connection.api_get("sites/#{@client.auth.site_id}/workbooks/#{workbook_id}/permissions")
@@ -98,7 +98,7 @@ module TableauApi
         raise 'invalid mode' unless CAPABILITY_MODES.include? capability_mode.to_s
 
         subpath = user_id ? "users/#{user_id}" : "groups/#{group_id}"
-        subpath += "/#{capability}/#{capability_mode}"
+        subpath += "/#{capability}/#{capability_mode.capitalize}"
         res = @client.connection.api_delete("sites/#{@client.auth.site_id}/workbooks/#{workbook_id}/permissions/#{subpath}")
 
         res.code == 204
@@ -114,6 +114,17 @@ module TableauApi
         res = @client.connection.api_put("sites/#{@client.auth.site_id}/workbooks/#{workbook_id}", body: request)
 
         res.code == 200
+      end
+
+      def refresh(workbook_id:)
+        request = Builder::XmlMarkup.new.tsRequest
+        res = @client.connection.api_post("sites/#{@client.auth.site_id}/workbooks/#{workbook_id}/refresh", body: request)
+        res.code == 202
+      end
+
+      def preview_image(workbook_id:)
+        res = @client.connection.api_get("sites/#{@client.auth.site_id}/workbooks/#{workbook_id}/previewImage")
+        res.body if res.code == 200
       end
 
       def find(workbook_id)

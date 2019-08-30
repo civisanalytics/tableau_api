@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 AllCops:
   TargetRubyVersion: 2.2
 
@@ -18,3 +20,8 @@ Metrics/AbcSize:
 
 MethodLength:
   Max: 30
+
+Metrics/BlockLength:
+  Exclude:
+    - ./tableau_api.gemspec
+    - ./spec/resources/workbooks_spec.rb

@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'tempfile'
+require 'chunky_png'
 
 # NOTE: if it exists, delete test/testpublish workbook before recreating cassettes
 describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } do
@@ -39,12 +41,15 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         'showTabs' => 'false',
         'project' => workbook['project'],
         'owner' => workbook['owner'],
-        'tags' => "\n    ",
-        'views' => workbook['views']
+        'tags' => nil,
+        'views' => workbook['views'],
+        'size' => '1',
+        'createdAt' => workbook['createdAt'],
+        'updatedAt' => workbook['updatedAt']
       )
     end
 
-    it 'raises an exception' do
+    it 'raises an exception', vcr: { cassette_name: 'workbooks', match_requests_on: %i[path query] } do
       ex = expect do
         client.workbooks.publish(
           name: 'tableau_api test',
@@ -110,6 +115,11 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
   describe '#delete_permissions' do
     it 'can delete a user permission' do
       workbook = find_or_publish_workbook('testpublish')
+      client.workbooks.add_permissions(
+        workbook_id: workbook['id'],
+        user_id: admin_user['id'],
+        capabilities: { Read: true }
+      )
       expect(client.workbooks.delete_permissions(
                workbook_id: workbook['id'],
                user_id: admin_user['id'],
@@ -130,6 +140,11 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
 
     it 'accepts a symbol as a permission' do
       workbook = find_or_publish_workbook('testpublish')
+      client.workbooks.add_permissions(
+        workbook_id: workbook['id'],
+        group_id: all_users_group['id'],
+        capabilities: { ExportImage: true }
+      )
       expect(client.workbooks.delete_permissions(
                workbook_id: workbook['id'],
                group_id: all_users_group['id'],
@@ -168,10 +183,14 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         grantee_type: 'group',
         grantee_id: all_users_group['id'],
         capabilities: {
-          Read: true,
+          AddComment: true,
           ExportData: true,
+          Read: true,
+          ShareView: true,
+          ViewUnderlyingData: true,
           ViewComments: true,
-          AddComment: true
+          Filter: true,
+          Write: true
         }
       }, {
         grantee_type: 'group',
@@ -197,7 +216,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
       client.workbooks.permissions(workbook_id: workbook['id'])
 
       # remove most of the remaining permissions
-      %w(ExportData ViewComments AddComment).each do |p|
+      %w[ExportData ViewComments AddComment].each do |p|
         client.workbooks.delete_permissions(
           workbook_id: workbook['id'],
           group_id: all_users_group['id'],
@@ -217,12 +236,22 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         capability: 'ChangePermissions',
         capability_mode: 'DENY'
       )
+      client.workbooks.delete_permissions(
+        workbook_id: workbook['id'],
+        group_id: test_group['id'],
+        capability: 'ExportImage',
+        capability_mode: 'ALLOW'
+      )
 
       expected = [{
         grantee_type: 'group',
         grantee_id: all_users_group['id'],
         capabilities: {
-          Read: true
+          Read: true,
+          Filter: true,
+          ShareView: true,
+          ViewUnderlyingData: true,
+          Write: true
         }
       }]
       expect(client.workbooks.permissions(workbook_id: workbook['id'])).to eq expected
@@ -245,7 +274,10 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         'showTabs' => 'false',
         'project' => workbook['project'],
         'owner' => workbook['owner'],
-        'tags' => "\n      "
+        'tags' => nil,
+        'size' => '1',
+        'updatedAt' => workbook['updatedAt'],
+        'createdAt' => workbook['createdAt']
       )
 
       same_workbook = client.workbooks.list.find do |w|
@@ -294,9 +326,30 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
     end
   end
 
+  describe '#preview_image' do
+    it 'can download a preview image' do
+      workbook = find_or_publish_workbook('testpublish')
+      res = client.workbooks.preview_image(workbook_id: workbook['id'])
+      f = Tempfile.new('png')
+      f.write(res)
+      f.close
+      # will raise an error if PNG parsing fails
+      ChunkyPNG::Image.from_file(f)
+    end
+  end
+
+  describe '#refresh' do
+    it 'can refresh a workbook' do
+      workbook = find_or_publish_workbook('testpublish')
+      expect(
+        client.workbooks.refresh(workbook_id: workbook['id'])
+      ).to be true
+    end
+  end
+
   describe '#version' do
     it 'can get the version of a twbx file' do
-      expect(client.workbooks.version('spec/fixtures/workbooks/test.twbx')).to eq '9.0'
+      expect(client.workbooks.version('spec/fixtures/workbooks/test.twbx')).to eq '10.5'
     end
 
     it 'returns nil if file not found' do

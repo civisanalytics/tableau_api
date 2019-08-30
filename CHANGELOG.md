@@ -3,7 +3,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [2.0.0] - 2019-08-29
+
+- Updated to API version 2.8, compatible with Tableau Server >= 10.5
+- Add `refresh` and `image_preview` methods for workbooks
+- Bumped the Ruby versions in the Travis matrix build to 2.3.4, 2.2.7, and
 
 ## [1.1.2] - 2017-05-24
 

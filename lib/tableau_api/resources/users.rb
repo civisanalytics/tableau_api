@@ -1,7 +1,7 @@
 module TableauApi
   module Resources
     class Users < Base
-      SITE_ROLES = %w(
+      SITE_ROLES = %w[
         Interactor
         Publisher
         SiteAdministrator
@@ -9,7 +9,7 @@ module TableauApi
         UnlicensedWithPublish
         Viewer
         ViewerWithPublish
-      ).freeze
+      ].freeze
 
       def create(username:, site_role: 'Viewer')
         raise 'invalid site_role' unless SITE_ROLES.include? site_role

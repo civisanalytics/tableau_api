@@ -13,17 +13,16 @@ if ENV['TABLEAU_ADMIN_USERNAME'].nil? || ENV['TABLEAU_ADMIN_PASSWORD'].nil?
 end
 
 ENV['TABLEAU_HOST'] = 'http://localhost:2000' if ENV['TABLEAU_HOST'].nil?
-ENV['TABLEAU_HTTPS_HOST'] = 'https://localhost:2001' if ENV['TABLEAU_HTTPS_HOST'].nil?
 
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   config.hook_into :webmock
 
-  config.default_cassette_options = { record: :new_episodes, match_requests_on: [:path, :method, :body, :query] }
+  config.default_cassette_options = { record: :new_episodes, match_requests_on: %i[path method body query] }
 
   config.filter_sensitive_data('<TABLEAU_ADMIN_USERNAME>') { ENV['TABLEAU_ADMIN_USERNAME'] }
-  config.filter_sensitive_data('<TABLEAU_ADMIN_PASSWORD>') { ENV['TABLEAU_ADMIN_PASSWORD'] }
   config.filter_sensitive_data('<TABLEAU_ADMIN_PASSWORD>') { ENV['TABLEAU_ADMIN_PASSWORD'].encode(xml: :text) }
+  config.filter_sensitive_data('http://TABLEAU_HOST') { ENV['TABLEAU_HOST'] }
 
   config.allow_http_connections_when_no_cassette = false
 
@@ -31,7 +30,7 @@ VCR.configure do |config|
   config.before_record do |interaction|
     response = interaction.response
     elements = response.body.scan(/<(?:site|user)\s.+name.+>\n/)
-    sensitive_elements = elements.select { |e| !e.match(/Default|TestSite|guest|test|<TABLEAU_ADMIN_USERNAME>/) }
+    sensitive_elements = elements.reject { |e| e.match(/Default|TestSite|guest|test|<TABLEAU_ADMIN_USERNAME>/) }
     unless sensitive_elements.empty?
       sensitive_elements.each { |e| response.body.gsub! e, '' }
       response.body.gsub!(/totalAvailable="\d+"/, "totalAvailable=\"#{elements.length - sensitive_elements.length}\"")
@@ -58,13 +57,13 @@ end
 
 RSpec::Matchers.define :be_a_token do
   match do |actual|
-    actual.match(/\A\w{32}\z/)
+    actual.match(/\A\w{32}\z/) || actual.match(/\A[\w-]{22}\|\w{32}\z/)
   end
 end
 
 RSpec::Matchers.define :be_a_trusted_ticket do
   match do |actual|
-    actual.match(/\A[\w-]{24}\z/)
+    actual.match(/\A[\w-]{24}\z/) || actual.match(/\A[\w\-=]{24}:[\w-]{24}\z/)
   end
 end
 

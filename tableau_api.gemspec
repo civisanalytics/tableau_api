@@ -1,4 +1,5 @@
 # coding: utf-8
+
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'tableau_api/version'
@@ -10,7 +11,7 @@ Gem::Specification.new do |spec|
                         'Jonathan Cobian']
   spec.email         = ['opensource@civisanalytics.com']
 
-  spec.summary       = 'Ruby interface to the Tableau 9.0 API.'
+  spec.summary       = 'Ruby interface to the Tableau API.'
   spec.homepage      = 'https://github.com/civisanalytics/tableau_api'
   spec.license       = 'BSD-3-Clause'
 
@@ -32,5 +33,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'webmock', '~> 3.0'
   spec.add_development_dependency 'pry', '~> 0.10'
   spec.add_development_dependency 'pry-byebug', '~> 3.4'
-  spec.add_development_dependency 'rubocop', '~> 0.46.0'
+  spec.add_development_dependency 'rubocop', '~> 0.49.0'
+  spec.add_development_dependency 'chunky_png', '~> 1.3.11'
 end
