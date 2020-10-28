@@ -2,13 +2,14 @@ module TableauApi
   module Resources
     class Users < Base
       SITE_ROLES = %w[
-        Interactor
-        Publisher
-        SiteAdministrator
+        Creator
+        Explorer
+        ExplorerCanPublish
+        SiteAdministratorCreator
+        SiteAdministratorExplorer
+        ServerAdministrator
         Unlicensed
-        UnlicensedWithPublish
         Viewer
-        ViewerWithPublish
       ].freeze
 
       def create(username:, site_role: 'Viewer')

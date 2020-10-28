@@ -1,6 +1,6 @@
 module TableauApi
   class Connection
-    API_VERSION = '2.8'.freeze
+    API_VERSION = '3.1'.freeze
 
     include HTTParty
 
@@ -22,7 +22,7 @@ module TableauApi
         page_number = (args[0].delete(:page_number) { 1 }).to_i
 
         loop do
-          uri = URI::HTTP.build(path: "/#{path}", query: URI.encode_www_form(pageSize: page_size, pageNumber: page_number)).request_uri
+          uri = URI::HTTP.build(path: "/#{path}", query: URI.encode_www_form(**args[0], pageSize: page_size, pageNumber: page_number)).request_uri
 
           res = api_get(uri, *args)
           raise TableauError, res if res.code.to_s != '200'

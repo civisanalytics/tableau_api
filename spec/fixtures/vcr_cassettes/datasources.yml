@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://TABLEAU_HOST/api/2.8/auth/signin
+    uri: http://TABLEAU_HOST/api/3.1/auth/signin
     body:
       encoding: UTF-8
       string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
@@ -10,6 +10,12 @@ http_interactions:
     headers:
       Content-Type:
       - application/xml
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
   response:
     status:
       code: 200
@@ -22,7 +28,7 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Fri, 23 Aug 2019 21:02:47 GMT
+      - Wed, 28 Oct 2020 20:40:16 GMT
       P3p:
       - CP="NON"
       Server:
@@ -42,22 +48,28 @@ http_interactions:
       Connection:
       - keep-alive
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
-        http://tableau.com/api/ts-api-2.8.xsd"><credentials token="KTBLgpauSI2XD8drxGWlkA|SnhREwCkhaKCP1cBWMQyZsDwQlPFZvUQ"><site
-        id="143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84" contentUrl="TestSite"/><user id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></credentials></tsResponse>
-    http_version: 
-  recorded_at: Fri, 23 Aug 2019 21:02:47 GMT
+        http://tableau.com/api/ts-api-3.1.xsd"><credentials token="V-Mj5mcBTJCdjUYTwGXbsQ|jvpee6clUK0B57aiJejDYRrMHhsm4s9h"><site
+        id="f31923d2-dea4-4470-843a-9fc999d240aa" contentUrl="TestSite"/><user id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/></credentials></tsResponse>
+    http_version:
+  recorded_at: Wed, 28 Oct 2020 20:40:16 GMT
 - request:
     method: get
-    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/datasources?pageNumber=1&pageSize=100
+    uri: http://TABLEAU_HOST/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/datasources?pageNumber=1&pageSize=100
     body:
       encoding: US-ASCII
       string: ''
     headers:
       X-Tableau-Auth:
-      - KTBLgpauSI2XD8drxGWlkA|SnhREwCkhaKCP1cBWMQyZsDwQlPFZvUQ
+      - V-Mj5mcBTJCdjUYTwGXbsQ|jvpee6clUK0B57aiJejDYRrMHhsm4s9h
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
   response:
     status:
       code: 200
@@ -70,7 +82,7 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Fri, 23 Aug 2019 21:02:47 GMT
+      - Wed, 28 Oct 2020 20:40:16 GMT
       P3p:
       - CP="NON"
       Server:
@@ -86,18 +98,19 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '642'
+      - '469'
       Connection:
       - keep-alive
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
-        http://tableau.com/api/ts-api-2.8.xsd"><pagination pageNumber="1" pageSize="100"
-        totalAvailable="1"/><datasources><datasource id="70b70f0e-7a87-47cb-a7d6-65dc50aa88f6"
-        name="test" contentUrl="test" type="textscan" createdAt="2019-08-21T01:14:39Z"
-        updatedAt="2019-08-21T01:19:32Z" isCertified="false"><project id="53913766-46e9-4c2f-8aac-7c66bbfae6fe"
-        name="Default"/><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/><tags/></datasource></datasources></tsResponse>
-    http_version: 
-  recorded_at: Fri, 23 Aug 2019 21:02:48 GMT
+        http://tableau.com/api/ts-api-3.1.xsd"><pagination pageNumber="1" pageSize="100"
+        totalAvailable="1"/><datasources><datasource id="2f1b8dc8-b367-41be-8d4c-ec7d6143b229"
+        name="test" contentUrl="test" webpageUrl="http://TABLEAU_HOST/#/site/TestSite/datasources/140889"
+        type="textscan" createdAt="2020-10-28T20:35:13Z" updatedAt="2020-10-28T20:40:01Z"
+        isCertified="false"><project id="13bbea32-ce37-4577-a861-252c7adc847d" name="Default"/><owner
+        id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/><tags/></datasource></datasources></tsResponse>
+    http_version:
+  recorded_at: Wed, 28 Oct 2020 20:40:16 GMT
 recorded_with: VCR 3.0.3

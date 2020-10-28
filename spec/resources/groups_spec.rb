@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+# NOTE: if it exists, delete test group recreating cassettes
 describe TableauApi::Resources::Groups, vcr: { cassette_name: 'groups' } do
   include_context 'tableau client'
 

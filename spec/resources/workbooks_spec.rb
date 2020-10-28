@@ -2,7 +2,6 @@ require 'spec_helper'
 require 'tempfile'
 require 'chunky_png'
 
-# NOTE: if it exists, delete test/testpublish workbook before recreating cassettes
 describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } do
   include_context 'tableau client'
 
@@ -45,7 +44,8 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         'views' => workbook['views'],
         'size' => '1',
         'createdAt' => workbook['createdAt'],
-        'updatedAt' => workbook['updatedAt']
+        'updatedAt' => workbook['updatedAt'],
+        'webpageUrl' => workbook['webpageUrl']
       )
     end
 
@@ -183,12 +183,9 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         grantee_type: 'group',
         grantee_id: all_users_group['id'],
         capabilities: {
-          AddComment: true,
-          ExportData: true,
           Read: true,
           ShareView: true,
           ViewUnderlyingData: true,
-          ViewComments: true,
           Filter: true,
           Write: true
         }
@@ -277,7 +274,8 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         'tags' => nil,
         'size' => '1',
         'updatedAt' => workbook['updatedAt'],
-        'createdAt' => workbook['createdAt']
+        'createdAt' => workbook['createdAt'],
+        'webpageUrl' => workbook['webpageUrl']
       )
 
       same_workbook = client.workbooks.list.find do |w|

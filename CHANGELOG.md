@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [In progress] - 
+
+### Added
+
+- Added Jobs resource
+
+
+### Changed
+
+- Updated to API version 3.1
+
+
 ## [2.0.0] - 2019-08-29
 
 - Updated to API version 2.8, compatible with Tableau Server >= 10.5

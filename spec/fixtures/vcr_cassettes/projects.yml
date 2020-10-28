@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://TABLEAU_HOST/api/2.8/auth/signin
+    uri: http://TABLEAU_HOST/api/3.1/auth/signin
     body:
       encoding: UTF-8
       string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
@@ -10,6 +10,12 @@ http_interactions:
     headers:
       Content-Type:
       - application/xml
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
   response:
     status:
       code: 200
@@ -22,7 +28,7 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 26 Aug 2019 17:29:41 GMT
+      - Wed, 28 Oct 2020 16:54:02 GMT
       P3p:
       - CP="NON"
       Server:
@@ -38,20 +44,20 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '441'
+      - '329'
       Connection:
       - keep-alive
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
-        http://tableau.com/api/ts-api-2.8.xsd"><credentials token="5W4kc3IoTP6oND54Mgg6nw|UNt5058zl5Td3D1dEHXEgPlrenBtKA4h"><site
-        id="143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84" contentUrl="TestSite"/><user id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></credentials></tsResponse>
-    http_version: 
-  recorded_at: Mon, 26 Aug 2019 17:29:41 GMT
+        http://tableau.com/api/ts-api-3.1.xsd"><credentials token="OXRCK7BwRs2Aef3k4qwD3Q|P1F5qfqYEuHaijNTIsejpLf7vcMCJvhF"><site
+        id="f31923d2-dea4-4470-843a-9fc999d240aa" contentUrl="TestSite"/><user id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/></credentials></tsResponse>
+    http_version:
+  recorded_at: Wed, 28 Oct 2020 16:54:02 GMT
 - request:
     method: post
-    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/projects
+    uri: http://TABLEAU_HOST/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/projects
     body:
       encoding: UTF-8
       string: <tsRequest><project name="test_project" description=""/></tsRequest>
@@ -59,7 +65,13 @@ http_interactions:
       Content-Type:
       - application/xml
       X-Tableau-Auth:
-      - 5W4kc3IoTP6oND54Mgg6nw|UNt5058zl5Td3D1dEHXEgPlrenBtKA4h
+      - OXRCK7BwRs2Aef3k4qwD3Q|P1F5qfqYEuHaijNTIsejpLf7vcMCJvhF
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
   response:
     status:
       code: 201
@@ -72,9 +84,9 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 26 Aug 2019 17:29:41 GMT
+      - Wed, 28 Oct 2020 16:54:02 GMT
       Location:
-      - "/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/projects/48d7cfc1-490d-4105-80f3-a2f350475b00"
+      - "/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/projects/dc2dc7af-8065-4bd5-ae64-e9270feb53d9"
       P3p:
       - CP="NON"
       Server:
@@ -87,28 +99,34 @@ http_interactions:
       - IE=Edge
       X-Xss-Protection:
       - 1; mode=block
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '478'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
-        http://tableau.com/api/ts-api-2.8.xsd"><project id="48d7cfc1-490d-4105-80f3-a2f350475b00"
-        name="test_project" description="" createdAt="2019-08-26T17:29:41Z" updatedAt="2019-08-26T17:29:41Z"
-        contentPermissions="ManagedByOwner"><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></project></tsResponse>
-    http_version: 
-  recorded_at: Mon, 26 Aug 2019 17:29:41 GMT
+        http://tableau.com/api/ts-api-3.1.xsd"><project id="dc2dc7af-8065-4bd5-ae64-e9270feb53d9"
+        name="test_project" description="" createdAt="2020-10-28T16:54:02Z" updatedAt="2020-10-28T16:54:02Z"
+        contentPermissions="ManagedByOwner"><owner id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/></project></tsResponse>
+    http_version:
+  recorded_at: Wed, 28 Oct 2020 16:54:02 GMT
 - request:
     method: get
-    uri: http://TABLEAU_HOST/api/2.8/sites/143ca8d7-ace0-4b6f-9e08-8bd3cf9e7f84/projects?pageNumber=1&pageSize=100
+    uri: http://TABLEAU_HOST/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/projects?pageNumber=1&pageSize=100
     body:
       encoding: US-ASCII
       string: ''
     headers:
       X-Tableau-Auth:
-      - 5W4kc3IoTP6oND54Mgg6nw|UNt5058zl5Td3D1dEHXEgPlrenBtKA4h
+      - OXRCK7BwRs2Aef3k4qwD3Q|P1F5qfqYEuHaijNTIsejpLf7vcMCJvhF
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
   response:
     status:
       code: 200
@@ -121,7 +139,7 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 26 Aug 2019 17:29:57 GMT
+      - Wed, 28 Oct 2020 16:54:18 GMT
       P3p:
       - CP="NON"
       Server:
@@ -137,23 +155,21 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '1106'
+      - '490'
       Connection:
       - keep-alive
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
-        http://tableau.com/api/ts-api-2.8.xsd"><pagination pageNumber="1" pageSize="100"
-        totalAvailable="3"/><projects><project id="53913766-46e9-4c2f-8aac-7c66bbfae6fe"
+        http://tableau.com/api/ts-api-3.1.xsd"><pagination pageNumber="1" pageSize="100"
+        totalAvailable="2"/><projects><project id="13bbea32-ce37-4577-a861-252c7adc847d"
         name="Default" description="The default project that was automatically created
-        by Tableau." createdAt="2019-08-16T17:04:20Z" updatedAt="2019-08-16T17:04:20Z"
-        contentPermissions="ManagedByOwner"><owner id="f7fcafcf-ff21-4c64-9e69-6f79226cbf24"/></project><project
-        id="2ec210d7-099f-47f5-ad57-646461b47e59" name="test" description="" createdAt="2019-08-19T20:43:22Z"
-        updatedAt="2019-08-19T20:43:22Z" contentPermissions="ManagedByOwner"><owner
-        id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></project><project id="48d7cfc1-490d-4105-80f3-a2f350475b00"
-        name="test_project" description="" createdAt="2019-08-26T17:29:41Z" updatedAt="2019-08-26T17:29:41Z"
-        contentPermissions="ManagedByOwner"><owner id="5f8300e7-4f2a-4deb-9d32-6e0845d18890"/></project></projects></tsResponse>
-    http_version: 
-  recorded_at: Mon, 26 Aug 2019 17:29:57 GMT
+        by Tableau." createdAt="2017-08-03T16:39:07Z" updatedAt="2017-08-03T16:39:07Z"
+        contentPermissions="ManagedByOwner"><owner id="c14611c4-9cf0-4129-8c76-4458b234cb0b"/></project><project
+        id="dc2dc7af-8065-4bd5-ae64-e9270feb53d9" name="test_project" description=""
+        createdAt="2020-10-28T16:54:02Z" updatedAt="2020-10-28T16:54:02Z" contentPermissions="ManagedByOwner"><owner
+        id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/></project></projects></tsResponse>
+    http_version:
+  recorded_at: Wed, 28 Oct 2020 16:54:18 GMT
 recorded_with: VCR 3.0.3
