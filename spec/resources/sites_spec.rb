@@ -15,7 +15,6 @@ describe TableauApi::Resources::Sites, vcr: { cassette_name: 'sites' } do
   describe '#create' do
     it 'can create a site' do
       site = default_client.sites.create(name: 'Test Site 2', content_url: 'TestSite2', admin_mode: 'ContentAndUsers')
-      expect(site).not_to be_nil
       expect(site['id']).to be_a_tableau_id
       expect(site).to eq(
         'id' => site['id'],
@@ -23,13 +22,13 @@ describe TableauApi::Resources::Sites, vcr: { cassette_name: 'sites' } do
         'contentUrl' => 'TestSite2',
         'adminMode' => 'ContentAndUsers',
         'state' => 'Active',
-        'disableSubscriptions' => 'true',
+        'disableSubscriptions' => 'false',
         'cacheWarmupEnabled' => 'true',
         'commentingEnabled' => 'true',
         'guestAccessEnabled' => 'true',
         'revisionHistoryEnabled' => 'true',
         'revisionLimit' => '25',
-        'subscribeOthersEnabled' => 'false'
+        'subscribeOthersEnabled' => 'true'
       )
     end
 
@@ -60,7 +59,7 @@ describe TableauApi::Resources::Sites, vcr: { cassette_name: 'sites' } do
         'commentingEnabled' => 'true',
         'guestAccessEnabled' => 'false',
         'revisionHistoryEnabled' => 'true',
-        'revisionLimit' => '5',
+        'revisionLimit' => '25',
         'subscribeOthersEnabled' => 'false',
         'disableSubscriptions' => 'true'
       )
@@ -86,7 +85,7 @@ describe TableauApi::Resources::Sites, vcr: { cassette_name: 'sites' } do
 
     it 'raises an error if fails to delete a site' do
       expect do
-        default_client.sites.create(name: 'Test Site That Does Not Exist', content_url: 'TestSiteDoesNotExist', admin_mode: 'ContentAndUsers')
+        default_client.sites.delete(site_id: 'does-not-exist')
       end.to raise_error(TableauApi::TableauError)
     end
   end

@@ -68,12 +68,13 @@ generate a trusted ticket from a non-trusted host.
 To regenerate all the the cassettes, you'll first need to create the following on the Tableau server:
 * *Site*: Default
 * *Site*: TestSite
-** *Datasource*: test
-** *Username*: test_test
+ * *Datasource*: test
+ * *Username*: test_test
 
 And delete the following:
 * *Group*: testgroup (probably under TestSite)
 * *Project*: test_project (probably under Default)
+* Site: Test Site 2
 * *User*: test (probably under TestSite)
 * *Workbook*: test
 * *Workbook*: testpublish
