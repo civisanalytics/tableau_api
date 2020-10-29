@@ -3,7 +3,7 @@ module TableauApi
     class Jobs < Base
       def list(kwargs = {})
         url = "sites/#{@client.auth.site_id}/jobs"
-        @client.connection.api_get_collection(url, 'jobs.job', **kwargs)
+        @client.connection.api_get_collection(url, 'backgroundJobs.backgroundJob', **kwargs)
       end
     end
   end
