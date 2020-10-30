@@ -35,7 +35,7 @@ VCR.configure do |config|
       sensitive_elements.each { |e| response.body.gsub! e, '' }
       response.body.gsub!(/totalAvailable="\d+"/, "totalAvailable=\"#{elements.length - sensitive_elements.length}\"")
     end
-    raise 'Cassette might contain sensitive data; does a regex need to be updated?' if response.body.match(/civis/i)
+    raise 'Cassette might contain sensitive data; does a regex need to be updated?' if response.body =~ /civis/i
   end
   config.configure_rspec_metadata!
 end
