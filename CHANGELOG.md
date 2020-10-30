@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [In progress] - 
+## [3.0.0] -
 
 ### Added
 
@@ -13,6 +13,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 - Updated to API version 3.1
+  - This is a breaking change for site roles: 
+    https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_new_site_roles.htm
 
 
 ## [2.0.0] - 2019-08-29

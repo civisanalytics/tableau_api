@@ -71,10 +71,10 @@ To regenerate all the the cassettes, you'll first need to create the following o
  * *Datasource*: test
  * *Username*: test_test
 
-And delete the following:
+And delete the following if they exist:
 * *Group*: testgroup (probably under TestSite)
 * *Project*: test_project (probably under Default)
-* Site: Test Site 2
+* *Site*: Test Site 2
 * *User*: test (probably under TestSite)
 * *Workbook*: test
 * *Workbook*: testpublish
