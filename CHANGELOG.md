@@ -15,6 +15,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Updated to API version 3.1
   - This is a breaking change for site roles: 
     https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_new_site_roles.htm
+- Include full error detail in TableauError message
 
 
 ## [2.0.0] - 2019-08-29

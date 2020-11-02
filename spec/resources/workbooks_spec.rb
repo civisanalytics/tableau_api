@@ -59,9 +59,8 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         )
       end
 
-      ex.to raise_error do |e|
-        expect(e).to be_a TableauApi::TableauError
-        expect(e.message).to eq 'Resource Not Found'
+      ex.to raise_error(TableauApi::TableauError) do |e|
+        expect(e.message).to eq "404005: Resource Not Found; Project 'foo' could not be found."
         expect(e.http_response_code).to eq '404'
         expect(e.error_code).to eq '404005'
         expect(e.summary).to eq 'Resource Not Found'

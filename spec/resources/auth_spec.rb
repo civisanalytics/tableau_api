@@ -69,13 +69,9 @@ describe TableauApi::Resources::Auth, vcr: { cassette_name: 'auth' } do
     end
 
     it 'can sign out with a bad token' do
-      VCR.use_cassette('auth') do
-        expect(client.auth.sign_in).to be true
-      end
+      expect(client.auth.sign_in).to be true
       client.auth.instance_variable_set('@token', 'foo')
-      VCR.use_cassette('auth', match_requests_on: %i[headers path]) do
-        expect(client.auth.sign_out).to be true
-      end
+      expect(client.auth.sign_out).to be true
       expect(client.auth.instance_variable_get('@token')).to be nil
       expect(client.auth.instance_variable_get('@site_id')).to be nil
       expect(client.auth.instance_variable_get('@user_id')).to be nil
