@@ -29,7 +29,8 @@ module TableauApi
         users: TableauApi::Resources::Users,
         groups: TableauApi::Resources::Groups,
         workbooks: TableauApi::Resources::Workbooks,
-        datasources: TableauApi::Resources::Datasources
+        datasources: TableauApi::Resources::Datasources,
+        jobs: TableauApi::Resources::Jobs
       }
     end
 

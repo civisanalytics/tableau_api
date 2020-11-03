@@ -29,12 +29,13 @@ VCR.configure do |config|
   # only record a whitelist of test site and user elements
   config.before_record do |interaction|
     response = interaction.response
-    elements = response.body.scan(/<(?:site|user)\s.+name.+>\n/)
-    sensitive_elements = elements.reject { |e| e.match(/Default|TestSite|guest|test|<TABLEAU_ADMIN_USERNAME>/) }
+    elements = response.body.scan(/<(?:site|user)\s[^>]+name[^>]+>/)
+    sensitive_elements = elements.reject { |e| e.match(/"(Default|TestSite|Test Site 2|test|<TABLEAU_ADMIN_USERNAME>)"/) }
     unless sensitive_elements.empty?
       sensitive_elements.each { |e| response.body.gsub! e, '' }
       response.body.gsub!(/totalAvailable="\d+"/, "totalAvailable=\"#{elements.length - sensitive_elements.length}\"")
     end
+    raise 'Cassette might contain sensitive data; does a regex need to be updated?' if response.body =~ /civis/i
   end
   config.configure_rspec_metadata!
 end

@@ -8,7 +8,7 @@ module TableauApi
       @error_code = error['code']
       @summary = error['summary']
       @detail = error['detail']
-      super(summary)
+      super("#{error_code}: #{summary}; #{detail}")
     end
   end
 end

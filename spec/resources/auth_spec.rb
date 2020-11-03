@@ -1,7 +1,6 @@
 require 'spec_helper'
 
-describe TableauApi::Resources::Auth do
-  vcr_options = { cassette_name: 'auth' }
+describe TableauApi::Resources::Auth, vcr: { cassette_name: 'auth' } do
   let(:client) do
     TableauApi.new(
       host: ENV['TABLEAU_HOST'],
@@ -18,23 +17,23 @@ describe TableauApi::Resources::Auth do
     expect(client.auth).to be_an_instance_of(TableauApi::Resources::Auth)
   end
 
-  it 'fails appropriately with a bad username or password', vcr: vcr_options do
+  it 'fails appropriately with a bad username or password' do
     client = TableauApi.new(host: ENV['TABLEAU_HOST'], site_name: 'Default', username: 'foo', password: 'bar')
     expect(client.auth.sign_in).to be false
   end
 
-  it 'automatically signs in to get the token', vcr: vcr_options do
+  it 'automatically signs in to get the token' do
     expect(client.auth.token).to be_a_token
   end
 
-  it 'sucessfully signs in with a correct username and password', vcr: vcr_options do
+  it 'sucessfully signs in with a correct username and password' do
     expect(client.auth.sign_in).to be true
     expect(client.auth.token).to be_a_token
     expect(client.auth.site_id).to be_a_tableau_id
     expect(client.auth.user_id).to be_a_tableau_id
   end
 
-  it 'signs into a different site', vcr: vcr_options do
+  it 'signs into a different site' do
     client = TableauApi.new(
       host: ENV['TABLEAU_HOST'],
       site_name: 'TestSite',
@@ -47,7 +46,7 @@ describe TableauApi::Resources::Auth do
     expect(client.auth.user_id).to be_a_tableau_id
   end
 
-  it 'does not sign in if already signed in', vcr: vcr_options do
+  it 'does not sign in if already signed in' do
     expect(client.auth.sign_in).to be true
     token = client.auth.token
 
@@ -57,7 +56,7 @@ describe TableauApi::Resources::Auth do
 
   describe '.sign_out' do
     # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Sign_Out
-    it 'can sign out', vcr: vcr_options do
+    it 'can sign out' do
       expect(client.auth.sign_in).to be true
       expect(client.auth.token).to be_a_token
       expect(client.auth.site_id).to be_a_tableau_id
@@ -70,20 +69,16 @@ describe TableauApi::Resources::Auth do
     end
 
     it 'can sign out with a bad token' do
-      VCR.use_cassette('auth') do
-        expect(client.auth.sign_in).to be true
-      end
+      expect(client.auth.sign_in).to be true
       client.auth.instance_variable_set('@token', 'foo')
-      VCR.use_cassette('auth', match_requests_on: %i[headers path]) do
-        expect(client.auth.sign_out).to be true
-      end
+      expect(client.auth.sign_out).to be true
       expect(client.auth.instance_variable_get('@token')).to be nil
       expect(client.auth.instance_variable_get('@site_id')).to be nil
       expect(client.auth.instance_variable_get('@user_id')).to be nil
     end
   end
 
-  describe '.trusted_ticket', vcr: vcr_options do
+  describe '.trusted_ticket' do
     it 'can get a trusted ticket' do
       client = TableauApi.new(host: ENV['TABLEAU_HOST'], site_name: 'Default', username: 'test')
       expect(client.auth.trusted_ticket).to be_a_trusted_ticket

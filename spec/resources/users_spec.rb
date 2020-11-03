@@ -6,12 +6,12 @@ describe TableauApi::Resources::Users, vcr: { cassette_name: 'users' } do
   describe '#create' do
     # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Add_User_to_Site%3FTocPath%3DAPI%2520Reference%7C_____7
     it 'can create a user in a site' do
-      user = client.users.create(username: 'test', site_role: 'Unlicensed')
+      user = client.users.create(username: 'test', site_role: 'ExplorerCanPublish')
       expect(user['id']).to be_a_tableau_id
       expect(user).to eq(
         'id' => user['id'],
         'name' => 'test',
-        'siteRole' => 'Unlicensed',
+        'siteRole' => 'ExplorerCanPublish',
         'externalAuthUserId' => '',
         'authSetting' => 'ServerDefault'
       )
@@ -30,7 +30,7 @@ describe TableauApi::Resources::Users, vcr: { cassette_name: 'users' } do
         u['name'] == 'test'
       end
       expect(user['id']).to be_a_tableau_id
-      expect(user).to eq('id' => user['id'], 'name' => 'test', 'siteRole' => 'Unlicensed', 'externalAuthUserId' => '')
+      expect(user).to eq('id' => user['id'], 'name' => 'test', 'siteRole' => 'ExplorerCanPublish', 'externalAuthUserId' => '')
     end
   end
 
@@ -40,9 +40,9 @@ describe TableauApi::Resources::Users, vcr: { cassette_name: 'users' } do
       user = client.users.list.find do |u|
         u['name'] == 'test'
       end
-      expect(user['siteRole']).to eq('Unlicensed')
-      user_after_change = client.users.update_user(user_id: user['id'], site_role: 'Publisher')
-      expect(user_after_change['siteRole']).to eq('Publisher')
+      expect(user['siteRole']).to eq('ExplorerCanPublish')
+      user_after_change = client.users.update_user(user_id: user['id'], site_role: 'Explorer')
+      expect(user_after_change['siteRole']).to eq('Explorer')
     end
 
     it 'raises an error if the site role is not valid' do

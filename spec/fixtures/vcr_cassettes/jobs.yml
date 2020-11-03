@@ -28,7 +28,7 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Wed, 28 Oct 2020 16:50:36 GMT
+      - Thu, 29 Oct 2020 22:26:33 GMT
       P3p:
       - CP="NON"
       Server:
@@ -43,29 +43,27 @@ http_interactions:
       - IE=Edge
       X-Xss-Protection:
       - 1; mode=block
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '327'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
-        http://tableau.com/api/ts-api-3.1.xsd"><credentials token="s9wGY3TURgy-5CMSJJMsIg|6OhggVxbWxo5xgTFpRqRCljePCZU03vQ"><site
+        http://tableau.com/api/ts-api-3.1.xsd"><credentials token="1sDCnXhGSpq_h5Py2OLx7w|ge8YmG8j2l7MAvsYMvOpnnimtTPBooR9"><site
         id="f31923d2-dea4-4470-843a-9fc999d240aa" contentUrl="TestSite"/><user id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/></credentials></tsResponse>
     http_version:
-  recorded_at: Wed, 28 Oct 2020 16:50:36 GMT
+  recorded_at: Thu, 29 Oct 2020 22:26:33 GMT
 - request:
-    method: post
-    uri: http://TABLEAU_HOST/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/groups
+    method: get
+    uri: http://TABLEAU_HOST/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/projects?pageNumber=1&pageSize=100
     body:
-      encoding: UTF-8
-      string: <tsRequest><group name="testgroup" defaultSiteRole="Viewer"/></tsRequest>
+      encoding: US-ASCII
+      string: ''
     headers:
-      Content-Type:
-      - application/xml
       X-Tableau-Auth:
-      - s9wGY3TURgy-5CMSJJMsIg|6OhggVxbWxo5xgTFpRqRCljePCZU03vQ
+      - 1sDCnXhGSpq_h5Py2OLx7w|ge8YmG8j2l7MAvsYMvOpnnimtTPBooR9
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -74,8 +72,8 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 201
-      message: Created
+      code: 200
+      message: OK
     headers:
       Content-Security-Policy-Report-Only:
       - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
@@ -84,9 +82,203 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Wed, 28 Oct 2020 16:50:36 GMT
+      - Thu, 29 Oct 2020 22:26:33 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '532'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-3.1.xsd"><pagination pageNumber="1" pageSize="100"
+        totalAvailable="3"/><projects><project id="13bbea32-ce37-4577-a861-252c7adc847d"
+        name="Default" description="The default project that was automatically created
+        by Tableau." createdAt="2017-08-03T16:39:07Z" updatedAt="2017-08-03T16:39:07Z"
+        contentPermissions="ManagedByOwner"><owner id="c14611c4-9cf0-4129-8c76-4458b234cb0b"/></project><project
+        id="dc2dc7af-8065-4bd5-ae64-e9270feb53d9" name="test_project" description=""
+        createdAt="2020-10-28T16:54:02Z" updatedAt="2020-10-28T16:54:02Z" contentPermissions="ManagedByOwner"><owner
+        id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/></project><project id="2aa3cebd-a77b-4a88-a4e9-8290debb260e"
+        name="test" description="" createdAt="2020-10-28T18:18:43Z" updatedAt="2020-10-28T18:18:43Z"
+        contentPermissions="ManagedByOwner"><owner id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/></project></projects></tsResponse>
+    http_version:
+  recorded_at: Thu, 29 Oct 2020 22:26:33 GMT
+- request:
+    method: get
+    uri: http://TABLEAU_HOST/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/users/e8583ebd-eeb8-4be0-84f7-d78ea377e7f7/workbooks?pageNumber=1&pageSize=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 1sDCnXhGSpq_h5Py2OLx7w|ge8YmG8j2l7MAvsYMvOpnnimtTPBooR9
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Thu, 29 Oct 2020 22:26:33 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-3.1.xsd"><pagination pageNumber="1" pageSize="100"
+        totalAvailable="5"/><workbooks><workbook id="d20e9020-bfab-4c65-8b15-a2b74a10fc8f"
+        name="testpublish" contentUrl="testpublish" webpageUrl="http://TABLEAU_HOST/#/site/TestSite/workbooks/10200"
+        showTabs="false" size="1" createdAt="2020-10-28T18:20:36Z" updatedAt="2020-10-28T18:29:04Z"><project
+        id="2aa3cebd-a77b-4a88-a4e9-8290debb260e" name="test"/><owner id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/><tags/></workbook><workbook
+        id="65e5d4e6-e574-4f0d-abf0-3ba0c5050be2" name="test pagination1" contentUrl="testpagination1"
+        webpageUrl="http://TABLEAU_HOST/#/site/TestSite/workbooks/10201" showTabs="false"
+        size="1" createdAt="2020-10-28T18:21:00Z" updatedAt="2020-10-28T18:28:59Z"><project
+        id="2aa3cebd-a77b-4a88-a4e9-8290debb260e" name="test"/><owner id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/><tags/></workbook><workbook
+        id="149a7c1f-96a1-40e7-a02b-2410a02cfd43" name="test pagination2" contentUrl="testpagination2"
+        webpageUrl="http://TABLEAU_HOST/#/site/TestSite/workbooks/10202" showTabs="false"
+        size="1" createdAt="2020-10-28T18:21:01Z" updatedAt="2020-10-28T18:29:00Z"><project
+        id="2aa3cebd-a77b-4a88-a4e9-8290debb260e" name="test"/><owner id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/><tags/></workbook><workbook
+        id="beb85f23-0b98-4801-9bc3-612c833b8775" name="test pagination3" contentUrl="testpagination3"
+        webpageUrl="http://TABLEAU_HOST/#/site/TestSite/workbooks/10203" showTabs="false"
+        size="1" createdAt="2020-10-28T18:21:02Z" updatedAt="2020-10-28T18:29:00Z"><project
+        id="2aa3cebd-a77b-4a88-a4e9-8290debb260e" name="test"/><owner id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/><tags/></workbook><workbook
+        id="09584d60-b9e1-448e-b2b7-d8c3c798e02e" name="test" contentUrl="test" webpageUrl="http://TABLEAU_HOST/#/site/TestSite/workbooks/10204"
+        showTabs="false" size="1" createdAt="2020-10-29T21:55:22Z" updatedAt="2020-10-29T22:11:46Z"><project
+        id="2aa3cebd-a77b-4a88-a4e9-8290debb260e" name="test"/><owner id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/><tags/></workbook></workbooks></tsResponse>
+    http_version:
+  recorded_at: Thu, 29 Oct 2020 22:26:33 GMT
+- request:
+    method: get
+    uri: http://TABLEAU_HOST/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/workbooks/09584d60-b9e1-448e-b2b7-d8c3c798e02e
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Tableau-Auth:
+      - 1sDCnXhGSpq_h5Py2OLx7w|ge8YmG8j2l7MAvsYMvOpnnimtTPBooR9
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Thu, 29 Oct 2020 22:26:33 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-3.1.xsd"><workbook id="09584d60-b9e1-448e-b2b7-d8c3c798e02e"
+        name="test" contentUrl="test" webpageUrl="http://TABLEAU_HOST/#/site/TestSite/workbooks/10204"
+        showTabs="false" size="1" createdAt="2020-10-29T21:55:22Z" updatedAt="2020-10-29T22:11:46Z"><project
+        id="2aa3cebd-a77b-4a88-a4e9-8290debb260e" name="test"/><owner id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/><tags/><views><view
+        id="c79eae6b-e1b6-44c3-86f9-e3dfba2defa3" name="Sheet 1" contentUrl="test/sheets/Sheet1"
+        createdAt="2020-10-29T21:55:22Z" updatedAt="2020-10-29T22:11:55Z"><tags/></view></views></workbook></tsResponse>
+    http_version:
+  recorded_at: Thu, 29 Oct 2020 22:26:34 GMT
+- request:
+    method: post
+    uri: http://TABLEAU_HOST/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/workbooks/09584d60-b9e1-448e-b2b7-d8c3c798e02e/refresh
+    body:
+      encoding: UTF-8
+      string: "<tsRequest/>"
+    headers:
+      Content-Type:
+      - application/xml
+      X-Tableau-Auth:
+      - 1sDCnXhGSpq_h5Py2OLx7w|ge8YmG8j2l7MAvsYMvOpnnimtTPBooR9
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Thu, 29 Oct 2020 22:26:34 GMT
       Location:
-      - "/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/groups/1d558b2f-dcde-4649-ad87-b1b099af833e"
+      - "/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/jobs/799d7ca4-f2c2-451e-8930-ba86d563b367"
       P3p:
       - CP="NON"
       Server:
@@ -100,26 +292,27 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '297'
+      - '462'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
-        http://tableau.com/api/ts-api-3.1.xsd"><group id="1d558b2f-dcde-4649-ad87-b1b099af833e"
-        name="testgroup"/></tsResponse>
+        http://tableau.com/api/ts-api-3.1.xsd"><job id="799d7ca4-f2c2-451e-8930-ba86d563b367"
+        mode="Asynchronous" type="RefreshExtract" createdAt="2020-10-29T22:26:34Z"><extractRefreshJob><workbook
+        id="09584d60-b9e1-448e-b2b7-d8c3c798e02e" name="test"/></extractRefreshJob></job></tsResponse>
     http_version:
-  recorded_at: Wed, 28 Oct 2020 16:50:36 GMT
+  recorded_at: Thu, 29 Oct 2020 22:26:34 GMT
 - request:
     method: get
-    uri: http://TABLEAU_HOST/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/groups?pageNumber=1&pageSize=100
+    uri: http://TABLEAU_HOST/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/jobs?pageNumber=1&pageSize=100
     body:
       encoding: US-ASCII
       string: ''
     headers:
       X-Tableau-Auth:
-      - s9wGY3TURgy-5CMSJJMsIg|6OhggVxbWxo5xgTFpRqRCljePCZU03vQ
+      - 1sDCnXhGSpq_h5Py2OLx7w|ge8YmG8j2l7MAvsYMvOpnnimtTPBooR9
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -138,7 +331,7 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Wed, 28 Oct 2020 16:50:52 GMT
+      - Thu, 29 Oct 2020 22:26:40 GMT
       P3p:
       - CP="NON"
       Server:
@@ -154,7 +347,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '320'
+      - '527'
       Connection:
       - keep-alive
     body:
@@ -162,231 +355,19 @@ http_interactions:
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
         http://tableau.com/api/ts-api-3.1.xsd"><pagination pageNumber="1" pageSize="100"
-        totalAvailable="2"/><groups><group id="b69cfa62-4798-43f9-99fb-82256123675c"
-        name="All Users"><domain name="local"/></group><group id="1d558b2f-dcde-4649-ad87-b1b099af833e"
-        name="testgroup"><domain name="local"/></group></groups></tsResponse>
+        totalAvailable="5"/><backgroundJobs><backgroundJob id="8bc24396-3a8c-4cb0-84d7-c8a45271f09a"
+        status="Failed" createdAt="2020-10-28T18:21:06Z" startedAt="2020-10-28T18:21:11Z"
+        endedAt="2020-10-28T18:21:12Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="04a3853d-1a13-4ed8-b1f0-735ed4964991" status="Failed" createdAt="2020-10-28T18:40:37Z"
+        startedAt="2020-10-28T18:40:39Z" endedAt="2020-10-28T18:40:39Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="ac605471-a517-4fc0-b728-4ac0e88946d4"
+        status="Failed" createdAt="2020-10-29T22:22:15Z" startedAt="2020-10-29T22:22:15Z"
+        endedAt="2020-10-29T22:22:16Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="868e7101-9d34-4e6d-8e91-6d9dad6914ed" status="Failed" createdAt="2020-10-29T22:25:08Z"
+        startedAt="2020-10-29T22:25:16Z" endedAt="2020-10-29T22:25:16Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="799d7ca4-f2c2-451e-8930-ba86d563b367"
+        status="Failed" createdAt="2020-10-29T22:26:34Z" startedAt="2020-10-29T22:26:37Z"
+        endedAt="2020-10-29T22:26:37Z" priority="0" jobType="refresh_extracts"/></backgroundJobs></tsResponse>
     http_version:
-  recorded_at: Wed, 28 Oct 2020 16:50:52 GMT
-- request:
-    method: get
-    uri: http://TABLEAU_HOST/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/users?pageNumber=1&pageSize=100
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - s9wGY3TURgy-5CMSJJMsIg|6OhggVxbWxo5xgTFpRqRCljePCZU03vQ
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Security-Policy-Report-Only:
-      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
-        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
-        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
-      Content-Type:
-      - application/xml;charset=utf-8
-      Date:
-      - Wed, 28 Oct 2020 16:50:52 GMT
-      P3p:
-      - CP="NON"
-      Server:
-      - Tableau
-      Vary:
-      - Accept-Encoding
-      X-Content-Type-Options:
-      - nosniff
-      X-Tableau:
-      - Tableau Server
-      X-Ua-Compatible:
-      - IE=Edge
-      X-Xss-Protection:
-      - 1; mode=block
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-    body:
-      encoding: ASCII-8BIT
-      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
-        http://tableau.com/api/ts-api-3.1.xsd"><pagination pageNumber="1" pageSize="100"
-        totalAvailable="8"/><users><user id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"
-        name="<TABLEAU_ADMIN_USERNAME>" siteRole="ServerAdministrator" lastLogin="2020-10-28T16:50:36Z"
-        externalAuthUserId=""/><user id="01b14fa2-b7c1-4cba-a5e6-2426b632899f" name="testuserxyz"
-        siteRole="Viewer" externalAuthUserId=""/><user id="086f5bb7-4e91-4e7b-ba62-40f25a81bf7c"
-        name="z_civis_platform_4b0611b6-7bf2-4f11-adc3-3ae13beaeb80" siteRole="Explorer"
-        externalAuthUserId=""/><user id="1d5f460a-b660-4181-9ca1-55c83921ea2c" name="z_civis_platform_5a4cd075-e45f-4476-a1d9-468853287d33"
-        siteRole="Explorer" externalAuthUserId=""/><user id="0164126d-7ef7-4d99-83aa-603856b1294d"
-        name="z_civis_platform_d0baeb34-eee6-47d0-96a4-a9960bf88438" siteRole="Explorer"
-        externalAuthUserId=""/><user id="4fe79ee8-aeae-4b99-8531-4b86ef7b22a3" name="z_civis_platform_a69cda26-b0cd-4166-bd41-1421adb038a5"
-        siteRole="Explorer" externalAuthUserId=""/><user id="3dc36a58-ea8e-4359-aaf0-eb42ce3326bb"
-        name="test_test" siteRole="ExplorerCanPublish" externalAuthUserId=""/><user
-        id="8d84c623-1ce8-4590-b5d5-dd9bc6de5b33" name="test" siteRole="ExplorerCanPublish"
-        externalAuthUserId=""/></users></tsResponse>
-    http_version:
-  recorded_at: Wed, 28 Oct 2020 16:50:52 GMT
-- request:
-    method: post
-    uri: http://TABLEAU_HOST/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/groups/1d558b2f-dcde-4649-ad87-b1b099af833e/users
-    body:
-      encoding: UTF-8
-      string: <tsRequest><user id="8d84c623-1ce8-4590-b5d5-dd9bc6de5b33"/></tsRequest>
-    headers:
-      Content-Type:
-      - application/xml
-      X-Tableau-Auth:
-      - s9wGY3TURgy-5CMSJJMsIg|6OhggVxbWxo5xgTFpRqRCljePCZU03vQ
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Security-Policy-Report-Only:
-      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
-        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
-        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
-      Content-Type:
-      - application/xml;charset=utf-8
-      Date:
-      - Wed, 28 Oct 2020 16:50:52 GMT
-      P3p:
-      - CP="NON"
-      Server:
-      - Tableau
-      Vary:
-      - Accept-Encoding
-      X-Content-Type-Options:
-      - nosniff
-      X-Tableau:
-      - Tableau Server
-      X-Ua-Compatible:
-      - IE=Edge
-      X-Xss-Protection:
-      - 1; mode=block
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-    body:
-      encoding: ASCII-8BIT
-      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
-        http://tableau.com/api/ts-api-3.1.xsd"><user id="8d84c623-1ce8-4590-b5d5-dd9bc6de5b33"
-        name="test" siteRole="ExplorerCanPublish" externalAuthUserId=""/></tsResponse>
-    http_version:
-  recorded_at: Wed, 28 Oct 2020 16:50:52 GMT
-- request:
-    method: get
-    uri: http://TABLEAU_HOST/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/groups/1d558b2f-dcde-4649-ad87-b1b099af833e/users?pageNumber=1&pageSize=100
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - s9wGY3TURgy-5CMSJJMsIg|6OhggVxbWxo5xgTFpRqRCljePCZU03vQ
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Security-Policy-Report-Only:
-      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
-        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
-        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
-      Content-Type:
-      - application/xml;charset=utf-8
-      Date:
-      - Wed, 28 Oct 2020 16:50:52 GMT
-      P3p:
-      - CP="NON"
-      Server:
-      - Tableau
-      Vary:
-      - Accept-Encoding
-      X-Content-Type-Options:
-      - nosniff
-      X-Tableau:
-      - Tableau Server
-      X-Ua-Compatible:
-      - IE=Edge
-      X-Xss-Protection:
-      - 1; mode=block
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-    body:
-      encoding: ASCII-8BIT
-      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
-        http://tableau.com/api/ts-api-3.1.xsd"><pagination pageNumber="1" pageSize="100"
-        totalAvailable="1"/><users><user id="8d84c623-1ce8-4590-b5d5-dd9bc6de5b33"
-        name="test" siteRole="ExplorerCanPublish" externalAuthUserId=""/></users></tsResponse>
-    http_version:
-  recorded_at: Wed, 28 Oct 2020 16:50:52 GMT
-- request:
-    method: delete
-    uri: http://TABLEAU_HOST/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/groups/1d558b2f-dcde-4649-ad87-b1b099af833e/users/8d84c623-1ce8-4590-b5d5-dd9bc6de5b33
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Tableau-Auth:
-      - s9wGY3TURgy-5CMSJJMsIg|6OhggVxbWxo5xgTFpRqRCljePCZU03vQ
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 204
-      message: No Content
-    headers:
-      Content-Security-Policy-Report-Only:
-      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
-        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
-        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
-      Date:
-      - Wed, 28 Oct 2020 16:50:53 GMT
-      P3p:
-      - CP="NON"
-      Server:
-      - Tableau
-      X-Content-Type-Options:
-      - nosniff
-      X-Tableau:
-      - Tableau Server
-      X-Ua-Compatible:
-      - IE=Edge
-      X-Xss-Protection:
-      - 1; mode=block
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: ''
-    http_version:
-  recorded_at: Wed, 28 Oct 2020 16:50:53 GMT
+  recorded_at: Thu, 29 Oct 2020 22:26:40 GMT
 recorded_with: VCR 3.0.3

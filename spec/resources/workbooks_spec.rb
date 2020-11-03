@@ -2,7 +2,6 @@ require 'spec_helper'
 require 'tempfile'
 require 'chunky_png'
 
-# NOTE: if it exists, delete test/testpublish workbook before recreating cassettes
 describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } do
   include_context 'tableau client'
 
@@ -45,7 +44,8 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         'views' => workbook['views'],
         'size' => '1',
         'createdAt' => workbook['createdAt'],
-        'updatedAt' => workbook['updatedAt']
+        'updatedAt' => workbook['updatedAt'],
+        'webpageUrl' => workbook['webpageUrl']
       )
     end
 
@@ -59,9 +59,8 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         )
       end
 
-      ex.to raise_error do |e|
-        expect(e).to be_a TableauApi::TableauError
-        expect(e.message).to eq 'Resource Not Found'
+      ex.to raise_error(TableauApi::TableauError) do |e|
+        expect(e.message).to eq "404005: Resource Not Found; Project 'foo' could not be found."
         expect(e.http_response_code).to eq '404'
         expect(e.error_code).to eq '404005'
         expect(e.summary).to eq 'Resource Not Found'
@@ -183,12 +182,9 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         grantee_type: 'group',
         grantee_id: all_users_group['id'],
         capabilities: {
-          AddComment: true,
-          ExportData: true,
           Read: true,
           ShareView: true,
           ViewUnderlyingData: true,
-          ViewComments: true,
           Filter: true,
           Write: true
         }
@@ -277,7 +273,8 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         'tags' => nil,
         'size' => '1',
         'updatedAt' => workbook['updatedAt'],
-        'createdAt' => workbook['createdAt']
+        'createdAt' => workbook['createdAt'],
+        'webpageUrl' => workbook['webpageUrl']
       )
 
       same_workbook = client.workbooks.list.find do |w|
