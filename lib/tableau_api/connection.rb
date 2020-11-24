@@ -8,23 +8,21 @@ module TableauApi
       @client = client
     end
 
-    def post(path, *args)
-      self.class.post("#{@client.host}/#{path}", *args)
+    def post(path, **kwargs)
+      self.class.post("#{@client.host}/#{path}", kwargs)
     end
 
     # if the result is paginated, it will fetch subsequent pages
     # collection can be delimited with a period to do nested hash lookups
     # e.g. objects.object
-    def api_get_collection(path, collection, *args)
+    def api_get_collection(path, collection, page_number: 1, page_size: 100, **kwargs)
       Enumerator.new do |enum|
-        args[0] = {} unless args[0]
-        page_size = (args[0].delete(:page_size) { 100 }).to_i
-        page_number = (args[0].delete(:page_number) { 1 }).to_i
-
         loop do
-          uri = URI::HTTP.build(path: "/#{path}", query: URI.encode_www_form(**args[0], pageSize: page_size, pageNumber: page_number)).request_uri
+          query = kwargs.fetch(:query, {})
+                  .merge(pageSize: page_size, pageNumber: page_number)
+          new_kwargs = kwargs.merge(query: query)
 
-          res = api_get(uri, *args)
+          res = api_get(path, **new_kwargs)
           raise TableauError, res if res.code.to_s != '200'
 
           # ensure the result is an array because it will not be an array if there is only one element
@@ -75,14 +73,13 @@ module TableauApi
 
     private
 
-    def api_method(method, path, *args)
+    def api_method(method, path, **kwargs)
       # do not attach auth headers or attempt to signin if we're signing in
       unless path == 'auth/signin'
-        args[0] = {} unless args[0]
-        args[0][:headers] = {} unless args[0][:headers]
-        args[0][:headers].merge!(auth_headers)
+        kwargs[:headers] = {} unless kwargs[:headers]
+        kwargs[:headers].merge!(auth_headers)
       end
-      self.class.send(method, url_for(path), *args)
+      self.class.send(method, url_for(path), kwargs)
     end
 
     def url_for(path)

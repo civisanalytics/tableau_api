@@ -290,7 +290,7 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Wed, 28 Oct 2020 16:38:45 GMT
+      - Tue, 24 Nov 2020 21:59:25 GMT
       P3p:
       - CP="NON"
       Server:
@@ -303,8 +303,8 @@ http_interactions:
       - IE=Edge
       X-Xss-Protection:
       - 1; mode=block
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '341'
       Connection:
       - keep-alive
     body:
@@ -314,13 +314,13 @@ http_interactions:
         http://tableau.com/api/ts-api-3.1.xsd"><error code="401001"><summary>Signin
         Error</summary><detail>Error signing in to Tableau Server</detail></error></tsResponse>
     http_version:
-  recorded_at: Wed, 28 Oct 2020 16:38:45 GMT
+  recorded_at: Tue, 24 Nov 2020 21:59:25 GMT
 - request:
     method: post
     uri: http://TABLEAU_HOST/api/3.1/auth/signin
     body:
       encoding: UTF-8
-      string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
+      string: <tsRequest><credentials name="TABLEAU_ADMIN_USERNAME" password="TABLEAU_ADMIN_PASSWORD"><site
         contentUrl=""/></credentials></tsRequest>
     headers:
       Content-Type:
@@ -343,7 +343,7 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Wed, 28 Oct 2020 16:38:45 GMT
+      - Tue, 24 Nov 2020 21:59:25 GMT
       P3p:
       - CP="NON"
       Server:
@@ -366,16 +366,16 @@ http_interactions:
       encoding: ASCII-8BIT
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
-        http://tableau.com/api/ts-api-3.1.xsd"><credentials token="Oo33C46US_SIAyA1g3Jw0g|nf1y4lLfoqfhEVjmNeTveCoZ0Z6osIM3"><site
+        http://tableau.com/api/ts-api-3.1.xsd"><credentials token="lyRRiXUQTpqu44g7D79CsQ|dnKJm45x9iBtVokNOKBhAZ7aHKb2bBvC"><site
         id="ff66e08b-e7b4-4759-b21f-1fdc0e0885f9" contentUrl=""/><user id="a3c12ac3-d303-4078-8b24-f6966b2ce9a6"/></credentials></tsResponse>
     http_version:
-  recorded_at: Wed, 28 Oct 2020 16:38:45 GMT
+  recorded_at: Tue, 24 Nov 2020 21:59:26 GMT
 - request:
     method: post
     uri: http://TABLEAU_HOST/api/3.1/auth/signin
     body:
       encoding: UTF-8
-      string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
+      string: <tsRequest><credentials name="TABLEAU_ADMIN_USERNAME" password="TABLEAU_ADMIN_PASSWORD"><site
         contentUrl="TestSite"/></credentials></tsRequest>
     headers:
       Content-Type:
@@ -398,7 +398,7 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Wed, 28 Oct 2020 16:38:45 GMT
+      - Tue, 24 Nov 2020 21:59:26 GMT
       P3p:
       - CP="NON"
       Server:
@@ -413,18 +413,18 @@ http_interactions:
       - IE=Edge
       X-Xss-Protection:
       - 1; mode=block
-      Content-Length:
-      - '330'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
-        http://tableau.com/api/ts-api-3.1.xsd"><credentials token="9D18Wc8PTzuqWMSmxHxkNw|6kFI9XO32ntCFmpetIiSOKDr9DCZI22B"><site
-        id="f31923d2-dea4-4470-843a-9fc999d240aa" contentUrl="TestSite"/><user id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/></credentials></tsResponse>
+        http://tableau.com/api/ts-api-3.1.xsd"><credentials token="TKfTVndxSiCS4xnOtQ9bFA|f5wF8r3KIFXUdmZrTJRdmULvJOtcBsb3"><site
+        id="fb50c166-f809-44e0-995e-2cf56ceffbc0" contentUrl="TestSite"/><user id="962f69f4-db35-4a1d-b2b5-c5c5c5c5bcaa"/></credentials></tsResponse>
     http_version:
-  recorded_at: Wed, 28 Oct 2020 16:38:45 GMT
+  recorded_at: Tue, 24 Nov 2020 21:59:26 GMT
 - request:
     method: post
     uri: http://TABLEAU_HOST/api/3.1/auth/signout
@@ -435,7 +435,7 @@ http_interactions:
       Content-Type:
       - application/xml
       X-Tableau-Auth:
-      - Oo33C46US_SIAyA1g3Jw0g|nf1y4lLfoqfhEVjmNeTveCoZ0Z6osIM3
+      - lyRRiXUQTpqu44g7D79CsQ|dnKJm45x9iBtVokNOKBhAZ7aHKb2bBvC
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -452,7 +452,7 @@ http_interactions:
         blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
         data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
       Date:
-      - Wed, 28 Oct 2020 16:38:45 GMT
+      - Tue, 24 Nov 2020 21:59:26 GMT
       P3p:
       - CP="NON"
       Server:
@@ -471,59 +471,5 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version:
-  recorded_at: Wed, 28 Oct 2020 16:38:45 GMT
-- request:
-    method: post
-    uri: http://TABLEAU_HOST/api/3.1/auth/signout
-    body:
-      encoding: UTF-8
-      string: ''
-    headers:
-      Content-Type:
-      - application/xml
-      X-Tableau-Auth:
-      - foo
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 401
-      message: Unauthorized
-    headers:
-      Content-Security-Policy-Report-Only:
-      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
-        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
-        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
-      Content-Type:
-      - application/xml;charset=utf-8
-      Date:
-      - Wed, 28 Oct 2020 16:38:46 GMT
-      P3p:
-      - CP="NON"
-      Server:
-      - Tableau
-      X-Content-Type-Options:
-      - nosniff
-      X-Tableau:
-      - Tableau Server
-      X-Ua-Compatible:
-      - IE=Edge
-      X-Xss-Protection:
-      - 1; mode=block
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
-        http://tableau.com/api/ts-api-3.1.xsd"><error code="401002"><summary>Unauthorized
-        Access</summary><detail>Invalid authentication credentials were provided.</detail></error></tsResponse>
-    http_version:
-  recorded_at: Wed, 28 Oct 2020 16:38:46 GMT
+  recorded_at: Tue, 24 Nov 2020 21:59:26 GMT
 recorded_with: VCR 3.0.3
