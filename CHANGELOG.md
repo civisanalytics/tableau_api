@@ -11,7 +11,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
   query with the pagination parameters instead of overwriting the pagination
   params
 - Avoid mutating extra argument hash to endpoint methods
-- Support Ruby 2.7
 
 
 ## [3.0.0] - 2020-11-11
