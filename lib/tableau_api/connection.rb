@@ -18,8 +18,9 @@ module TableauApi
     def api_get_collection(path, collection, page_number: 1, page_size: 100, **kwargs)
       Enumerator.new do |enum|
         loop do
-          query = kwargs.fetch(:query, {})
-                  .merge(pageSize: page_size, pageNumber: page_number)
+          query = kwargs.fetch(:query, '')
+          query += '&' unless query.empty?
+          query += "pageSize=#{page_size}&pageNumber=#{page_number}"
           new_kwargs = kwargs.merge(query: query)
 
           res = api_get(path, **new_kwargs)
@@ -38,6 +39,7 @@ module TableauApi
       end
     end
 
+    # FIXME change these to **kwargs
     def api_get(path, *args)
       api_method(:get, path, *args)
     end
