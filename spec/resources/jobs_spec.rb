@@ -32,7 +32,7 @@ describe TableauApi::Resources::Jobs, vcr: { cassette_name: 'jobs' } do
     it 'can filter jobs in a site' do
       workbook = find_or_publish_workbook('test')
       client.workbooks.refresh(workbook_id: workbook['id'])
-      jobs = client.jobs.list(query: 'filter=jobType:eq:foo')
+      jobs = client.jobs.list(query: 'filter=jobType:eq:refresh_extracts,status:eq:Success')
       expect(jobs.to_a).to be_empty
     end
   end
