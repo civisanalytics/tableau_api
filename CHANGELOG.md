@@ -3,11 +3,15 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [4.0.0] - 
+## [4.0.0] - 2020-11-30
 
-### Changed
+### Changed/Fixed
 
-- 
+- Changed interface to Connection#api_get_collection to properly merge a string
+  query with the pagination parameters instead of overwriting the pagination
+  params
+- Avoid mutating extra argument hash to endpoint methods
+- Support Ruby 2.7
 
 
 ## [3.0.0] - 2020-11-11

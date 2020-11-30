@@ -8,8 +8,6 @@ http_interactions:
       string: <tsRequest><credentials name="TABLEAU_ADMIN_USERNAME" password="TABLEAU_ADMIN_PASSWORD"><site
         contentUrl="TestSite"/></credentials></tsRequest>
     headers:
-      Content-Type:
-      - application/xml
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -28,7 +26,7 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 30 Nov 2020 21:09:04 GMT
+      - Mon, 30 Nov 2020 21:37:25 GMT
       P3p:
       - CP="NON"
       Server:
@@ -43,18 +41,18 @@ http_interactions:
       - IE=Edge
       X-Xss-Protection:
       - 1; mode=block
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '329'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
-        http://tableau.com/api/ts-api-3.1.xsd"><credentials token="1QoXSmMZQg2KgTfzkYMYzw|8PvYQNVcEOthallymM5MeAtd5DfNeHHg"><site
+        http://tableau.com/api/ts-api-3.1.xsd"><credentials token="JLiIUYvpRIKOgQ5MtStpMQ|3P04IdDmWUI3nCSpmYIViDJvvTS6hVch"><site
         id="fb50c166-f809-44e0-995e-2cf56ceffbc0" contentUrl="TestSite"/><user id="962f69f4-db35-4a1d-b2b5-c5c5c5c5bcaa"/></credentials></tsResponse>
     http_version:
-  recorded_at: Mon, 30 Nov 2020 21:09:04 GMT
+  recorded_at: Mon, 30 Nov 2020 21:37:25 GMT
 - request:
     method: get
     uri: http://TABLEAU_HOST/api/3.1/sites/fb50c166-f809-44e0-995e-2cf56ceffbc0/projects?pageNumber=1&pageSize=100
@@ -62,14 +60,14 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - tableau_api/4.0.0 Ruby/2.4.1
       X-Tableau-Auth:
-      - 1QoXSmMZQg2KgTfzkYMYzw|8PvYQNVcEOthallymM5MeAtd5DfNeHHg
+      - JLiIUYvpRIKOgQ5MtStpMQ|3P04IdDmWUI3nCSpmYIViDJvvTS6hVch
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
@@ -82,7 +80,7 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 30 Nov 2020 21:09:04 GMT
+      - Mon, 30 Nov 2020 21:37:25 GMT
       P3p:
       - CP="NON"
       Server:
@@ -116,7 +114,7 @@ http_interactions:
         name="test_project" description="" createdAt="2020-11-24T21:59:47Z" updatedAt="2020-11-24T21:59:47Z"
         contentPermissions="ManagedByOwner"><owner id="962f69f4-db35-4a1d-b2b5-c5c5c5c5bcaa"/></project></projects></tsResponse>
     http_version:
-  recorded_at: Mon, 30 Nov 2020 21:09:05 GMT
+  recorded_at: Mon, 30 Nov 2020 21:37:25 GMT
 - request:
     method: get
     uri: http://TABLEAU_HOST/api/3.1/sites/fb50c166-f809-44e0-995e-2cf56ceffbc0/users/962f69f4-db35-4a1d-b2b5-c5c5c5c5bcaa/workbooks?pageNumber=1&pageSize=100
@@ -124,14 +122,14 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - tableau_api/4.0.0 Ruby/2.4.1
       X-Tableau-Auth:
-      - 1QoXSmMZQg2KgTfzkYMYzw|8PvYQNVcEOthallymM5MeAtd5DfNeHHg
+      - JLiIUYvpRIKOgQ5MtStpMQ|3P04IdDmWUI3nCSpmYIViDJvvTS6hVch
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
@@ -144,7 +142,7 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 30 Nov 2020 21:09:04 GMT
+      - Mon, 30 Nov 2020 21:37:25 GMT
       P3p:
       - CP="NON"
       Server:
@@ -188,7 +186,7 @@ http_interactions:
         showTabs="false" size="1" createdAt="2020-11-24T22:17:11Z" updatedAt="2020-11-24T22:33:46Z"><project
         id="fe782f36-ea80-4eb7-8e26-b459b617b6d9" name="test"/><owner id="962f69f4-db35-4a1d-b2b5-c5c5c5c5bcaa"/><tags/></workbook></workbooks></tsResponse>
     http_version:
-  recorded_at: Mon, 30 Nov 2020 21:09:05 GMT
+  recorded_at: Mon, 30 Nov 2020 21:37:26 GMT
 - request:
     method: get
     uri: http://TABLEAU_HOST/api/3.1/sites/fb50c166-f809-44e0-995e-2cf56ceffbc0/workbooks/578ed308-3715-46ac-ae36-1af2caad6216
@@ -196,14 +194,14 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - tableau_api/4.0.0 Ruby/2.4.1
       X-Tableau-Auth:
-      - 1QoXSmMZQg2KgTfzkYMYzw|8PvYQNVcEOthallymM5MeAtd5DfNeHHg
+      - JLiIUYvpRIKOgQ5MtStpMQ|3P04IdDmWUI3nCSpmYIViDJvvTS6hVch
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
@@ -216,7 +214,7 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 30 Nov 2020 21:09:04 GMT
+      - Mon, 30 Nov 2020 21:37:25 GMT
       P3p:
       - CP="NON"
       Server:
@@ -246,7 +244,7 @@ http_interactions:
         id="a057594b-6af2-4433-8c44-244fdcd289e9" name="Sheet 1" contentUrl="test/sheets/Sheet1"
         createdAt="2020-11-24T22:17:11Z" updatedAt="2020-11-24T22:33:52Z"><tags/></view></views></workbook></tsResponse>
     http_version:
-  recorded_at: Mon, 30 Nov 2020 21:09:05 GMT
+  recorded_at: Mon, 30 Nov 2020 21:37:26 GMT
 - request:
     method: post
     uri: http://TABLEAU_HOST/api/3.1/sites/fb50c166-f809-44e0-995e-2cf56ceffbc0/workbooks/578ed308-3715-46ac-ae36-1af2caad6216/refresh
@@ -254,16 +252,16 @@ http_interactions:
       encoding: UTF-8
       string: "<tsRequest/>"
     headers:
+      User-Agent:
+      - tableau_api/4.0.0 Ruby/2.4.1
       Content-Type:
       - application/xml
       X-Tableau-Auth:
-      - 1QoXSmMZQg2KgTfzkYMYzw|8PvYQNVcEOthallymM5MeAtd5DfNeHHg
+      - JLiIUYvpRIKOgQ5MtStpMQ|3P04IdDmWUI3nCSpmYIViDJvvTS6hVch
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 202
@@ -276,9 +274,9 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 30 Nov 2020 21:09:04 GMT
+      - Mon, 30 Nov 2020 21:37:26 GMT
       Location:
-      - "/api/3.1/sites/fb50c166-f809-44e0-995e-2cf56ceffbc0/jobs/9f705b4e-3faf-4b0b-a7b8-7cd67d691e7a"
+      - "/api/3.1/sites/fb50c166-f809-44e0-995e-2cf56ceffbc0/jobs/4cd38c29-d21a-4efb-9ccc-b6055fd98dad"
       P3p:
       - CP="NON"
       Server:
@@ -291,19 +289,19 @@ http_interactions:
       - IE=Edge
       X-Xss-Protection:
       - 1; mode=block
-      Content-Length:
-      - '462'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
-        http://tableau.com/api/ts-api-3.1.xsd"><job id="9f705b4e-3faf-4b0b-a7b8-7cd67d691e7a"
-        mode="Asynchronous" type="RefreshExtract" createdAt="2020-11-30T21:09:05Z"><extractRefreshJob><workbook
+        http://tableau.com/api/ts-api-3.1.xsd"><job id="4cd38c29-d21a-4efb-9ccc-b6055fd98dad"
+        mode="Asynchronous" type="RefreshExtract" createdAt="2020-11-30T21:37:26Z"><extractRefreshJob><workbook
         id="578ed308-3715-46ac-ae36-1af2caad6216" name="test"/></extractRefreshJob></job></tsResponse>
     http_version:
-  recorded_at: Mon, 30 Nov 2020 21:09:05 GMT
+  recorded_at: Mon, 30 Nov 2020 21:37:26 GMT
 - request:
     method: get
     uri: http://TABLEAU_HOST/api/3.1/sites/fb50c166-f809-44e0-995e-2cf56ceffbc0/jobs?pageNumber=1&pageSize=100
@@ -311,14 +309,14 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - tableau_api/4.0.0 Ruby/2.4.1
       X-Tableau-Auth:
-      - 1QoXSmMZQg2KgTfzkYMYzw|8PvYQNVcEOthallymM5MeAtd5DfNeHHg
+      - JLiIUYvpRIKOgQ5MtStpMQ|3P04IdDmWUI3nCSpmYIViDJvvTS6hVch
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
@@ -331,7 +329,7 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 30 Nov 2020 21:09:06 GMT
+      - Mon, 30 Nov 2020 21:37:26 GMT
       P3p:
       - CP="NON"
       Server:
@@ -346,8 +344,8 @@ http_interactions:
       - IE=Edge
       X-Xss-Protection:
       - 1; mode=block
-      Content-Length:
-      - '1704'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
@@ -355,7 +353,7 @@ http_interactions:
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
         http://tableau.com/api/ts-api-3.1.xsd"><pagination pageNumber="1" pageSize="100"
-        totalAvailable="35"/><backgroundJobs><backgroundJob id="85b2b0ad-a4e3-4df6-9386-49a63558847f"
+        totalAvailable="37"/><backgroundJobs><backgroundJob id="85b2b0ad-a4e3-4df6-9386-49a63558847f"
         status="Failed" createdAt="2020-11-24T20:22:04Z" startedAt="2020-11-24T20:22:04Z"
         endedAt="2020-11-24T20:22:04Z" priority="0" jobType="refresh_extracts"/><backgroundJob
         id="cec498f0-9d6e-4e10-8634-c48870ddaa5b" status="Failed" createdAt="2020-11-24T20:23:16Z"
@@ -441,10 +439,14 @@ http_interactions:
         id="a2fb990c-f2c3-411e-a493-41bff379b0fd" status="Failed" createdAt="2020-11-30T21:01:08Z"
         startedAt="2020-11-30T21:08:55Z" endedAt="2020-11-30T21:08:55Z" priority="0"
         jobType="refresh_extracts"/><backgroundJob id="9f705b4e-3faf-4b0b-a7b8-7cd67d691e7a"
-        status="InProgress" createdAt="2020-11-30T21:09:05Z" startedAt="2020-11-30T21:09:06Z"
-        priority="0" jobType="refresh_extracts"/></backgroundJobs></tsResponse>
+        status="Failed" createdAt="2020-11-30T21:09:05Z" startedAt="2020-11-30T21:09:06Z"
+        endedAt="2020-11-30T21:09:06Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="5787c96e-fbd3-43cc-add5-2808b1cdb921" status="Failed" createdAt="2020-11-30T21:36:36Z"
+        startedAt="2020-11-30T21:36:38Z" endedAt="2020-11-30T21:36:38Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="4cd38c29-d21a-4efb-9ccc-b6055fd98dad"
+        status="Pending" createdAt="2020-11-30T21:37:26Z" priority="0" jobType="refresh_extracts"/></backgroundJobs></tsResponse>
     http_version:
-  recorded_at: Mon, 30 Nov 2020 21:09:06 GMT
+  recorded_at: Mon, 30 Nov 2020 21:37:27 GMT
 - request:
     method: get
     uri: http://TABLEAU_HOST/api/3.1/sites/fb50c166-f809-44e0-995e-2cf56ceffbc0/jobs?filter=jobType:eq:refresh_extracts,status:eq:Success&pageNumber=1&pageSize=100
@@ -452,14 +454,14 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - tableau_api/4.0.0 Ruby/2.4.1
       X-Tableau-Auth:
-      - 1QoXSmMZQg2KgTfzkYMYzw|8PvYQNVcEOthallymM5MeAtd5DfNeHHg
+      - JLiIUYvpRIKOgQ5MtStpMQ|3P04IdDmWUI3nCSpmYIViDJvvTS6hVch
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
@@ -472,7 +474,7 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 30 Nov 2020 21:09:06 GMT
+      - Mon, 30 Nov 2020 21:37:26 GMT
       P3p:
       - CP="NON"
       Server:
@@ -487,8 +489,8 @@ http_interactions:
       - IE=Edge
       X-Xss-Protection:
       - 1; mode=block
-      Content-Length:
-      - '229'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
@@ -498,5 +500,5 @@ http_interactions:
         http://tableau.com/api/ts-api-3.1.xsd"><pagination pageNumber="1" pageSize="100"
         totalAvailable="0"/><backgroundJobs/></tsResponse>
     http_version:
-  recorded_at: Mon, 30 Nov 2020 21:09:06 GMT
+  recorded_at: Mon, 30 Nov 2020 21:37:27 GMT
 recorded_with: VCR 3.0.3
