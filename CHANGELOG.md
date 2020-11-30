@@ -9,7 +9,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - Changed interface to Connection#api_get_collection to properly merge a string
   query with the pagination parameters instead of overwriting the pagination
-  params
+  params. This means you can't pass a Hash `query` parameter to `Jobs#list`
+  anymore, but job filtering now works properly because colons in the filter
+  will not be URL-encoded.
 - Avoid mutating extra argument hash to endpoint methods
 
 
