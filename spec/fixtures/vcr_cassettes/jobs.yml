@@ -5,11 +5,9 @@ http_interactions:
     uri: http://TABLEAU_HOST/api/3.1/auth/signin
     body:
       encoding: UTF-8
-      string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
+      string: <tsRequest><credentials name="TABLEAU_ADMIN_USERNAME" password="TABLEAU_ADMIN_PASSWORD"><site
         contentUrl="TestSite"/></credentials></tsRequest>
     headers:
-      Content-Type:
-      - application/xml
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -28,7 +26,7 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 29 Oct 2020 22:26:33 GMT
+      - Mon, 30 Nov 2020 21:37:25 GMT
       P3p:
       - CP="NON"
       Server:
@@ -44,32 +42,32 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '327'
+      - '329'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
-        http://tableau.com/api/ts-api-3.1.xsd"><credentials token="1sDCnXhGSpq_h5Py2OLx7w|ge8YmG8j2l7MAvsYMvOpnnimtTPBooR9"><site
-        id="f31923d2-dea4-4470-843a-9fc999d240aa" contentUrl="TestSite"/><user id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/></credentials></tsResponse>
+        http://tableau.com/api/ts-api-3.1.xsd"><credentials token="JLiIUYvpRIKOgQ5MtStpMQ|3P04IdDmWUI3nCSpmYIViDJvvTS6hVch"><site
+        id="fb50c166-f809-44e0-995e-2cf56ceffbc0" contentUrl="TestSite"/><user id="962f69f4-db35-4a1d-b2b5-c5c5c5c5bcaa"/></credentials></tsResponse>
     http_version:
-  recorded_at: Thu, 29 Oct 2020 22:26:33 GMT
+  recorded_at: Mon, 30 Nov 2020 21:37:25 GMT
 - request:
     method: get
-    uri: http://TABLEAU_HOST/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/projects?pageNumber=1&pageSize=100
+    uri: http://TABLEAU_HOST/api/3.1/sites/fb50c166-f809-44e0-995e-2cf56ceffbc0/projects?pageNumber=1&pageSize=100
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - tableau_api/4.0.0 Ruby/2.4.1
       X-Tableau-Auth:
-      - 1sDCnXhGSpq_h5Py2OLx7w|ge8YmG8j2l7MAvsYMvOpnnimtTPBooR9
+      - JLiIUYvpRIKOgQ5MtStpMQ|3P04IdDmWUI3nCSpmYIViDJvvTS6hVch
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
@@ -82,7 +80,7 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 29 Oct 2020 22:26:33 GMT
+      - Mon, 30 Nov 2020 21:37:25 GMT
       P3p:
       - CP="NON"
       Server:
@@ -98,7 +96,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '532'
+      - '522'
       Connection:
       - keep-alive
     body:
@@ -106,32 +104,32 @@ http_interactions:
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
         http://tableau.com/api/ts-api-3.1.xsd"><pagination pageNumber="1" pageSize="100"
-        totalAvailable="3"/><projects><project id="13bbea32-ce37-4577-a861-252c7adc847d"
+        totalAvailable="3"/><projects><project id="d3698def-6ccc-434d-8f23-4d3a4e41d317"
         name="Default" description="The default project that was automatically created
-        by Tableau." createdAt="2017-08-03T16:39:07Z" updatedAt="2017-08-03T16:39:07Z"
-        contentPermissions="ManagedByOwner"><owner id="c14611c4-9cf0-4129-8c76-4458b234cb0b"/></project><project
-        id="dc2dc7af-8065-4bd5-ae64-e9270feb53d9" name="test_project" description=""
-        createdAt="2020-10-28T16:54:02Z" updatedAt="2020-10-28T16:54:02Z" contentPermissions="ManagedByOwner"><owner
-        id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/></project><project id="2aa3cebd-a77b-4a88-a4e9-8290debb260e"
-        name="test" description="" createdAt="2020-10-28T18:18:43Z" updatedAt="2020-10-28T18:18:43Z"
-        contentPermissions="ManagedByOwner"><owner id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/></project></projects></tsResponse>
+        by Tableau." createdAt="2020-11-24T20:17:14Z" updatedAt="2020-11-24T20:17:14Z"
+        contentPermissions="ManagedByOwner"><owner id="03c2d586-d96a-4329-b124-2a0e411a79b9"/></project><project
+        id="fe782f36-ea80-4eb7-8e26-b459b617b6d9" name="test" description="" createdAt="2020-11-24T21:36:04Z"
+        updatedAt="2020-11-24T21:36:04Z" contentPermissions="ManagedByOwner"><owner
+        id="962f69f4-db35-4a1d-b2b5-c5c5c5c5bcaa"/></project><project id="965b0b2c-074f-48ff-8032-dbeaa5d22b27"
+        name="test_project" description="" createdAt="2020-11-24T21:59:47Z" updatedAt="2020-11-24T21:59:47Z"
+        contentPermissions="ManagedByOwner"><owner id="962f69f4-db35-4a1d-b2b5-c5c5c5c5bcaa"/></project></projects></tsResponse>
     http_version:
-  recorded_at: Thu, 29 Oct 2020 22:26:33 GMT
+  recorded_at: Mon, 30 Nov 2020 21:37:25 GMT
 - request:
     method: get
-    uri: http://TABLEAU_HOST/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/users/e8583ebd-eeb8-4be0-84f7-d78ea377e7f7/workbooks?pageNumber=1&pageSize=100
+    uri: http://TABLEAU_HOST/api/3.1/sites/fb50c166-f809-44e0-995e-2cf56ceffbc0/users/962f69f4-db35-4a1d-b2b5-c5c5c5c5bcaa/workbooks?pageNumber=1&pageSize=100
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - tableau_api/4.0.0 Ruby/2.4.1
       X-Tableau-Auth:
-      - 1sDCnXhGSpq_h5Py2OLx7w|ge8YmG8j2l7MAvsYMvOpnnimtTPBooR9
+      - JLiIUYvpRIKOgQ5MtStpMQ|3P04IdDmWUI3nCSpmYIViDJvvTS6hVch
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
@@ -144,7 +142,7 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 29 Oct 2020 22:26:33 GMT
+      - Mon, 30 Nov 2020 21:37:25 GMT
       P3p:
       - CP="NON"
       Server:
@@ -159,8 +157,8 @@ http_interactions:
       - IE=Edge
       X-Xss-Protection:
       - 1; mode=block
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '659'
       Connection:
       - keep-alive
     body:
@@ -168,42 +166,42 @@ http_interactions:
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
         http://tableau.com/api/ts-api-3.1.xsd"><pagination pageNumber="1" pageSize="100"
-        totalAvailable="5"/><workbooks><workbook id="d20e9020-bfab-4c65-8b15-a2b74a10fc8f"
-        name="testpublish" contentUrl="testpublish" webpageUrl="http://TABLEAU_HOST/#/site/TestSite/workbooks/10200"
-        showTabs="false" size="1" createdAt="2020-10-28T18:20:36Z" updatedAt="2020-10-28T18:29:04Z"><project
-        id="2aa3cebd-a77b-4a88-a4e9-8290debb260e" name="test"/><owner id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/><tags/></workbook><workbook
-        id="65e5d4e6-e574-4f0d-abf0-3ba0c5050be2" name="test pagination1" contentUrl="testpagination1"
-        webpageUrl="http://TABLEAU_HOST/#/site/TestSite/workbooks/10201" showTabs="false"
-        size="1" createdAt="2020-10-28T18:21:00Z" updatedAt="2020-10-28T18:28:59Z"><project
-        id="2aa3cebd-a77b-4a88-a4e9-8290debb260e" name="test"/><owner id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/><tags/></workbook><workbook
-        id="149a7c1f-96a1-40e7-a02b-2410a02cfd43" name="test pagination2" contentUrl="testpagination2"
-        webpageUrl="http://TABLEAU_HOST/#/site/TestSite/workbooks/10202" showTabs="false"
-        size="1" createdAt="2020-10-28T18:21:01Z" updatedAt="2020-10-28T18:29:00Z"><project
-        id="2aa3cebd-a77b-4a88-a4e9-8290debb260e" name="test"/><owner id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/><tags/></workbook><workbook
-        id="beb85f23-0b98-4801-9bc3-612c833b8775" name="test pagination3" contentUrl="testpagination3"
-        webpageUrl="http://TABLEAU_HOST/#/site/TestSite/workbooks/10203" showTabs="false"
-        size="1" createdAt="2020-10-28T18:21:02Z" updatedAt="2020-10-28T18:29:00Z"><project
-        id="2aa3cebd-a77b-4a88-a4e9-8290debb260e" name="test"/><owner id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/><tags/></workbook><workbook
-        id="09584d60-b9e1-448e-b2b7-d8c3c798e02e" name="test" contentUrl="test" webpageUrl="http://TABLEAU_HOST/#/site/TestSite/workbooks/10204"
-        showTabs="false" size="1" createdAt="2020-10-29T21:55:22Z" updatedAt="2020-10-29T22:11:46Z"><project
-        id="2aa3cebd-a77b-4a88-a4e9-8290debb260e" name="test"/><owner id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/><tags/></workbook></workbooks></tsResponse>
+        totalAvailable="5"/><workbooks><workbook id="1d739586-4a0b-453a-af18-6660349a97e0"
+        name="test pagination1" contentUrl="testpagination1" webpageUrl="http://TABLEAU_HOST/#/site/TestSite/workbooks/10222"
+        showTabs="false" size="1" createdAt="2020-11-24T21:37:49Z" updatedAt="2020-11-24T21:37:49Z"><project
+        id="fe782f36-ea80-4eb7-8e26-b459b617b6d9" name="test"/><owner id="962f69f4-db35-4a1d-b2b5-c5c5c5c5bcaa"/><tags/></workbook><workbook
+        id="6a9bd7e8-203e-4708-8fd2-2fbff3ae5960" name="test pagination2" contentUrl="testpagination2"
+        webpageUrl="http://TABLEAU_HOST/#/site/TestSite/workbooks/10223" showTabs="false"
+        size="1" createdAt="2020-11-24T21:37:50Z" updatedAt="2020-11-24T21:37:50Z"><project
+        id="fe782f36-ea80-4eb7-8e26-b459b617b6d9" name="test"/><owner id="962f69f4-db35-4a1d-b2b5-c5c5c5c5bcaa"/><tags/></workbook><workbook
+        id="8af7bd7e-dd1f-4f0d-8614-ee62a1cc0029" name="test pagination3" contentUrl="testpagination3"
+        webpageUrl="http://TABLEAU_HOST/#/site/TestSite/workbooks/10224" showTabs="false"
+        size="1" createdAt="2020-11-24T21:37:51Z" updatedAt="2020-11-24T21:37:51Z"><project
+        id="fe782f36-ea80-4eb7-8e26-b459b617b6d9" name="test"/><owner id="962f69f4-db35-4a1d-b2b5-c5c5c5c5bcaa"/><tags/></workbook><workbook
+        id="1bc0740a-2857-4680-abed-a8085d7a8587" name="testpublish" contentUrl="testpublish"
+        webpageUrl="http://TABLEAU_HOST/#/site/TestSite/workbooks/10227" showTabs="false"
+        size="1" createdAt="2020-11-24T22:04:43Z" updatedAt="2020-11-24T22:14:59Z"><project
+        id="fe782f36-ea80-4eb7-8e26-b459b617b6d9" name="test"/><owner id="962f69f4-db35-4a1d-b2b5-c5c5c5c5bcaa"/><tags/></workbook><workbook
+        id="578ed308-3715-46ac-ae36-1af2caad6216" name="test" contentUrl="test" webpageUrl="http://TABLEAU_HOST/#/site/TestSite/workbooks/10228"
+        showTabs="false" size="1" createdAt="2020-11-24T22:17:11Z" updatedAt="2020-11-24T22:33:46Z"><project
+        id="fe782f36-ea80-4eb7-8e26-b459b617b6d9" name="test"/><owner id="962f69f4-db35-4a1d-b2b5-c5c5c5c5bcaa"/><tags/></workbook></workbooks></tsResponse>
     http_version:
-  recorded_at: Thu, 29 Oct 2020 22:26:33 GMT
+  recorded_at: Mon, 30 Nov 2020 21:37:26 GMT
 - request:
     method: get
-    uri: http://TABLEAU_HOST/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/workbooks/09584d60-b9e1-448e-b2b7-d8c3c798e02e
+    uri: http://TABLEAU_HOST/api/3.1/sites/fb50c166-f809-44e0-995e-2cf56ceffbc0/workbooks/578ed308-3715-46ac-ae36-1af2caad6216
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - tableau_api/4.0.0 Ruby/2.4.1
       X-Tableau-Auth:
-      - 1sDCnXhGSpq_h5Py2OLx7w|ge8YmG8j2l7MAvsYMvOpnnimtTPBooR9
+      - JLiIUYvpRIKOgQ5MtStpMQ|3P04IdDmWUI3nCSpmYIViDJvvTS6hVch
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
@@ -216,7 +214,7 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 29 Oct 2020 22:26:33 GMT
+      - Mon, 30 Nov 2020 21:37:25 GMT
       P3p:
       - CP="NON"
       Server:
@@ -231,39 +229,39 @@ http_interactions:
       - IE=Edge
       X-Xss-Protection:
       - 1; mode=block
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '478'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
-        http://tableau.com/api/ts-api-3.1.xsd"><workbook id="09584d60-b9e1-448e-b2b7-d8c3c798e02e"
-        name="test" contentUrl="test" webpageUrl="http://TABLEAU_HOST/#/site/TestSite/workbooks/10204"
-        showTabs="false" size="1" createdAt="2020-10-29T21:55:22Z" updatedAt="2020-10-29T22:11:46Z"><project
-        id="2aa3cebd-a77b-4a88-a4e9-8290debb260e" name="test"/><owner id="e8583ebd-eeb8-4be0-84f7-d78ea377e7f7"/><tags/><views><view
-        id="c79eae6b-e1b6-44c3-86f9-e3dfba2defa3" name="Sheet 1" contentUrl="test/sheets/Sheet1"
-        createdAt="2020-10-29T21:55:22Z" updatedAt="2020-10-29T22:11:55Z"><tags/></view></views></workbook></tsResponse>
+        http://tableau.com/api/ts-api-3.1.xsd"><workbook id="578ed308-3715-46ac-ae36-1af2caad6216"
+        name="test" contentUrl="test" webpageUrl="http://TABLEAU_HOST/#/site/TestSite/workbooks/10228"
+        showTabs="false" size="1" createdAt="2020-11-24T22:17:11Z" updatedAt="2020-11-24T22:33:46Z"><project
+        id="fe782f36-ea80-4eb7-8e26-b459b617b6d9" name="test"/><owner id="962f69f4-db35-4a1d-b2b5-c5c5c5c5bcaa"/><tags/><views><view
+        id="a057594b-6af2-4433-8c44-244fdcd289e9" name="Sheet 1" contentUrl="test/sheets/Sheet1"
+        createdAt="2020-11-24T22:17:11Z" updatedAt="2020-11-24T22:33:52Z"><tags/></view></views></workbook></tsResponse>
     http_version:
-  recorded_at: Thu, 29 Oct 2020 22:26:34 GMT
+  recorded_at: Mon, 30 Nov 2020 21:37:26 GMT
 - request:
     method: post
-    uri: http://TABLEAU_HOST/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/workbooks/09584d60-b9e1-448e-b2b7-d8c3c798e02e/refresh
+    uri: http://TABLEAU_HOST/api/3.1/sites/fb50c166-f809-44e0-995e-2cf56ceffbc0/workbooks/578ed308-3715-46ac-ae36-1af2caad6216/refresh
     body:
       encoding: UTF-8
       string: "<tsRequest/>"
     headers:
+      User-Agent:
+      - tableau_api/4.0.0 Ruby/2.4.1
       Content-Type:
       - application/xml
       X-Tableau-Auth:
-      - 1sDCnXhGSpq_h5Py2OLx7w|ge8YmG8j2l7MAvsYMvOpnnimtTPBooR9
+      - JLiIUYvpRIKOgQ5MtStpMQ|3P04IdDmWUI3nCSpmYIViDJvvTS6hVch
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 202
@@ -276,9 +274,9 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 29 Oct 2020 22:26:34 GMT
+      - Mon, 30 Nov 2020 21:37:26 GMT
       Location:
-      - "/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/jobs/799d7ca4-f2c2-451e-8930-ba86d563b367"
+      - "/api/3.1/sites/fb50c166-f809-44e0-995e-2cf56ceffbc0/jobs/4cd38c29-d21a-4efb-9ccc-b6055fd98dad"
       P3p:
       - CP="NON"
       Server:
@@ -291,34 +289,34 @@ http_interactions:
       - IE=Edge
       X-Xss-Protection:
       - 1; mode=block
-      Content-Length:
-      - '462'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
-        http://tableau.com/api/ts-api-3.1.xsd"><job id="799d7ca4-f2c2-451e-8930-ba86d563b367"
-        mode="Asynchronous" type="RefreshExtract" createdAt="2020-10-29T22:26:34Z"><extractRefreshJob><workbook
-        id="09584d60-b9e1-448e-b2b7-d8c3c798e02e" name="test"/></extractRefreshJob></job></tsResponse>
+        http://tableau.com/api/ts-api-3.1.xsd"><job id="4cd38c29-d21a-4efb-9ccc-b6055fd98dad"
+        mode="Asynchronous" type="RefreshExtract" createdAt="2020-11-30T21:37:26Z"><extractRefreshJob><workbook
+        id="578ed308-3715-46ac-ae36-1af2caad6216" name="test"/></extractRefreshJob></job></tsResponse>
     http_version:
-  recorded_at: Thu, 29 Oct 2020 22:26:34 GMT
+  recorded_at: Mon, 30 Nov 2020 21:37:26 GMT
 - request:
     method: get
-    uri: http://TABLEAU_HOST/api/3.1/sites/f31923d2-dea4-4470-843a-9fc999d240aa/jobs?pageNumber=1&pageSize=100
+    uri: http://TABLEAU_HOST/api/3.1/sites/fb50c166-f809-44e0-995e-2cf56ceffbc0/jobs?pageNumber=1&pageSize=100
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - tableau_api/4.0.0 Ruby/2.4.1
       X-Tableau-Auth:
-      - 1sDCnXhGSpq_h5Py2OLx7w|ge8YmG8j2l7MAvsYMvOpnnimtTPBooR9
+      - JLiIUYvpRIKOgQ5MtStpMQ|3P04IdDmWUI3nCSpmYIViDJvvTS6hVch
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
@@ -331,7 +329,7 @@ http_interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 29 Oct 2020 22:26:40 GMT
+      - Mon, 30 Nov 2020 21:37:26 GMT
       P3p:
       - CP="NON"
       Server:
@@ -346,8 +344,8 @@ http_interactions:
       - IE=Edge
       X-Xss-Protection:
       - 1; mode=block
-      Content-Length:
-      - '527'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
@@ -355,19 +353,152 @@ http_interactions:
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
         http://tableau.com/api/ts-api-3.1.xsd"><pagination pageNumber="1" pageSize="100"
-        totalAvailable="5"/><backgroundJobs><backgroundJob id="8bc24396-3a8c-4cb0-84d7-c8a45271f09a"
-        status="Failed" createdAt="2020-10-28T18:21:06Z" startedAt="2020-10-28T18:21:11Z"
-        endedAt="2020-10-28T18:21:12Z" priority="0" jobType="refresh_extracts"/><backgroundJob
-        id="04a3853d-1a13-4ed8-b1f0-735ed4964991" status="Failed" createdAt="2020-10-28T18:40:37Z"
-        startedAt="2020-10-28T18:40:39Z" endedAt="2020-10-28T18:40:39Z" priority="0"
-        jobType="refresh_extracts"/><backgroundJob id="ac605471-a517-4fc0-b728-4ac0e88946d4"
-        status="Failed" createdAt="2020-10-29T22:22:15Z" startedAt="2020-10-29T22:22:15Z"
-        endedAt="2020-10-29T22:22:16Z" priority="0" jobType="refresh_extracts"/><backgroundJob
-        id="868e7101-9d34-4e6d-8e91-6d9dad6914ed" status="Failed" createdAt="2020-10-29T22:25:08Z"
-        startedAt="2020-10-29T22:25:16Z" endedAt="2020-10-29T22:25:16Z" priority="0"
-        jobType="refresh_extracts"/><backgroundJob id="799d7ca4-f2c2-451e-8930-ba86d563b367"
-        status="Failed" createdAt="2020-10-29T22:26:34Z" startedAt="2020-10-29T22:26:37Z"
-        endedAt="2020-10-29T22:26:37Z" priority="0" jobType="refresh_extracts"/></backgroundJobs></tsResponse>
+        totalAvailable="37"/><backgroundJobs><backgroundJob id="85b2b0ad-a4e3-4df6-9386-49a63558847f"
+        status="Failed" createdAt="2020-11-24T20:22:04Z" startedAt="2020-11-24T20:22:04Z"
+        endedAt="2020-11-24T20:22:04Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="cec498f0-9d6e-4e10-8634-c48870ddaa5b" status="Failed" createdAt="2020-11-24T20:23:16Z"
+        startedAt="2020-11-24T20:23:25Z" endedAt="2020-11-24T20:23:26Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="17c5593a-9951-4973-a484-d56776bd0a8d"
+        status="Failed" createdAt="2020-11-24T20:24:32Z" startedAt="2020-11-24T20:24:36Z"
+        endedAt="2020-11-24T20:24:36Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="f8e41181-358d-4f3f-9224-68662c3a216f" status="Failed" createdAt="2020-11-24T20:30:08Z"
+        startedAt="2020-11-24T20:30:17Z" endedAt="2020-11-24T20:30:17Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="3e862958-9716-4d2e-9599-ce1cc56c7b12"
+        status="Failed" createdAt="2020-11-24T21:20:53Z" startedAt="2020-11-24T21:20:58Z"
+        endedAt="2020-11-24T21:20:58Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="9ac7c1a6-988f-4a48-a5b9-adc524e8e2b6" status="Failed" createdAt="2020-11-24T21:37:56Z"
+        startedAt="2020-11-24T21:38:00Z" endedAt="2020-11-24T21:38:00Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="d7273b9b-ce1d-4dea-a0d9-76dff0837cbb"
+        status="Failed" createdAt="2020-11-24T21:43:59Z" startedAt="2020-11-24T21:44:01Z"
+        endedAt="2020-11-24T21:44:01Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="3d38d942-d301-4ef5-9221-ee40f3da3fa5" status="Failed" createdAt="2020-11-24T21:44:44Z"
+        startedAt="2020-11-24T21:44:51Z" endedAt="2020-11-24T21:44:52Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="ec994727-fdd5-4697-86e0-1348e063c588"
+        status="Failed" createdAt="2020-11-24T21:45:50Z" startedAt="2020-11-24T21:45:52Z"
+        endedAt="2020-11-24T21:45:52Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="d4a3876a-71f4-43c2-8be2-9baf957ab8fc" status="Failed" createdAt="2020-11-24T21:51:31Z"
+        startedAt="2020-11-24T21:51:33Z" endedAt="2020-11-24T21:51:33Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="bf9e2eaf-1d0f-432b-bede-0c17c6ea4112"
+        status="Failed" createdAt="2020-11-24T21:59:46Z" startedAt="2020-11-24T21:59:54Z"
+        endedAt="2020-11-24T21:59:54Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="9377f460-2eba-477b-81ac-caa16c6ad698" status="Failed" createdAt="2020-11-24T22:00:43Z"
+        startedAt="2020-11-24T22:00:44Z" endedAt="2020-11-24T22:00:45Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="31c2aa0e-d59a-41f9-bbdf-18a59908947c"
+        status="Failed" createdAt="2020-11-24T22:05:02Z" startedAt="2020-11-24T22:08:27Z"
+        endedAt="2020-11-24T22:08:27Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="13f44e6f-d23a-4828-8383-d9487f7f4542" status="Failed" createdAt="2020-11-24T22:16:02Z"
+        startedAt="2020-11-24T22:16:09Z" endedAt="2020-11-24T22:16:09Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="ddeec6f5-4842-4266-8b22-6f313f3e1fa8"
+        status="Failed" createdAt="2020-11-24T22:17:12Z" startedAt="2020-11-24T22:17:20Z"
+        endedAt="2020-11-24T22:17:20Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="58b39945-76c7-4506-9150-8263d3d3366d" status="Failed" createdAt="2020-11-24T22:33:54Z"
+        startedAt="2020-11-24T22:34:02Z" endedAt="2020-11-24T22:34:02Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="7b965cd0-2d63-4f53-a9fb-06d23909d90c"
+        status="Failed" createdAt="2020-11-24T22:34:36Z" startedAt="2020-11-24T22:34:43Z"
+        endedAt="2020-11-24T22:34:43Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="aa4ed85d-8f87-4407-92de-a3f339da0251" status="Failed" createdAt="2020-11-24T22:39:31Z"
+        startedAt="2020-11-24T22:39:33Z" endedAt="2020-11-24T22:39:34Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="e3ef2dfb-4f03-40dc-a0d6-a4c6c1135235"
+        status="Failed" createdAt="2020-11-24T23:34:21Z" startedAt="2020-11-24T23:34:26Z"
+        endedAt="2020-11-24T23:34:26Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="fbd0b02f-e3d0-4ad8-9431-5bcd4cbaa13a" status="Failed" createdAt="2020-11-24T23:37:42Z"
+        startedAt="2020-11-24T23:37:47Z" endedAt="2020-11-24T23:37:47Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="72a0eca6-1d2a-4d1d-8d1c-40de1f938c39"
+        status="Failed" createdAt="2020-11-30T20:32:30Z" startedAt="2020-11-30T20:32:36Z"
+        endedAt="2020-11-30T20:32:37Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="cceadbac-6ffa-402e-911f-ca34a08522b2" status="Failed" createdAt="2020-11-30T20:43:13Z"
+        startedAt="2020-11-30T20:43:19Z" endedAt="2020-11-30T20:43:19Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="9df5f2be-368c-4778-8d2c-b2860ab31f1f"
+        status="Failed" createdAt="2020-11-30T20:44:59Z" startedAt="2020-11-30T20:45:09Z"
+        endedAt="2020-11-30T20:45:09Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="8cf392bd-3fe2-4843-9bdb-8000b84ff823" status="Failed" createdAt="2020-11-30T20:45:33Z"
+        startedAt="2020-11-30T20:45:40Z" endedAt="2020-11-30T20:45:40Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="a73bb9f8-88e7-47bb-a2e9-5ce9b68d283f"
+        status="Failed" createdAt="2020-11-30T20:45:56Z" startedAt="2020-11-30T20:46:01Z"
+        endedAt="2020-11-30T20:46:01Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="0b847e40-22ef-4d67-ac43-c61700131526" status="Failed" createdAt="2020-11-30T20:46:43Z"
+        startedAt="2020-11-30T20:46:51Z" endedAt="2020-11-30T20:46:51Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="e9f72bb4-0120-4d52-9749-66e811b3264f"
+        status="Failed" createdAt="2020-11-30T20:47:28Z" startedAt="2020-11-30T20:47:32Z"
+        endedAt="2020-11-30T20:47:32Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="362fb229-9534-4ea0-9871-9a067be515ca" status="Failed" createdAt="2020-11-30T20:47:59Z"
+        startedAt="2020-11-30T20:48:02Z" endedAt="2020-11-30T20:48:02Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="f3ff68e9-6545-4797-8af3-2982105fa763"
+        status="Failed" createdAt="2020-11-30T20:49:23Z" startedAt="2020-11-30T20:49:32Z"
+        endedAt="2020-11-30T20:49:32Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="693aa5a6-6af6-4c1a-afa6-ed13e637d3ea" status="Failed" createdAt="2020-11-30T20:53:13Z"
+        startedAt="2020-11-30T20:53:13Z" endedAt="2020-11-30T20:53:13Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="5d1b6845-b05c-4b45-aea2-9790eee6ce32"
+        status="Failed" createdAt="2020-11-30T20:54:39Z" startedAt="2020-11-30T20:54:44Z"
+        endedAt="2020-11-30T20:54:44Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="9e0dac67-89c4-4f3f-b8c4-d35569ebfb18" status="Failed" createdAt="2020-11-30T20:56:58Z"
+        startedAt="2020-11-30T20:57:04Z" endedAt="2020-11-30T20:57:04Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="2f8aced6-d89a-4f4b-b0db-cf9cfdfcb954"
+        status="Failed" createdAt="2020-11-30T21:00:40Z" startedAt="2020-11-30T21:00:45Z"
+        endedAt="2020-11-30T21:00:45Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="a2fb990c-f2c3-411e-a493-41bff379b0fd" status="Failed" createdAt="2020-11-30T21:01:08Z"
+        startedAt="2020-11-30T21:08:55Z" endedAt="2020-11-30T21:08:55Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="9f705b4e-3faf-4b0b-a7b8-7cd67d691e7a"
+        status="Failed" createdAt="2020-11-30T21:09:05Z" startedAt="2020-11-30T21:09:06Z"
+        endedAt="2020-11-30T21:09:06Z" priority="0" jobType="refresh_extracts"/><backgroundJob
+        id="5787c96e-fbd3-43cc-add5-2808b1cdb921" status="Failed" createdAt="2020-11-30T21:36:36Z"
+        startedAt="2020-11-30T21:36:38Z" endedAt="2020-11-30T21:36:38Z" priority="0"
+        jobType="refresh_extracts"/><backgroundJob id="4cd38c29-d21a-4efb-9ccc-b6055fd98dad"
+        status="Pending" createdAt="2020-11-30T21:37:26Z" priority="0" jobType="refresh_extracts"/></backgroundJobs></tsResponse>
     http_version:
-  recorded_at: Thu, 29 Oct 2020 22:26:40 GMT
+  recorded_at: Mon, 30 Nov 2020 21:37:27 GMT
+- request:
+    method: get
+    uri: http://TABLEAU_HOST/api/3.1/sites/fb50c166-f809-44e0-995e-2cf56ceffbc0/jobs?filter=jobType:eq:refresh_extracts,status:eq:Success&pageNumber=1&pageSize=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - tableau_api/4.0.0 Ruby/2.4.1
+      X-Tableau-Auth:
+      - JLiIUYvpRIKOgQ5MtStpMQ|3P04IdDmWUI3nCSpmYIViDJvvTS6hVch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy-Report-Only:
+      - 'connect-src * https://*.tiles.mapbox.com https://api.mapbox.com; default-src
+        blob:; font-src * data:; frame-src * data:; img-src * data: blob:; object-src
+        data:; report-uri /vizql/csp-report; script-src * blob:; style-src * ''unsafe-inline'''
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Mon, 30 Nov 2020 21:37:26 GMT
+      P3p:
+      - CP="NON"
+      Server:
+      - Tableau
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Tableau:
+      - Tableau Server
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableau.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableau.com/api
+        http://tableau.com/api/ts-api-3.1.xsd"><pagination pageNumber="1" pageSize="100"
+        totalAvailable="0"/><backgroundJobs/></tsResponse>
+    http_version:
+  recorded_at: Mon, 30 Nov 2020 21:37:27 GMT
 recorded_with: VCR 3.0.3

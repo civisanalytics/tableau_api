@@ -2,6 +2,8 @@ require 'httparty'
 require 'builder'
 require 'net/http/post/multipart'
 
+require 'tableau_api/version'
+
 require 'tableau_api/client'
 require 'tableau_api/connection'
 require 'tableau_api/error'
@@ -14,7 +16,6 @@ require 'tableau_api/resources/groups'
 require 'tableau_api/resources/workbooks'
 require 'tableau_api/resources/datasources'
 require 'tableau_api/resources/jobs'
-require 'tableau_api/version'
 
 module TableauApi
   class << self

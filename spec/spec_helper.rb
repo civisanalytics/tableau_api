@@ -20,8 +20,8 @@ VCR.configure do |config|
 
   config.default_cassette_options = { record: :new_episodes, match_requests_on: %i[path method body query] }
 
-  config.filter_sensitive_data('<TABLEAU_ADMIN_USERNAME>') { ENV['TABLEAU_ADMIN_USERNAME'] }
-  config.filter_sensitive_data('<TABLEAU_ADMIN_PASSWORD>') { ENV['TABLEAU_ADMIN_PASSWORD'].encode(xml: :text) }
+  config.filter_sensitive_data('TABLEAU_ADMIN_USERNAME') { ENV['TABLEAU_ADMIN_USERNAME'] }
+  config.filter_sensitive_data('TABLEAU_ADMIN_PASSWORD') { ENV['TABLEAU_ADMIN_PASSWORD'].encode(xml: :text) }
   config.filter_sensitive_data('http://TABLEAU_HOST') { ENV['TABLEAU_HOST'] }
 
   config.allow_http_connections_when_no_cassette = false
@@ -30,7 +30,7 @@ VCR.configure do |config|
   config.before_record do |interaction|
     response = interaction.response
     elements = response.body.scan(/<(?:site|user)\s[^>]+name[^>]+>/)
-    sensitive_elements = elements.reject { |e| e.match(/"(Default|TestSite|Test Site 2|test|<TABLEAU_ADMIN_USERNAME>)"/) }
+    sensitive_elements = elements.reject { |e| e.match(/"(Default|TestSite|Test Site 2|test|test_test|TABLEAU_ADMIN_USERNAME)"/) }
     unless sensitive_elements.empty?
       sensitive_elements.each { |e| response.body.gsub! e, '' }
       response.body.gsub!(/totalAvailable="\d+"/, "totalAvailable=\"#{elements.length - sensitive_elements.length}\"")

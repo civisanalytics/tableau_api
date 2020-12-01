@@ -5,7 +5,7 @@ http_interactions:
     uri: http://TABLEAU_HOST/api/3.1/auth/signin
     body:
       encoding: UTF-8
-      string: <tsRequest><credentials name="<TABLEAU_ADMIN_USERNAME>" password="<TABLEAU_ADMIN_PASSWORD>"><site
+      string: <tsRequest><credentials name="TABLEAU_ADMIN_USERNAME" password="TABLEAU_ADMIN_PASSWORD"><site
         contentUrl="TestSite"/></credentials></tsRequest>
     headers:
       Content-Type:
