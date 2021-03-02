@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TableauApi
   module Resources
     class Users < Base
@@ -35,6 +37,7 @@ module TableauApi
         res = @client.connection.api_get("sites/#{@client.auth.site_id}/users/#{user_id}")
 
         raise 'failed to find user' if res.code != 200
+
         user = res['tsResponse']['user']
 
         request = Builder::XmlMarkup.new.tsRequest do |ts|

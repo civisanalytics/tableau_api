@@ -1,7 +1,7 @@
 inherit_from: .rubocop_todo.yml
 
 AllCops:
-  TargetRubyVersion: 2.2
+  TargetRubyVersion: 2.7
 
 ClassLength:
   Max: 200
@@ -11,9 +11,6 @@ Style/Documentation:
 
 LineLength:
   Max: 170
-
-MethodLength:
-  Max: 20
 
 Metrics/AbcSize:
   Max: 40

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe TableauApi::Resources::Auth, vcr: { cassette_name: 'auth' } do

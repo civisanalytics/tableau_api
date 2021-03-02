@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TableauApi
   module Resources
     class Sites < Base
@@ -23,12 +25,14 @@ module TableauApi
         res = @client.connection.api_post('sites', body: request)
 
         return res['tsResponse']['site'] if res.code == 201
+
         raise TableauError, res
       end
 
       def delete(site_id:)
         res = @client.connection.api_delete("sites/#{site_id}")
         return true if res.code == 204
+
         raise TableauError, res
       end
     end
