@@ -20,7 +20,7 @@ module TableauApi
         return true if signed_in?
 
         request = Builder::XmlMarkup.new.tsRequest do |ts|
-          ts.credentials(name: @client.username, password: @client.password) do |cred|
+          ts.credentials(authentication_credentials) do |cred|
             cred.site(contentUrl: @client.site_name == 'Default' ? '' : @client.site_name)
           end
         end
@@ -72,6 +72,19 @@ module TableauApi
         return unless res && res.code == 200 && res.body != '-1'
 
         res.body
+      end
+
+      private
+
+      def authentication_credentials
+        if @client.authentication_type == Client::AUTH_TYPE_PERSONAL_ACCESS_TOKEN
+          {
+            personalAccessTokenName: @client.personal_access_token_name,
+            personalAccessTokenSecret: @client.personal_access_token_secret
+          }
+        else
+          { name: @client.username, password: @client.password }
+        end
       end
     end
   end

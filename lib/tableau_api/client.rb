@@ -1,8 +1,19 @@
 module TableauApi
   class Client
-    attr_reader :host, :username, :password, :site_id, :site_name
+    AUTH_TYPE_PERSONAL_ACCESS_TOKEN = :personal_access_token_name
+    AUTH_TYPE_USERNAME_AND_PASSWORD = :username_and_password
+    AUTH_TYPE_TRUSTED_TICKET = :trusted_ticket
 
-    def initialize(host:, site_name:, username:, password: nil)
+    attr_reader :host,
+                :username,
+                :password,
+                :site_id,
+                :site_name,
+                :personal_access_token_name,
+                :personal_access_token_secret
+
+    # rubocop:disable Metrics/ParameterLists
+    def initialize(host:, site_name:, username: nil, password: nil, personal_access_token_name: nil, personal_access_token_secret: nil)
       @resources = {}
 
       raise 'host is required' if host.to_s.empty?
@@ -11,10 +22,20 @@ module TableauApi
       raise 'site_name is required' if site_name.to_s.empty?
       @site_name = site_name
 
-      raise 'username is required' if username.to_s.empty?
+      raise 'username or personal_access_token_name is required' if personal_access_token_name.to_s.empty? && username.to_s.empty?
+      @personal_access_token_name = personal_access_token_name
       @username = username
 
       @password = password
+      @personal_access_token_secret = personal_access_token_secret
+    end
+    # rubocop:enable Metrics/ParameterLists
+
+    def authentication_type
+      return AUTH_TYPE_PERSONAL_ACCESS_TOKEN unless @personal_access_token_name.to_s.empty?
+      return AUTH_TYPE_TRUSTED_TICKET if @password.to_s.empty?
+
+      AUTH_TYPE_USERNAME_AND_PASSWORD
     end
 
     def connection
