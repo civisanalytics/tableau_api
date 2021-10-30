@@ -54,7 +54,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ### Docker
 
 ```
-docker run -it -d -v $(pwd):/src ruby /bin/bash
+docker run -it -d -v $(pwd):/src ruby:2 /bin/bash
 docker exec -it CONTAINER_ID /bin/bash -c "cd /src && bundle && rake"
 ```
 
