@@ -24,6 +24,11 @@ module TableauApi
         res['tsResponse']['user'] if res.code == 201
       end
 
+      def get_groups(user_id:)
+        url = "sites/#{@client.auth.site_id}/users/#{user_id}/groups"
+        @client.connection.api_get_collection(url, 'groups.group')
+      end
+
       def list
         url = "sites/#{@client.auth.site_id}/users"
         @client.connection.api_get_collection(url, 'users.user')
