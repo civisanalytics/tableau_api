@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## upcoming
+
+### Added
+
+- Add support for [personal access token](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_auth.htm#make-a-sign-in-request-with-a-personal-access-token) authentication
+
+### Changed
+
+- Updated to API version 3.6
+
+
 ## [4.0.0] - 2020-11-30
 
 ### Changed/Fixed

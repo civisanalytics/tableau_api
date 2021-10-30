@@ -35,6 +35,12 @@ client = TableauApi.new(host: 'https://tableau.domain.tld', site_name: 'Default'
 client.auth.trusted_ticket
 ```
 
+### Personal Access Token Authentication
+```
+client = TableauApi.new(host: 'https://tableau.domain.tld', site_name: 'Default', personal_access_token_name: 'ExampleTokenName', personal_access_token_secret: 'ExampleTokenSecret')
+client.users.create(username: 'baz')
+```
+
 ### Workbooks
 ```
 # find a workbook by name
@@ -87,6 +93,7 @@ Then run the commands below:
 docker run -it -d \
   -v $(pwd):/src \
   -e TABLEAU_HOST -e TABLEAU_ADMIN_USERNAME -e TABLEAU_ADMIN_PASSWORD \
+  -e TABLEAU_ADMIN_PERSONAL_ACCESS_TOKEN_NAME -e TABLEAU_ADMIN_PERSONAL_ACCESS_TOKEN_SECRET \
   ruby /bin/bash
 docker exec -it CONTAINER_ID /bin/bash -c "cd /src && bundle && rake"
 ```
