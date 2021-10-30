@@ -22,6 +22,22 @@ describe TableauApi::Resources::Users, vcr: { cassette_name: 'users' } do
     end
   end
 
+  describe '#get_groups' do
+    # https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref.htm#get_groups_for_a_user
+    it 'can retrieve groups for a specific user' do
+      sleep(15) if VCR.current_cassette.recording?
+      user = client.users.list.find do |u|
+        u['name'] == 'test'
+      end
+      group = client.groups.create(name: 'get_groups test')
+      expect(client.groups.add_user(group_id: group['id'], user_id: user['id'])).to be true
+
+      groups = client.users.get_groups(user_id: user['id'])
+      group_ids = groups.map { |group| group['id'] }
+      expect(group_ids).to include?(groups['id'])
+    end
+  end
+
   describe '#list' do
     # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Get_Users_on_Site
     it 'can list users in a site' do
