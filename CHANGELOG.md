@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## upcoming
+
+### Changed
+
+- Specify major version number of ruby in Docker testing command in README
+
+
 ## [4.0.0] - 2020-11-30
 
 ### Changed/Fixed
