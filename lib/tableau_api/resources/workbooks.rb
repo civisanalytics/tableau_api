@@ -49,8 +49,8 @@ module TableauApi
       # rubocop:enable Metrics/ParameterLists
 
       CAPABILITIES = %w[
-        AddComment ChangeHierarchy ChangePermissions Delete ExportData ExportImage ExportXml
-        Filter Read ShareView ViewComments ViewUnderlyingData WebAuthoring Write
+        AddComment ChangeHierarchy ChangePermissions CreateRefreshMetrics Delete ExportData ExportImage
+        ExportXml Filter Read RunExplainData ShareView ViewComments ViewUnderlyingData WebAuthoring Write
       ].freeze
 
       CAPABILITY_MODES = %w[ALLOW DENY].freeze
