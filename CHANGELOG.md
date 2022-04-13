@@ -7,8 +7,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
-- Specify major version number of ruby in Docker testing command in README
+## [4.1.0] - 2022-04-13
 
+- Specify major version number of ruby in Docker testing command in README
+- Add support for CreateRefreshMetrics and RunExplainData workbook capabilities
 
 ## [4.0.0] - 2020-11-30
 
@@ -32,7 +34,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 - Updated to API version 3.1
-  - This is a breaking change for site roles: 
+  - This is a breaking change for site roles:
     https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_new_site_roles.htm
 - Include full error detail in TableauError message
 
