@@ -55,6 +55,7 @@ module TableauApi
 
       CAPABILITY_MODES = %w[ALLOW DENY].freeze
 
+      # rubocop:disable Metrics/CyclomaticComplexity
       def permissions(workbook_id:)
         res = @client.connection.api_get("sites/#{@client.auth.site_id}/workbooks/#{workbook_id}/permissions")
 
@@ -82,6 +83,7 @@ module TableauApi
           }
         end
       end
+      # rubocop:enable Metrics/CyclomaticComplexity
 
       # capabilities is a hash of symbol keys to booleans { Read: true, ChangePermissions: false }
       def add_permissions(workbook_id:, capabilities:, user_id: nil, group_id: nil)

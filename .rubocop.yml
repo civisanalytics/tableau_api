@@ -4,8 +4,8 @@ AllCops:
   TargetRubyVersion: 3.0
   NewCops: enable
 
-ClassLength:
-  Max: 200
+Gemspec/RequireMFA:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
@@ -13,16 +13,19 @@ Style/Documentation:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-LineLength:
-  Max: 170
+Style/FetchEnvVar:
+  Enabled: false
 
-MethodLength:
-  Max: 20
+Metrics/ClassLength:
+  Max: 200
+
+Metrics/LineLength:
+  Max: 170
 
 Metrics/AbcSize:
   Max: 40
 
-MethodLength:
+Metrics/MethodLength:
   Max: 30
 
 Metrics/BlockLength:

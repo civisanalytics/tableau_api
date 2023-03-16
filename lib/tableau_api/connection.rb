@@ -16,6 +16,7 @@ module TableauApi
     # if the result is paginated, it will fetch subsequent pages
     # collection can be delimited with a period to do nested hash lookups
     # e.g. objects.object
+    # rubocop:disable Metrics/CyclomaticComplexity
     def api_get_collection(path, collection, page_number: 1, page_size: 100, **kwargs)
       Enumerator.new do |enum|
         loop do
@@ -39,6 +40,7 @@ module TableauApi
         end
       end
     end
+    # rubocop:enable Metrics/CyclomaticComplexity
 
     def api_get(path, **kwargs)
       api_method(:get, path, kwargs)
@@ -75,9 +77,7 @@ module TableauApi
 
     def api_method(method, path, kwargs)
       # do not attach auth headers or attempt to signin if we're signing in
-      unless path == 'auth/signin'
-        new_headers = auth_headers(kwargs.fetch(:headers, {}))
-      end
+      new_headers = auth_headers(kwargs.fetch(:headers, {})) unless path == 'auth/signin'
       self.class.public_send(method, url_for(path), kwargs.merge(headers: new_headers))
     end
 
