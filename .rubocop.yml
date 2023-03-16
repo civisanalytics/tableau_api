@@ -10,6 +10,9 @@ ClassLength:
 Style/Documentation:
   Enabled: false
 
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 LineLength:
   Max: 170
 
