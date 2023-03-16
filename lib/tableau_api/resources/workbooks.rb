@@ -59,6 +59,7 @@ module TableauApi
         res = @client.connection.api_get("sites/#{@client.auth.site_id}/workbooks/#{workbook_id}/permissions")
 
         raise TableauError, res if res.code != 200
+
         permissions = HTTParty::Parser.new(res.body, :xml).parse['tsResponse']['permissions']['granteeCapabilities']
         return [] if permissions.nil?
 
@@ -83,7 +84,7 @@ module TableauApi
       end
 
       # capabilities is a hash of symbol keys to booleans { Read: true, ChangePermissions: false }
-      def add_permissions(workbook_id:, user_id: nil, group_id: nil, capabilities:)
+      def add_permissions(workbook_id:, capabilities:, user_id: nil, group_id: nil)
         validate_user_group_exclusivity(user_id, group_id)
 
         request = permissions_request(workbook_id, user_id, group_id, capabilities)
@@ -92,7 +93,7 @@ module TableauApi
         res.code == 200
       end
 
-      def delete_permissions(workbook_id:, user_id: nil, group_id: nil, capability:, capability_mode:)
+      def delete_permissions(workbook_id:, capability:, capability_mode:, user_id: nil, group_id: nil)
         validate_user_group_exclusivity(user_id, group_id)
         raise 'invalid capability' unless CAPABILITIES.include? capability.to_s
         raise 'invalid mode' unless CAPABILITY_MODES.include? capability_mode.to_s
@@ -155,6 +156,7 @@ module TableauApi
                 capabilities.each do |k, v|
                   k = k.to_s
                   raise "invalid capability #{k}" unless CAPABILITIES.include? k
+
                   c.capability(name: k, mode: v ? 'Allow' : 'Deny')
                 end
               end

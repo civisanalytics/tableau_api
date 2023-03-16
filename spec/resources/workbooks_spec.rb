@@ -77,7 +77,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
                workbook_id: workbook['id'],
                user_id: admin_user['id'],
                capabilities: { Read: true, ChangePermissions: false }
-      )).to be true
+             )).to be true
     end
 
     # http://onlinehelp.tableau.com/v9.0/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm#Add_Workbook_Permissions%3FTocPath%3DAPI%2520Reference%7C_____9
@@ -87,7 +87,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
                workbook_id: workbook['id'],
                group_id: test_group['id'],
                capabilities: { Read: true, ChangePermissions: false }
-      )).to be true
+             )).to be true
     end
 
     it 'requires a user or a group id' do
@@ -124,7 +124,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
                user_id: admin_user['id'],
                capability: 'Read',
                capability_mode: 'ALLOW'
-      )).to be true
+             )).to be true
     end
 
     it 'can delete a group permission' do
@@ -134,7 +134,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
                group_id: test_group['id'],
                capability: 'Read',
                capability_mode: 'ALLOW'
-      )).to be true
+             )).to be true
     end
 
     it 'accepts a symbol as a permission' do
@@ -149,7 +149,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
                group_id: all_users_group['id'],
                capability: :ExportImage,
                capability_mode: :ALLOW
-      )).to be true
+             )).to be true
     end
 
     it 'requires a user or a group id' do
@@ -302,7 +302,7 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
       expect(client.workbooks.update(
                workbook_id: workbook['id'],
                owner_user_id: admin_user['id']
-      )).to be true
+             )).to be true
     end
   end
 

@@ -6,12 +6,15 @@ module TableauApi
       @resources = {}
 
       raise 'host is required' if host.to_s.empty?
+
       @host = host
 
       raise 'site_name is required' if site_name.to_s.empty?
+
       @site_name = site_name
 
       raise 'username is required' if username.to_s.empty?
+
       @username = username
 
       @password = password
