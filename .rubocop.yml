@@ -16,9 +16,6 @@ Style/Documentation:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-Style/FetchEnvVar:
-  Enabled: false
-
 Metrics/ClassLength:
   Max: 200
 

@@ -3,10 +3,10 @@ require 'spec_helper'
 describe TableauApi::Resources::Auth, vcr: { cassette_name: 'auth' } do
   let(:client) do
     TableauApi.new(
-      host: ENV['TABLEAU_HOST'],
+      host: ENV.fetch('TABLEAU_HOST', nil),
       site_name: 'Default',
-      username: ENV['TABLEAU_ADMIN_USERNAME'],
-      password: ENV['TABLEAU_ADMIN_PASSWORD']
+      username: ENV.fetch('TABLEAU_ADMIN_USERNAME', nil),
+      password: ENV.fetch('TABLEAU_ADMIN_PASSWORD', nil)
     )
   end
 
@@ -18,7 +18,7 @@ describe TableauApi::Resources::Auth, vcr: { cassette_name: 'auth' } do
   end
 
   it 'fails appropriately with a bad username or password' do
-    client = TableauApi.new(host: ENV['TABLEAU_HOST'], site_name: 'Default', username: 'foo', password: 'bar')
+    client = TableauApi.new(host: ENV.fetch('TABLEAU_HOST', nil), site_name: 'Default', username: 'foo', password: 'bar')
     expect(client.auth.sign_in).to be false
   end
 
@@ -35,10 +35,10 @@ describe TableauApi::Resources::Auth, vcr: { cassette_name: 'auth' } do
 
   it 'signs into a different site' do
     client = TableauApi.new(
-      host: ENV['TABLEAU_HOST'],
+      host: ENV.fetch('TABLEAU_HOST', nil),
       site_name: 'TestSite',
-      username: ENV['TABLEAU_ADMIN_USERNAME'],
-      password: ENV['TABLEAU_ADMIN_PASSWORD']
+      username: ENV.fetch('TABLEAU_ADMIN_USERNAME', nil),
+      password: ENV.fetch('TABLEAU_ADMIN_PASSWORD', nil)
     )
     expect(client.auth.sign_in).to be true
     expect(client.auth.token).to be_a_token
@@ -80,27 +80,27 @@ describe TableauApi::Resources::Auth, vcr: { cassette_name: 'auth' } do
 
   describe '.trusted_ticket' do
     it 'can get a trusted ticket' do
-      client = TableauApi.new(host: ENV['TABLEAU_HOST'], site_name: 'Default', username: 'test')
+      client = TableauApi.new(host: ENV.fetch('TABLEAU_HOST', nil), site_name: 'Default', username: 'test')
       expect(client.auth.trusted_ticket).to be_a_trusted_ticket
     end
 
     it 'can get a trusted ticket for a non default site' do
-      client = TableauApi.new(host: ENV['TABLEAU_HOST'], site_name: 'test', username: 'test_test')
+      client = TableauApi.new(host: ENV.fetch('TABLEAU_HOST', nil), site_name: 'test', username: 'test_test')
       expect(client.auth.trusted_ticket).to be_a_trusted_ticket
     end
 
     it 'fails with a user not in a site' do
-      client = TableauApi.new(host: ENV['TABLEAU_HOST'], site_name: 'test', username: 'test')
+      client = TableauApi.new(host: ENV.fetch('TABLEAU_HOST', nil), site_name: 'test', username: 'test')
       expect(client.auth.trusted_ticket).to be nil
     end
 
     it 'fails with a bad user' do
-      client = TableauApi.new(host: ENV['TABLEAU_HOST'], site_name: 'Default', username: 'invalid_user')
+      client = TableauApi.new(host: ENV.fetch('TABLEAU_HOST', nil), site_name: 'Default', username: 'invalid_user')
       expect(client.auth.trusted_ticket).to be nil
     end
 
     it 'fails with a bad site' do
-      client = TableauApi.new(host: ENV['TABLEAU_HOST'], site_name: 'invalid_site', username: 'test')
+      client = TableauApi.new(host: ENV.fetch('TABLEAU_HOST', nil), site_name: 'invalid_site', username: 'test')
       expect(client.auth.trusted_ticket).to be nil
     end
   end

@@ -5,10 +5,10 @@ describe TableauApi::Resources::Sites, vcr: { cassette_name: 'sites' } do
 
   let(:default_client) do
     TableauApi.new(
-      host: ENV['TABLEAU_HOST'],
+      host: ENV.fetch('TABLEAU_HOST', nil),
       site_name: 'Default',
-      username: ENV['TABLEAU_ADMIN_USERNAME'],
-      password: ENV['TABLEAU_ADMIN_PASSWORD']
+      username: ENV.fetch('TABLEAU_ADMIN_USERNAME', nil),
+      password: ENV.fetch('TABLEAU_ADMIN_PASSWORD', nil)
     )
   end
 
@@ -69,10 +69,10 @@ describe TableauApi::Resources::Sites, vcr: { cassette_name: 'sites' } do
   describe '#delete' do
     let(:site_client) do
       TableauApi.new(
-        host: ENV['TABLEAU_HOST'],
+        host: ENV.fetch('TABLEAU_HOST', nil),
         site_name: 'TestSite2',
-        username: ENV['TABLEAU_ADMIN_USERNAME'],
-        password: ENV['TABLEAU_ADMIN_PASSWORD']
+        username: ENV.fetch('TABLEAU_ADMIN_USERNAME', nil),
+        password: ENV.fetch('TABLEAU_ADMIN_PASSWORD', nil)
       )
     end
 
