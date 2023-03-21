@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TableauApi
   class Client
     attr_reader :host, :username, :password, :site_id, :site_name

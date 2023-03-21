@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TableauApi
   class TableauError < StandardError
     attr_reader :http_response_code, :error_code, :summary, :detail

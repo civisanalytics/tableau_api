@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe TableauApi::Resources::Groups, vcr: { cassette_name: 'groups' } do
