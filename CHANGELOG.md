@@ -7,6 +7,17 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+## [5.0.0] - 2023-03-23
+
+- Added support for Ruby 3
+- Bumped dev Ruby version to 3.2.1
+- Bumped minimum required Ruby version to 2.7.0
+- Bumped Rake version for development to 12.3.3
+- Bumped Rubocop version for development to 1.48.1
+- Bumped vcr version for development to 6.0
+- Bumped Travis matrix Ruby versions to 3.2.1, 3.0.5, and 2.7.0
+- Added Rubygems MFA requirement
+
 ## [4.1.0] - 2022-04-13
 
 - Specify major version number of ruby in Docker testing command in README
