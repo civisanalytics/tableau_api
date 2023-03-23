@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TableauApi
   module Resources
     class Auth < Base

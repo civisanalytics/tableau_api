@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe TableauApi::Resources::Groups, vcr: { cassette_name: 'groups' } do
@@ -56,9 +58,8 @@ describe TableauApi::Resources::Groups, vcr: { cassette_name: 'groups' } do
   end
 
   def find_group_by_name(name)
-    group = client.groups.list.find do |g|
+    client.groups.list.find do |g|
       g['name'] == name
     end
-    group
   end
 end

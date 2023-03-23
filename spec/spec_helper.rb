@@ -1,4 +1,6 @@
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+# frozen_string_literal: true
+
+$LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require 'tableau_api'
 
 require 'pry'
@@ -20,9 +22,9 @@ VCR.configure do |config|
 
   config.default_cassette_options = { record: :new_episodes, match_requests_on: %i[path method body query] }
 
-  config.filter_sensitive_data('TABLEAU_ADMIN_USERNAME') { ENV['TABLEAU_ADMIN_USERNAME'] }
+  config.filter_sensitive_data('TABLEAU_ADMIN_USERNAME') { ENV.fetch('TABLEAU_ADMIN_USERNAME', nil) }
   config.filter_sensitive_data('TABLEAU_ADMIN_PASSWORD') { ENV['TABLEAU_ADMIN_PASSWORD'].encode(xml: :text) }
-  config.filter_sensitive_data('http://TABLEAU_HOST') { ENV['TABLEAU_HOST'] }
+  config.filter_sensitive_data('http://TABLEAU_HOST') { ENV.fetch('TABLEAU_HOST', nil) }
 
   config.allow_http_connections_when_no_cassette = false
 
@@ -71,10 +73,10 @@ end
 RSpec.shared_context 'tableau client' do
   let(:client) do
     TableauApi.new(
-      host: ENV['TABLEAU_HOST'],
+      host: ENV.fetch('TABLEAU_HOST', nil),
       site_name: 'TestSite',
-      username: ENV['TABLEAU_ADMIN_USERNAME'],
-      password: ENV['TABLEAU_ADMIN_PASSWORD']
+      username: ENV.fetch('TABLEAU_ADMIN_USERNAME', nil),
+      password: ENV.fetch('TABLEAU_ADMIN_PASSWORD', nil)
     )
   end
 end

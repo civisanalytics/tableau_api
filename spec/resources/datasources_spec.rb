@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 describe TableauApi::Resources::Datasources, vcr: { cassette_name: 'datasources' } do
   include_context 'tableau client'
