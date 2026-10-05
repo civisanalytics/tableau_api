@@ -1,0 +1,33 @@
+version: 2.1
+
+jobs:
+  test:
+    parameters:
+      ruby-version:
+        type: string
+    docker:
+      - image: cimg/ruby:<< parameters.ruby-version >>
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - gems-v1-<< parameters.ruby-version >>-{{ checksum "tableau_api.gemspec" }}
+            - gems-v1-<< parameters.ruby-version >>-
+      - run:
+          name: Install gems
+          command: bundle config set path vendor/bundle && bundle install --jobs 4
+      - save_cache:
+          key: gems-v1-<< parameters.ruby-version >>-{{ checksum "tableau_api.gemspec" }}
+          paths:
+            - vendor/bundle
+      - run:
+          name: Run rubocop and specs
+          command: bundle exec rake
+
+workflows:
+  test:
+    jobs:
+      - test:
+          matrix:
+            parameters:
+              ruby-version: ["3.3", "3.4", "4.0"]
