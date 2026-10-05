@@ -5,7 +5,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## upcoming
 
-### Changed
+## [6.0.0] - 2026-10-05
+
+- Breaking: dropped support for Ruby 2.7 through 3.2. The minimum required Ruby version is now 3.3.
+- Bumped rubyzip to ~> 3.7 to address open security advisories
+- Bumped dev dependencies: rake ~> 13.0, rubocop ~> 1.91, chunky_png ~> 1.4
+- Bumped CI matrix Ruby versions to 4.0, 3.4, and 3.3
+- Added a Dockerfile and docker-compose.yml for development
 
 ## [5.0.0] - 2023-03-23
 
