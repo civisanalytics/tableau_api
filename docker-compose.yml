@@ -1,0 +1,14 @@
+services:
+  dev:
+    build:
+      context: .
+      args:
+        RUBY_VERSION: ${RUBY_VERSION:-3.4}
+    volumes:
+      - .:/src
+      - bundle:/bundle
+    stdin_open: true
+    tty: true
+
+volumes:
+  bundle:
