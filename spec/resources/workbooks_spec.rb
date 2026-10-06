@@ -111,6 +111,15 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
         )
       end.to raise_error(/cannot specify user_id and group_id simultaneously/)
     end
+
+    it 'accepts the Connect, ExtractRefresh, and VizqlDataApiAccess capabilities' do
+      allow(client.connection).to receive(:api_put).and_return(double(code: 200))
+      expect(client.workbooks.add_permissions(
+               workbook_id: '1',
+               group_id: '2',
+               capabilities: { Connect: false, ExtractRefresh: false, VizqlDataApiAccess: false }
+             )).to be true
+    end
   end
 
   describe '#delete_permissions' do
@@ -174,6 +183,29 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
           capability_mode: 'ALLOW'
         )
       end.to raise_error(/cannot specify user_id and group_id simultaneously/)
+    end
+
+    %w[Connect ExtractRefresh VizqlDataApiAccess].each do |capability|
+      it "accepts the #{capability} capability" do
+        allow(client.connection).to receive(:api_delete).and_return(double(code: 204))
+        expect(client.workbooks.delete_permissions(
+                 workbook_id: '1',
+                 group_id: '2',
+                 capability: capability,
+                 capability_mode: 'ALLOW'
+               )).to be true
+      end
+    end
+
+    it 'rejects an unknown capability' do
+      expect do
+        client.workbooks.delete_permissions(
+          workbook_id: '1',
+          group_id: '2',
+          capability: 'NotACapability',
+          capability_mode: 'ALLOW'
+        )
+      end.to raise_error('invalid capability')
     end
   end
 
