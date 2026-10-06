@@ -7,6 +7,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+## [5.1.0] - 2026-10-06
+
+- Add support for Connect, ExtractRefresh, and VizqlDataApiAccess workbook capabilities
+
 ## [5.0.0] - 2023-03-23
 
 - Added support for Ruby 3
