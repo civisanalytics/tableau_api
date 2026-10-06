@@ -53,17 +53,18 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ### Docker
 
-A development image is provided so you don't need a local Ruby toolchain. Gems are cached in a named volume.
+A development image is provided so you don't need a local Ruby toolchain. The image and the installed gems are kept per Ruby version, so versions don't interfere with each other.
 
 ```
 docker compose run --rm dev bundle install
 docker compose run --rm dev bundle exec rake
 ```
 
-To test against another Ruby version, set `RUBY_VERSION` (the gem supports 3.3 and newer):
+This uses Ruby 3.4 by default. To run against another supported Ruby (3.3 and newer), set `RUBY_VERSION` on the same commands. The image is built the first time a version is used:
 
 ```
-RUBY_VERSION=3.3 docker compose build dev
+RUBY_VERSION=3.3 docker compose run --rm dev bundle install
+RUBY_VERSION=3.3 docker compose run --rm dev bundle exec rake
 ```
 
 ### Creating New VCR Cassettes
