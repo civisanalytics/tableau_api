@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [6.0.0] - 2026-10-05
+## [6.0.0] - 2026-10-08
 
 - Breaking: dropped support for Ruby 2.7 through 3.2. The minimum required Ruby version is now 3.3.
 - Bumped rubyzip to ~> 3.7 to address open security advisories
@@ -120,7 +120,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Initial Release
 
 [6.0.0]: https://github.com/civisanalytics/tableau_api/compare/v5.0.0...v6.0.0
-[Unreleased]: https://github.com/civisanalytics/tableau_api/compare/v1.1.2...HEAD
+[Unreleased]: https://github.com/civisanalytics/tableau_api/compare/v6.0.0...HEAD
 [1.1.2]: https://github.com/civisanalytics/tableau_api/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/civisanalytics/tableau_api/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/civisanalytics/tableau_api/compare/v1.0.0...v1.1.0
