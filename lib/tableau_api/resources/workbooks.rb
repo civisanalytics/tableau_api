@@ -11,6 +11,8 @@ module TableauApi
         if File.exist?(file) && File.extname(file) == '.twbx'
           Zip::File.open(file) do |zip_file|
             entry = zip_file.glob('*.twb').first
+            next unless entry
+
             version = HTTParty::Parser.new(entry.get_input_stream.read, :xml).parse['workbook']['version']
           end
         end
