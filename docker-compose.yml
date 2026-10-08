@@ -1,0 +1,16 @@
+services:
+  dev:
+    image: tableau_api-dev:${RUBY_VERSION:-3.4}
+    build:
+      context: .
+      args:
+        RUBY_VERSION: ${RUBY_VERSION:-3.4}
+    volumes:
+      - .:/src
+      - bundle:/bundle
+    stdin_open: true
+    tty: true
+
+volumes:
+  bundle:
+    name: tableau_api-bundle-${RUBY_VERSION:-3.4}

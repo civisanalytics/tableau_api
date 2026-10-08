@@ -3,9 +3,15 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## upcoming
+## [6.0.0] - 2026-10-08
 
-### Changed
+- Breaking: dropped support for Ruby 2.7 through 3.2. The minimum required Ruby version is now 3.3.
+- Bumped rubyzip to ~> 3.7 to address open security advisories
+- Bumped httparty to ~> 0.22 and added multi_xml ~> 0.7, so Ruby 3.4+ gets the csv and bigdecimal gems it no longer bundles
+- `Workbooks#version` now returns nil for a twbx with no twb at the archive root, instead of raising NoMethodError
+- Bumped dev dependencies: rake ~> 13.0, rubocop ~> 1.91, chunky_png ~> 1.4
+- Bumped CI matrix Ruby versions to 4.0, 3.4, and 3.3
+- Added a Dockerfile and docker-compose.yml for development
 
 ## [5.0.0] - 2023-03-23
 
@@ -113,7 +119,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - Initial Release
 
-[Unreleased]: https://github.com/civisanalytics/tableau_api/compare/v1.1.2...HEAD
+[6.0.0]: https://github.com/civisanalytics/tableau_api/compare/v5.0.0...v6.0.0
+[Unreleased]: https://github.com/civisanalytics/tableau_api/compare/v6.0.0...HEAD
 [1.1.2]: https://github.com/civisanalytics/tableau_api/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/civisanalytics/tableau_api/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/civisanalytics/tableau_api/compare/v1.0.0...v1.1.0
