@@ -351,6 +351,10 @@ describe TableauApi::Resources::Workbooks, vcr: { cassette_name: 'workbooks' } d
       expect(client.workbooks.version('spec/fixtures/workbooks/test.twbx')).to eq '10.5'
     end
 
+    it 'returns nil if the twbx has no twb at the archive root' do
+      expect(client.workbooks.version('spec/fixtures/workbooks/nested_twb.twbx')).to be_nil
+    end
+
     it 'returns nil if file not found' do
       expect(client.workbooks.version('spec/fixtures/workbooks/foo.twbx')).to be_nil
     end

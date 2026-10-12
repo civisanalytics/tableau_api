@@ -1,5 +1,6 @@
 services:
   dev:
+    image: tableau_api-dev:${RUBY_VERSION:-3.4}
     build:
       context: .
       args:
@@ -12,3 +13,4 @@ services:
 
 volumes:
   bundle:
+    name: tableau_api-bundle-${RUBY_VERSION:-3.4}

@@ -22,8 +22,9 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 3.3'
 
   spec.add_dependency 'builder', '~> 3.2'
-  spec.add_dependency 'httparty', '~> 0.13'
+  spec.add_dependency 'httparty', '~> 0.22'
   spec.add_dependency 'multipart-post', '~> 2.0'
+  spec.add_dependency 'multi_xml', '~> 0.7'
   spec.add_dependency 'rubyzip', '~> 3.7'
 
   spec.add_development_dependency 'chunky_png', '~> 1.4'
