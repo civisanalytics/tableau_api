@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [6.0.1] - 2026-10-12
+
+- Bumped httparty to ~> 0.24 to address a potential SSRF vulnerability that could leak API keys (httparty <= 0.23.2)
+
 ## [6.0.0] - 2026-10-08
 
 - Breaking: dropped support for Ruby 2.7 through 3.2. The minimum required Ruby version is now 3.3.
