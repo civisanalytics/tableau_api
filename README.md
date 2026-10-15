@@ -1,6 +1,6 @@
 # tableau_api
 
-[![Build Status](https://travis-ci.org/civisanalytics/tableau_api.svg?branch=master)](https://travis-ci.org/civisanalytics/tableau_api)
+[![CircleCI](https://circleci.com/gh/civisanalytics/tableau_api.svg?style=shield)](https://circleci.com/gh/civisanalytics/tableau_api)
 [![Gem Version](https://badge.fury.io/rb/tableau_api.svg)](http://badge.fury.io/rb/tableau_api)
 
 Ruby interface to the Tableau 9.0 API.
@@ -53,9 +53,18 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ### Docker
 
+A development image is provided so you don't need a local Ruby toolchain. The image and the installed gems are kept per Ruby version, so versions don't interfere with each other.
+
 ```
-docker run -it -d -v $(pwd):/src ruby:2 /bin/bash
-docker exec -it CONTAINER_ID /bin/bash -c "cd /src && bundle && rake"
+docker compose run --rm dev bundle install
+docker compose run --rm dev bundle exec rake
+```
+
+This uses Ruby 3.4 by default. To run against another supported Ruby (3.3 and newer), set `RUBY_VERSION` on the same commands. The image is built the first time a version is used:
+
+```
+RUBY_VERSION=3.3 docker compose run --rm dev bundle install
+RUBY_VERSION=3.3 docker compose run --rm dev bundle exec rake
 ```
 
 ### Creating New VCR Cassettes
