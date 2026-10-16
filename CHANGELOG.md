@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [6.1.0] - 2026-10-15
+
+- Added support for the Connect, ExtractRefresh, and VizqlDataApiAccess workbook capabilities
+
 ## [6.0.1] - 2026-10-12
 
 - Bumped httparty to ~> 0.24 to address a potential SSRF vulnerability that could leak API keys (httparty <= 0.23.2)
