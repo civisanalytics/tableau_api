@@ -48,6 +48,13 @@ module TableauApi
 
         res['tsResponse']['user'] if res.code == 200
       end
+
+      def delete(user_id:)
+        res = @client.connection.api_delete("sites/#{@client.auth.site_id}/users/#{user_id}")
+        return true if res.code == 204
+
+        raise TableauError, res
+      end
     end
   end
 end

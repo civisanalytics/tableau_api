@@ -62,4 +62,21 @@ describe TableauApi::Resources::Users, vcr: { cassette_name: 'users' } do
       end.to raise_error(RuntimeError, 'failed to find user')
     end
   end
+
+  describe '#delete' do
+    # https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref_users_and_groups.htm#remove_user_from_site
+    it 'removes a user from the site' do
+      allow(client.connection).to receive(:api_delete).and_return(double(code: 204))
+      expect(client.users.delete(user_id: 'user-id')).to be true
+      expect(client.connection).to have_received(:api_delete).with("sites/#{client.auth.site_id}/users/user-id")
+    end
+
+    it 'raises an error if the user cannot be removed' do
+      body = '<tsResponse><error code="404002"><summary>Resource Not Found</summary><detail>User not found</detail></error></tsResponse>'
+      allow(client.connection).to receive(:api_delete).and_return(double(code: 404, body: body))
+      expect do
+        client.users.delete(user_id: 'user-id')
+      end.to raise_error(TableauApi::TableauError, '404002: Resource Not Found; User not found')
+    end
+  end
 end

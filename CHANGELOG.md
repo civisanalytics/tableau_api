@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [6.2.0] - 2026-10-21
+
+- Added `Users#delete` to remove a user from a site
+
 ## [6.1.0] - 2026-10-15
 
 - Added support for the Connect, ExtractRefresh, and VizqlDataApiAccess workbook capabilities
